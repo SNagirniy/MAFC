@@ -1,6 +1,15 @@
 @use '../../../globalStyles/variables.scss' as *;
 
 .header{
-    padding: 10px 30px;
-    background-color: $dark;
+    display: grid;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 1rem;
+    grid-template-columns: 1fr 3fr;
+    justify-content: space-between;
+    padding: 10px 70px;
+    background-color: $primaryBG;
+    align-items: center;
+    box-shadow: $box_shadow;
 }

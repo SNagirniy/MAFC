@@ -1,6 +1,7 @@
-import { Montserrat } from "next/font/google";
 
-export const montserrat = Montserrat({
+import { Open_Sans } from "next/font/google";
+
+export const open_sans = Open_Sans({
     subsets: ['latin', 'cyrillic'],
     
   });

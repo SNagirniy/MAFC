@@ -1,0 +1,29 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.nav_box{
+    position: static;
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $primary-text-color;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    align-items: flex-start;
+    text-align: center;
+   
+};
+
+.list_item{
+    cursor: pointer;
+    color: $primary-text-color;
+    &:hover{
+        color: $secondary-color;
+    }
+
+    & >p{
+        padding: 1rem 0;
+    }
+}

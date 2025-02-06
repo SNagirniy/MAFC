@@ -1,4 +1,4 @@
-import { montserrat } from '@/globalStyles/fonts';
+import { open_sans } from '@/globalStyles/fonts';
 import 'normalize.css/normalize.css';
 import "../globalStyles/main.scss";
 import PageLayout from '@/components/layouts/PageLayout';
@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className}`}>
+      <body className={`${open_sans.className}`}>
         <PageLayout>
             {children}
         </PageLayout>

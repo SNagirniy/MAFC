@@ -1,0 +1,25 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.link{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1px;
+    color: $primary-text-color;
+    transition: transform $cubic;
+
+    &:hover{
+        transform: scale(1.02)
+    }
+};
+
+.logo{
+    display: block;
+    width: 6rem;
+    height: 4rem;
+};
+
+.text_container{
+    font-size: 2rem;
+    font-weight: 600;
+}

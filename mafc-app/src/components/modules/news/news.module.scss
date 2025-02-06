@@ -1,0 +1,32 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.section{
+    padding: 8rem 0;
+    background-color: $section_bg;
+};
+
+.head_container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.title{
+    font-size: 3rem;
+}
+
+.news_list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 2rem;
+    row-gap: 1rem;
+
+    & li{
+        &:first-of-type{
+            grid-area: 1 / 1 / 4 / 2; 
+        }
+    }
+}
