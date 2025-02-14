@@ -1,0 +1,60 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.radio_group{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 1rem;
+};
+
+.input{
+    @include visually_hiden()
+};
+
+.label{
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+align-items: center;
+padding: 0.5rem;
+border: 1px solid $second-text-color;
+border-radius: 0.5rem;
+
+color: $second-text-color;
+text-align: center;
+font-size: 0.8rem;
+cursor: pointer;
+
+transition: transform $cubic;
+
+&:hover{
+border: 1px solid $dack-accent-color;
+color: $dack-accent-color;
+& .icon{
+    fill: $dack-accent-color;
+}}
+};
+
+
+.active{
+    transform: scale(0.9);
+
+        border: 1px solid $primaryBG;
+        color: $primaryBG;
+        background-color: $dack-accent-color;
+        & .icon{
+            fill: $primaryBG;
+        }
+
+        &:hover{
+            border: 1px solid $primaryBG;
+            color: $primaryBG;
+            & .icon{
+                fill: $primaryBG;
+            }}
+}
+
+.icon{
+width: 2.5rem;
+height: auto;
+fill: $second-text-color;
+}

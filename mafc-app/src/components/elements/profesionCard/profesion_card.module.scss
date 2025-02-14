@@ -1,0 +1,107 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.grid{
+    display: grid;
+    grid-template-areas:
+    "thumb definition";
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: center;
+    width: 75%;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: $box_shadow;
+   
+    hyphens: auto;
+    padding: 0 1rem 0 0;
+
+    &.right_alighn{
+        grid-template-areas:
+        "definition thumb";
+        grid-template-columns: 2fr 1fr;
+        border-right: none;
+        padding: 0 0 0 1rem;
+
+        & .definition{
+            align-items: flex-end;
+           
+        }
+        
+    }
+  
+};
+
+.thumb{
+    grid-area: thumb;
+    display: flex;
+    width: 100%;
+    height: 100%;
+};
+
+.image{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+};
+
+
+.definition{
+    grid-area: definition;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+   
+
+    & p:nth-child(2),
+    & p:nth-child(3){
+        font-weight: 700;
+
+        & span{
+            font-weight: 400;
+            margin: 0 3px;
+
+            &:first-child{
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+
+.title{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.description{
+    font-weight: 400;
+    font-style: italic;
+}
+
+.btn{
+    padding: 10px 25px;
+    margin-top: 1rem;
+   
+    color: $secondary-color;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid $secondary-color;
+    border-radius: 30px;
+
+    transition: all $cubic;
+   
+    &:hover{
+        color: $light-text-color;
+        background-color: $secondary-color;
+        transform: scale(1.01);
+        text-shadow: 0px 0px 1px #ffffff;
+    }
+}

@@ -5,10 +5,10 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    gap: 1rem;
-    grid-template-columns: 1fr 3fr;
+    gap: 10rem;
+    grid-template-columns: 6rem 3fr;
     justify-content: space-between;
-    padding: 10px 70px;
+    padding: 8px 70px;
     background-color: $primaryBG;
     align-items: center;
     box-shadow: $box_shadow;

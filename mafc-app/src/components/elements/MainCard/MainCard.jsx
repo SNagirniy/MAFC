@@ -7,7 +7,7 @@ const MainCard = ({title, date, description, imageUrl})=> {
     return (
         <article className={s.card}>
         <div className={s.thumb}>
-            <Image src={imageUrl} alt='poster' width={100} height={50} className={s.image}/>
+            <Image src={imageUrl} alt='poster' width={170} height={100} className={s.image}/>
         </div>
         <div className={s.description_box}>
             <span className={s.date}>| {date}</span>

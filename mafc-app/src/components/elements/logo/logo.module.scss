@@ -2,24 +2,37 @@
 
 .link{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 1px;
-    color: $primary-text-color;
+    color: $second-text-color;
     transition: transform $cubic;
 
+  
+    border-radius: 1rem;
+    box-shadow: none;
+
     &:hover{
-        transform: scale(1.02)
+        transform: scale(1.02);
+       
+        border-radius: 1rem;
+        box-shadow: $card-shadow;
     }
 };
 
+.thumb{
+   padding-bottom: 2px;
+    border-bottom: 1.5px solid rgb(232, 227, 227);
+    
+}
+
 .logo{
     display: block;
-    width: 6rem;
-    height: 4rem;
+    width: 4rem;
+    height: auto;
 };
 
 .text_container{
-    font-size: 2rem;
+    font-size: 1.1rem;
     font-weight: 600;
 }

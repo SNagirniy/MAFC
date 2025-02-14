@@ -10,20 +10,21 @@
     color: $primary-text-color;
     align-items: center;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
     align-items: flex-start;
     text-align: center;
    
 };
 
-.list_item{
-    cursor: pointer;
+
+.link{
+    display: block;
     color: $primary-text-color;
+    padding: 1rem 0;
+    cursor: pointer;
     &:hover{
         color: $secondary-color;
     }
-
-    & >p{
-        padding: 1rem 0;
-    }
+        
+    
 }

@@ -9,7 +9,7 @@
     padding: 0 70px;
 
     color: $light-text-color;
-    background-color: $dark_bg;
+    background-color: $top_bar_bg;
 };
 
 .social{
@@ -20,30 +20,3 @@
     gap: 0.5rem;
 };
 
-.social_list{
-    display: flex;
-    flex-direction: row;
-    gap: 0.2rem;
-};
-
-.link{
-    display: block;
-    padding: 12px 0;
-    cursor: pointer;
-
-    &:hover{
-        & .icon{
-            scale: 1.2;
-        }
-    }
-}
-
-
-
-
-.icon{
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-   transition: scale $cubic;
-}

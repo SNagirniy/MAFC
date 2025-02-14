@@ -1,4 +1,4 @@
-@use '../../../globalStyles/variables.scss';
+@use '../../../globalStyles/variables.scss' as *;
 
 
 .lang_container{
@@ -16,3 +16,44 @@ display: block;
     height: auto;
    
 }
+
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+ 
+  }
+  
+  .item{
+    display: flex;
+  cursor: pointer;  
+
+  }
+
+  
+  
+  .dropdown{
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      background-color: $top_bar_bg;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all $cubic;
+
+      &.open{
+        top: 160%;
+        opacity: 1;
+        visibility: visible;
+
+      }
+  }
+  

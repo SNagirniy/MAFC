@@ -1,0 +1,60 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.section{
+    padding: 8rem 0;
+    background-color: $section_bg;
+};
+
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+   
+    cursor: pointer;
+};
+
+
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5rem;
+    max-width: 25%;
+    padding: 0 0.5rem;
+    background-color: $primaryBG;
+    border-radius: 1rem;
+    box-shadow: $box_shadow;
+    transition: transform $cubic;
+
+
+    &:hover{
+        transform: scale(1.05);
+    }
+
+}
+
+
+
+.link{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    color: $primary-text-color;
+}
+
+
+
+.icon{
+    width: 4rem;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.title{
+    font-size: 1rem;
+    text-wrap: wrap;
+}

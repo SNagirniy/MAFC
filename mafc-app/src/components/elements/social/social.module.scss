@@ -1,0 +1,36 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.social_list{
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+};
+
+.footer_soc{
+    gap: 0.5rem;
+}
+
+.link{
+    display: block;
+    padding: 12px 0;
+    cursor: pointer;
+
+    &:hover{
+        & .icon{
+            scale: 1.2;
+        }
+    }
+}
+
+.icon{
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+   transition: scale $cubic;
+}
+
+.footer_icon{
+    width: 2.5rem;
+    height: 2.5rem;
+}

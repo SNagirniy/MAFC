@@ -1,5 +1,6 @@
 import s from './hero.module.scss';
 import Image from 'next/image';
+import QuickAccessPanel from '../quickAccessPanel/QuickAccessPanel';
 
 const Hero = ()=> {
 
@@ -15,7 +16,8 @@ const Hero = ()=> {
                     </h1>
                     <p>Вік, досвід, славна історія помножені на знання та вміння</p>
                 </div>
-                
+
+                <QuickAccessPanel/>
         </section>
     )
 };
