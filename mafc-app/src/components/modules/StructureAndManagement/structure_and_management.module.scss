@@ -1,0 +1,20 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+
+.section{
+    padding: 7rem 0;
+};
+
+.main_title{
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}

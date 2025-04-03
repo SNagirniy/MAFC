@@ -1,0 +1,59 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.section{
+    padding: 7rem 0;
+};
+
+
+.main_title{
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+};
+
+
+
+.radio_group{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+};
+
+.input{
+    @include visually_hiden()
+};
+
+.label{
+display: flex;
+align-items: center;
+padding: 0.5rem;
+border: 1px solid $second-text-color;
+border-radius: 0.5rem;
+
+color: $second-text-color;
+text-align: center;
+font-size: 1rem;
+cursor: pointer;
+
+transition: transform $cubic;
+
+&:hover{
+border: 1px solid $dack-accent-color;
+color: $dack-accent-color;}
+};
+
+
+.active{
+    transform: scale(0.99);
+
+        border: 1px solid $primaryBG;
+        color: $primaryBG;
+        background-color: $dack-accent-color;
+        &:hover{
+            border: 1px solid $primaryBG;
+            color: $primaryBG;
+        }
+};
+
+

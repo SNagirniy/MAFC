@@ -1,12 +1,11 @@
 'use client'
 import s from './profesions_radio_panel.module.scss';
-import professions from '@/utils/professions';
 import clsx from 'clsx';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 
 
-const ProfesionsRadioPanel =()=> {
+const ProfesionsRadioPanel =({professions})=> {
 
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -36,7 +35,7 @@ const ProfesionsRadioPanel =()=> {
                        return <label className={clsx(s.label, {[s.active]: current_profession === key})} key={key}>
                             <   input onClick={onClick} className={s.input} type="radio" name='profesion' value={key}/>
                                 
-                                    {icon(s.icon)}
+                                    {icon}
                                     
                                 <span className={s.desctiption}>
                                     {educational_program}

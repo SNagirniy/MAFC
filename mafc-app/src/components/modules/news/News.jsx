@@ -4,40 +4,7 @@ import MainCard from "@/components/elements/MainCard/MainCard";
 import NewsItem from "@/components/elements/NewsItem/NewsItem";
 import truncate from "@/utils/turncate";
 import Link from "next/link";
-
-
-
-const FakeNews = [
-    {
-        slug: '1',
-        createdAt: '01.01.2025',
-        title: 'Most unusual uses of artificial intelli gence projects.',
-        article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        imageUrl: '/poster.jpg'
-    },
-    {
-        slug: '2',
-        createdAt: '15.01.2025',
-        title: 'Most unusual uses of artificial intelli gence projects.',
-        article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        imageUrl: '/blog_01.jpg'
-    },
-    {
-        slug: '3',
-        createdAt: '22.01.2025',
-        title: 'Most unusual uses of artificial intelli gence projects.',
-        article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        imageUrl: '/blog_01.jpg'
-    },
-    {
-        slug: '4',
-        createdAt: '05.02.2025',
-        title: 'Most unusual uses of artificial intelli gence projects.',
-        article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        imageUrl: '/blog_01.jpg'
-    }
-]
-
+import FakeNews from "@/utils/fakeNews";
 
 const News = ()=> {
     return (
@@ -59,6 +26,7 @@ const News = ()=> {
                                 title={el.title}
                                 description={truncate(el.article, 110)}
                                 imageUrl={el.imageUrl}
+                                slug={el.slug}
                                 />
                             </li>
                                 )})}

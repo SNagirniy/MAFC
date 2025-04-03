@@ -26,10 +26,16 @@ cursor: pointer;
 
 transition: transform $cubic;
 
+& svg{
+    width: 2.5rem;
+    height: auto;
+    fill: $second-text-color;
+    }
+
 &:hover{
 border: 1px solid $dack-accent-color;
 color: $dack-accent-color;
-& .icon{
+& svg{
     fill: $dack-accent-color;
 }}
 };
@@ -41,20 +47,15 @@ color: $dack-accent-color;
         border: 1px solid $primaryBG;
         color: $primaryBG;
         background-color: $dack-accent-color;
-        & .icon{
+        & svg{
             fill: $primaryBG;
         }
 
         &:hover{
             border: 1px solid $primaryBG;
             color: $primaryBG;
-            & .icon{
+            & svg{
                 fill: $primaryBG;
             }}
 }
 
-.icon{
-width: 2.5rem;
-height: auto;
-fill: $second-text-color;
-}

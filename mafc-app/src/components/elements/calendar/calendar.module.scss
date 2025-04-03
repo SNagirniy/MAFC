@@ -1,0 +1,83 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+
+.calendar_wrapper{
+    margin-top: 7rem;
+}
+
+.list{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10rem;
+   
+}
+
+.item{
+    display: grid;
+    grid-template-columns: repeat(2,1fr); 
+    column-gap: 10rem;
+    font-weight: 700;
+
+    &:first-child{
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: $second-text-color;
+    }
+}
+
+.item_content{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0 2rem 2rem;
+    border-left: 2px solid $secondary-color;
+    
+
+    & span{
+        &::first-letter{
+            text-transform: capitalize;}
+    }
+
+
+    &:last-child{
+        border-left: 2px solid $dack-accent-color;
+
+        & .arrow{
+            fill: $dack-accent-color;
+        }
+    }
+    
+}
+
+.arrow{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: rotate(-90deg);
+    fill: $secondary-color;
+}
+
+.main_event{     
+        display: block;
+        padding: 0.5rem;
+        background-color: $secondary-color;
+        text-transform: uppercase;
+        color: $light-text-color; 
+        font-weight: 700;
+}
+
+.additional_event{     
+    display: block;
+    padding: 0.5rem;
+    background-color: $dack-accent-color;
+    text-transform: uppercase;
+    color: $light-text-color;
+    font-weight: 700;
+}

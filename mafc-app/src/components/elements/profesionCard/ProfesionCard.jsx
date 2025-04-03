@@ -17,7 +17,7 @@ const ProfesionCard = ({title, code, discipline, educational_program, descriptio
                 <p>Спеціальність:<span>{code}</span><span>"{title}"</span></p>
                 <p className={s.description}>{description}</p>
 
-                <Link href={`entrants?profession=${slug}`} className={s.btn}>Дізнатися більше</Link>
+                <Link href={`entrants/areas_of_educational_activity?profession=${slug}`} className={s.btn}>Дізнатися більше</Link>
             </div>
         </div>
     )

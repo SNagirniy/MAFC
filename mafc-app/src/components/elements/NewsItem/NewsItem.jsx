@@ -1,10 +1,12 @@
 import s from './news_item.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const NewsItem = ({title, date, description, imageUrl})=> {
+const NewsItem = ({title, date, description, imageUrl, slug})=> {
    
         return (
-        <article className={s.card}>
+        <article>
+            <Link className={s.card} href={`/news/${slug}`}>
             <div className={s.thumb}>
                 <Image src={imageUrl} alt='poster' width={100} height={50} className={s.image}/>
             </div>
@@ -13,6 +15,7 @@ const NewsItem = ({title, date, description, imageUrl})=> {
                 <p className={s.description}>{description}</p>
                 <span className={s.date}>{date}</span>
             </div>
+            </Link>
         </article>
         )
 

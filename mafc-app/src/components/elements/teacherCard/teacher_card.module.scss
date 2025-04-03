@@ -1,0 +1,104 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+
+
+.card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: $second-text-color;
+   
+    
+};
+
+.thumb{
+    display: flex;
+    position: relative;
+    top: 120px;
+    width: 85%;
+    height: 270px;
+    overflow: visible;
+    background: linear-gradient(to top, $secondary-color 70%, transparent 70%);
+}
+
+.image{
+    margin: 0 auto;
+    max-width: fit-content;
+    max-height: 270px;
+    object-fit: cover;
+    filter: drop-shadow(0px 12px 16px #474545);
+}
+
+
+.article{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(157, 152, 152);
+    border-radius: 1rem;
+    gap: 12px;
+    padding:0 10px 32px 10px; 
+    padding-top: 150px;
+    height: 100%;
+  
+};
+
+.name{
+    text-align: center;
+    color: $primary-text-color;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+};
+
+.consultation{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+
+    & h5{
+        color: $primary-text-color;
+        text-align: center;
+    }
+}
+
+.consultation_list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.consultation_item{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+
+    & span:first-child{
+        text-transform: uppercase;
+        grid-area: 1/1/1/4;
+    }
+}
+
+.contacts{
+    display: flex;
+    flex-direction: column;
+
+    & span{
+        display: flex;
+        flex-direction: row;
+      vertical-align: baseline;
+        gap: 0.5rem;
+    }
+}
+
+
+.icon{
+    width: 1rem;
+    height: auto;
+    stroke: $secondary-color;
+}

@@ -6,6 +6,85 @@ import Manager from '../../public/manager.svg';
 import Mechanic from '../../public/mechanic.svg';
 
 
+const test_docs =[{
+    name:'Стандарт фахової передвищої освіти зі спеціальності 274 "Автомобільний транспорт" освітньо-професійного ступеня "фаховий молодший бакалавр',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/Standart274.pdf'
+},
+{
+    name:'ОПП "Автомобільний транспорт" 2022р',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/OPP274AT2022.pdf'
+},
+{
+    name:'ОПП «ОБСЛУГОВУВАННЯ ТА РЕМОНТ АВТОМОБІЛІВ І ДВИГУНІВ» 2023р',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/OPP274.2023.pdf'
+},
+{
+    name:'Навчальний план 2023-2024 н.р. (на базі ПЗСО)',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/navchplanat.23.pdf'
+},
+{
+    name:'Навчальний план 2023-2024 н.р. (на базі БЗСО)',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/navchplanat23.pdf'
+},
+{
+    name:'Навчальний план 2022-2023 н.р. (на базі БЗСО)',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/navchplanat.pdf'
+},
+{
+    name:'Навчальний план 2022-2023 н.р. (на базі ПЗСО)',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/navchplanat11.pdf'
+},
+{
+    name:'Навчальний план 2022-2023 н.р. (на базі ПТУ)',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/navchplanatPTU.pdf'
+},
+{
+    name:'Анотації до вибіркових дисциплін освітньо-професійної програми 274 "Автомобільний транспорт"',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/vybirkovi22-23.pdf'
+},
+{
+    name:'Анотації до вибіркових дисциплін освітньо-професійної програми 274 «Обслуговування та ремонт автомобілів і двигунів»',
+    webViewLink: 'http://matbnau.in.ua/experience/AT.pdf'
+},
+{
+    name:'Рецензія-відгук на ОПП"Автомобільний транспорт"',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/recenziyavidguk.pdf'
+},
+{
+    name:'Звіт щодо результатів проведення внутрішнього самоаналізу ОПП 274 "Автомобільний транспорт"',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/zvitsamoanalizu274.pdf'
+},
+];
+
+
+const manegers_docs=[{
+    name: 'Cтандарт фахової передвищої освіти зі спеціальності 073 "Менеджмент" освітньо-професійного ступеня «фаховий молодіний бакалавр»',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/073_Menedzhment_08_07__1_.pdf',
+},
+{
+    name:'ОПП "Менеджмент" 2022',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/OPP073.22.pdf',
+},
+{
+    name:'Проект ОПП "Менеджмент" 2023р',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/OPP073.23.pdf',
+},];
+
+
+const agro_docs=[{
+    name: 'Cтандарт фахової передвищої освіти зі спеціальності 201 "Агрономія" освітньо-професійного ступеня «фаховий молодший бакалавр»',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/201_Ahronomiya_30_06.pdf',
+},
+{
+    name:'ОПП "Виробництво і переробка продукції рослинництва" 2022р',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/OPP201_2022.pdf',
+},
+{
+    name:'Проект ОПП "Виробництво і переробка продукції рослинництва" 2023р',
+    webViewLink: 'http://matbnau.in.ua/publicinfo/Dokumenty/opp201_2023.pdf',
+},]
+
+
 
 const professions = {
     crop_production: {title: 'Агрономія',
@@ -16,7 +95,8 @@ const professions = {
     term_of_study: '4 роки (на базі 9 класів); 3 роки (на базі 11 класів)',
     tuition_fees: 15000,
     image: '/agro.jpg',
-    icon: (style)=> {return <Agro className={style}/>},
+    icon: <Agro/>,
+    profession_docs: agro_docs,
    
     },
     farming: {title: 'Агрономія',
@@ -27,7 +107,8 @@ const professions = {
         term_of_study: '4 роки (на базі 9 класів); 3 роки (на базі 11 класів)',
         tuition_fees: 15000,
         image: '/farmer.jpg',
-        icon: (style)=> {return <Farming className={style}/>},
+        icon: <Farming/>,
+        profession_docs: agro_docs,
         
         },
     animal_husbandry: {title: 'Тваринництво',
@@ -38,7 +119,8 @@ const professions = {
             term_of_study: '4 роки (на базі 9 класів); 3 роки (на базі 11 класів)',
             tuition_fees: 15000,
             image: '/farmer.jpg',
-            icon: (style)=> { return <Technologist className={style}/>},
+            icon: <Technologist/>,
+            profession_docs: manegers_docs,
            
             },
      management: {title: 'Менеджмент та підприємництво',
@@ -48,8 +130,9 @@ const professions = {
                 description: 'Обʼєкт вивчення та діяльності: управління організаціями та їх підрозділами',
                 term_of_study: '3 роки 5 місяців (на базі 9 класів); 2 роки 5 місяців (на базі 11 класів)',
                 tuition_fees: 15000,
-                image: '/farmer.jpg',
-                icon: (style)=> {return <Manager className={style}/>},
+                image: '/managers.jpg',
+                icon: <Manager/>,
+                profession_docs: manegers_docs,
                
                 },
     finance: {title: 'Фінанси, банківська справа, страхування та фондовий ринок',
@@ -60,7 +143,8 @@ const professions = {
                     term_of_study: '3 роки (на базі 9 класів); 2 роки (на базі 11 класів)',
                     tuition_fees: 15000,
                     image: '/agro.jpg',
-                    icon: (style)=> {return <Financist className={style}/>},
+                    icon: <Financist/>,
+                    profession_docs: test_docs,
                  
                     },
     mechanics: {title: 'Автомобільний транспорт',
@@ -71,10 +155,24 @@ const professions = {
                         term_of_study: '4 роки (на базі 9 класів); 3 роки (на базі 11 класів); 2 роки (на базі ПТУ)',
                         tuition_fees: 15000,
                         image: '/agro.jpg',
-                        icon: (style)=> {return <Mechanic className={style}/>}}
+                        icon: <Mechanic/>,
+                        profession_docs: test_docs,
+                        poll_list:[
+                            {poll: {title:'Каталог вибіркових освітніх компонентів для здобувачів фахової передвищої освіти за освітньо-професійною програмою «Обслуговування та ремонт автомобілів і двигунів»',
+                                src: 'http://matbnau.in.ua/experience/AT.pdf'
+                            },
+                            result: {
+                                title: 'Результати опитування',
+                                src: 'http://matbnau.in.ua/experience/Rez.pdf'
+                            }},
+                        ]}
                        
                        
                     };
 
 
                     export default professions;
+
+
+
+                    

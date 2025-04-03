@@ -1,37 +1,32 @@
 @use '../../../globalStyles/variables.scss' as *;
 
 .link_container{
-    position: absolute;
-    background-color: $secondary-color;
-    width: 48vw;
-    bottom: -2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 3rem;
-
+   
+    padding:0 3rem;
+    background-color: #fff;
     box-shadow: $box_shadow;
-    border-radius: 2rem;
-    border: 3px solid white;
-    z-index: 10;
 
 };
 
 .link_list{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     
     
 };
 
 .link{
-    display: block;
-    padding: 1.5rem 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem 0; 
 
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: $light-text-color;
-    transition: transform $cubic, text-shadow $cubic;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: $second-text-color;
+    transition: transform $cubic, text-shadow $cubic, color $cubic;
     text-transform: uppercase;
 
 
@@ -41,6 +36,17 @@
 
     &:hover{
        text-shadow: 0px 0px 1px #ffffff;
-       transform: scale(1.05)
+       transform: scale(1.05);
+       color: $secondary-color;
     }
 };
+
+.thumb{
+   width: 2rem;
+}
+
+.icon{
+     width: 100%;
+     height: auto;
+    
+}

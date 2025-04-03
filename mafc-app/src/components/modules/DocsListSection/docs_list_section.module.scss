@@ -1,0 +1,57 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.section{
+    padding: 7rem 0;
+
+    &:nth-child(even){
+      background-color: $primaryBG;
+    }
+};
+
+.main_title{
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 3rem;}
+
+
+    .list {
+        padding: 0;
+      }
+      
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 12px 0;
+        box-sizing: border-box;
+    
+        &>p{
+            font-size: 1rem;
+            color: $second-text-color;
+    
+            &::first-letter{
+                text-transform: capitalize;
+            }
+        }
+      }
+
+
+      .icon{
+        width: 1.5rem;
+        height: auto;
+        fill: $secondary-color;
+      }
+
+      .link{
+        font-size: 1rem;
+        color: $second-text-color;
+        font-weight: 600;
+        text-decoration:underline;
+        
+        &:hover{
+            color: $secondary-color;
+        }
+      }
+    

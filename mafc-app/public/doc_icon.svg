@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg clip-rule="evenodd" fill="#fafffe" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<path d="m95.5-0.5h218v128c42.837 0.332 85.503-1e-3 128-1a20892 20892 0 0 1 0.5 354c-2.614 15.772-11.448 26.106-26.5 31h-320c-15.052-4.894-23.886-15.228-26.5-31-0.667-150-0.667-300 0-450 2.614-15.772 11.448-26.106 26.5-31z" fill="#0086f9"/>
+<path d="m313.5-0.5h2l126 127a4095.6 4095.6 0 0 1-128 1v-128z" fill="#0067d9"/>
+<path d="M151.5 197.5v28h208v-28c.994 9.486 1.327 19.152 1 29h-210c-.327-9.848.006-19.514 1-29Z" fill="#dcf0fd"/>
+<path d="m151.5 197.5h208v28h-208v-28z" fill="#fafffe"/>
+<path d="m150.5 266.5h210v30h-210v-30z" fill="#9ed0fc"/>
+<path d="m151.5 267.5h208v28h-208v-28z" fill="#fafffe"/>
+<path d="m150.5 336.5h152v30h-152v-30z" fill="#8dc9fc"/>
+<path d="m151.5 337.5h150v28h-150v-28z" fill="#fafffe"/>
+</svg>

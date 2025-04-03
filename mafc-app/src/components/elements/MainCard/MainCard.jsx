@@ -1,8 +1,10 @@
+
 import s from './main_carf.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
-const MainCard = ({title, date, description, imageUrl})=> {
+const MainCard = ({title, date, description, imageUrl, slug})=> {
 
     return (
         <article className={s.card}>
@@ -13,8 +15,8 @@ const MainCard = ({title, date, description, imageUrl})=> {
             <span className={s.date}>| {date}</span>
             <h3 className={s.title}>{title}</h3>
             <p className={s.description}>{description}</p>
-            <button className={s.btn}>Читати далі
-            </button>
+            <Link href={`/news/${slug}`} className={s.btn}>Читати далі
+            </Link>
         </div>
     </article>
     )

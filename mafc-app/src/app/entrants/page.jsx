@@ -1,7 +1,7 @@
-import EntrantsPage from "@/components/pages/EntrantsPage";
 
-const Entrants = ()=> {
-    return <EntrantsPage/>
+
+const Entrants = ({children})=> {
+    return {children}
 }
 
 
