@@ -1,5 +1,5 @@
 const About = ({children})=> {
-    return {children}
+    return children
 };
 
 

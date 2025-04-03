@@ -1,7 +1,7 @@
 
 
 const Entrants = ({children})=> {
-    return {children}
+    return children
 }
 
 

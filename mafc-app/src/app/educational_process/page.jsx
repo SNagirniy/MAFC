@@ -1,6 +1,6 @@
 
 const EducationalProcess = ({children})=> {
-    return {children}
+    return children
 };
 
 
