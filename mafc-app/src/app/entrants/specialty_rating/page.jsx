@@ -1,11 +1,13 @@
 import SpecialityRatingPage from "@/components/pages/SpecialityRatingPage";
+import { Suspense } from "react";
+import Loader from "@/components/elements/loader/Loader";
 
 
 
 const SpecialityRating = async()=> {
 
     
-    return <SpecialityRatingPage/>
+    return <Suspense fallback={<Loader/>}><SpecialityRatingPage/></Suspense>
 }
 
 
