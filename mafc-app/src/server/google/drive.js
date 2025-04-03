@@ -4,14 +4,11 @@ import { google } from "googleapis";
 import path from 'path';
 import { NextResponse } from "next/server";
 
-
-
-
 export async function fetchAllDocxFromSubfolders(folderId) {
 
   try {
    
-    const keyFile = path.resolve(process.cwd(), 'config/google-service-key.json');
+    const keyFile = path.resolve(process.cwd(), 'google-service-key.json');
     const auth = new google.auth.GoogleAuth({
         keyFile,
         scopes: ['https://www.googleapis.com/auth/drive.readonly'],
@@ -57,7 +54,7 @@ export async function fetchDocxFromCurrentFolder(folderId) {
 
   try {
    
-    const keyFile = path.resolve(process.cwd(), 'config/google-service-key.json');
+    const keyFile = path.resolve(process.cwd(), 'google-service-key.json');
     const auth = new google.auth.GoogleAuth({
         keyFile,
         scopes: ['https://www.googleapis.com/auth/drive.readonly'],
@@ -84,7 +81,7 @@ export async function fetchDocxFromCurrentFolder(folderId) {
 
 export async function getAllPdfFiles(folderId) {
   try {
-    const keyFile = path.resolve(process.cwd(), 'config/google-service-key.json');
+    const keyFile = path.resolve(process.cwd(), 'google-service-key.json');
     const auth = new google.auth.GoogleAuth({
       keyFile,
       scopes: ['https://www.googleapis.com/auth/drive.readonly'],
