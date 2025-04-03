@@ -1,16 +1,21 @@
 'use server'
 
 import { google } from "googleapis";
-import path from 'path';
 import { NextResponse } from "next/server";
+
+
+
+
+
+
 
 export async function fetchAllDocxFromSubfolders(folderId) {
 
   try {
+    const credentials =JSON.parse(process.env.NEXT_PUBLIC_GOOGLE_SERVICE_KEY);
    
-    const keyFile = path.resolve(process.cwd(), 'google-service-key.json');
     const auth = new google.auth.GoogleAuth({
-        keyFile,
+        credentials,
         scopes: ['https://www.googleapis.com/auth/drive.readonly'],
     });
 
@@ -54,11 +59,13 @@ export async function fetchDocxFromCurrentFolder(folderId) {
 
   try {
    
-    const keyFile = path.resolve(process.cwd(), 'google-service-key.json');
+    const credentials =JSON.parse(process.env.NEXT_PUBLIC_GOOGLE_SERVICE_KEY);
+   
     const auth = new google.auth.GoogleAuth({
-        keyFile,
+        credentials,
         scopes: ['https://www.googleapis.com/auth/drive.readonly'],
     });
+
 
     const drive = google.drive({ version: 'v3', auth });
 
@@ -81,11 +88,13 @@ export async function fetchDocxFromCurrentFolder(folderId) {
 
 export async function getAllPdfFiles(folderId) {
   try {
-    const keyFile = path.resolve(process.cwd(), 'google-service-key.json');
+    const credentials =JSON.parse(process.env.NEXT_PUBLIC_GOOGLE_SERVICE_KEY);
+   
     const auth = new google.auth.GoogleAuth({
-      keyFile,
-      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+        credentials,
+        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
     });
+
 
     const drive = google.drive({ version: 'v3', auth });
 
