@@ -17,7 +17,7 @@ const SpecialityRatingPage = ()=> {
         startTransition(async()=>{ 
             const query = new URLSearchParams({ profession: searchParams.get('profession') }).toString();
         
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/entrants/ratings?${query}`, {
+            const res = await fetch(`/api/entrants/ratings?${query}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
