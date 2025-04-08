@@ -16,7 +16,7 @@ const StructureAndManagementPage = ({docxList})=> {
         <StructureAndManagementSection/>
         <OrganizationsStructure structure_image = {Structure?.documents}/>
         <DocsListSection docs_list={CollectiveAgreement?.documents} title={'Колективний договір'}/>
-        <DocsListSection docs_list={JobInstructions?.documents} title={'Посадові інструкції працівників закладу освіти'}/>
+        <DocsListSection variant={'double'} docs_list={JobInstructions?.documents} title={'Посадові інструкції працівників закладу освіти'}/>
         </>
     )
 };

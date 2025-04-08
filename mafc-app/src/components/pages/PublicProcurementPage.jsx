@@ -17,7 +17,7 @@ const PublicProcurementPage = ({docxList})=> {
 return(
     <>
     <DocsListSection docs_list={prozoro?.documents} title={'Система публічних закупівель PROZORO'}/>
-    <DocsListSection docs_list={justification?.documents} title={'Обгрунтування технічних та якісних характеристик предмета закупівлі'}/>
+    <DocsListSection variant={'double'} docs_list={justification?.documents} title={'Обгрунтування технічних та якісних характеристик предмета закупівлі'}/>
     </>
 )
 

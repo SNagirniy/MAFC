@@ -2,11 +2,12 @@
 import s from './documents_list.module.scss';
 import DocIcon from '../../../../public/doc_icon.svg';
 import { v4 } from 'uuid';
+import clsx from 'clsx';
 
 
-const DocumentsList = ({documents_list}) => {
+const DocumentsList = ({documents_list, variant='singe'}) => {
     return (
-        <ul className={s.list}>
+        <ul className={clsx(s.list, {[s.double] : variant === 'double'}) }>
         {documents_list?.map(({id,name, webViewLink})=>{
             return (
                 <li key={id || v4()} className={s.item}>

@@ -3,6 +3,11 @@
 
 .list {
     padding: 0;
+    &.double{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 5rem;
+    }
   }
   
   .item {
