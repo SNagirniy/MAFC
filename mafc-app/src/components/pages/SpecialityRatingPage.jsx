@@ -3,39 +3,28 @@ import SpecialityRatingSection from "../modules/SpecialityRatingSection/Speciali
 import SpecialityRatingList from "../modules/SpecialityRatingList/SpecialityRatingList";
 import ratings from "@/utils/ratings";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, useTransition } from "react";
+import { useState, useEffect } from "react";
 
 
 
-const SpecialityRatingPage = ()=> {
-    const [ratingsList, setRatingsList]= useState([]);
-    const[isPending, startTransition]= useTransition();
+const SpecialityRatingPage = ({data})=> {
+    const [ratingsList, setRatingsList]= useState(data);
     const searchParams = useSearchParams();
+    const [ratingsToRender, setRatingsToRender] = useState([]);
 
+    const getItemsToRender = ()=> {
+        const profession = searchParams.get('profession');
+        const baseArray = ratingsList?.filter(el=> el?.folderName === profession);
+        setRatingsToRender(baseArray[0].subfolders)
 
-    const fetchRatings = async () => {
-        startTransition(async()=>{ 
-            const query = new URLSearchParams({ profession: searchParams.get('profession') }).toString();
-        
-            const res = await fetch(`/api/entrants/ratings?${query}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-            const result = await res.json();
-            startTransition(()=>setRatingsList(result))
-            
-        })
-       
-    };
-
-    useEffect(()=>{fetchRatings()},[searchParams])
+    }
+    
+            useEffect(()=>{getItemsToRender()}, [searchParams]);
 
     
     return <>
     <SpecialityRatingSection professions={ratings}>
-        <SpecialityRatingList isPending={isPending} speciality_rating_list={ratingsList}/>
+        <SpecialityRatingList speciality_rating_list={ratingsToRender}/>
     </SpecialityRatingSection>
 
     

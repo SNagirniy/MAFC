@@ -10,7 +10,7 @@ import SectionLoader from '@/components/elements/SectionLoader/SectionLoader';
 
 
 
-const SpecialityRatingList = ({speciality_rating_list,isPending})=> {
+const SpecialityRatingList = ({speciality_rating_list})=> {
    
 
 
@@ -18,18 +18,18 @@ const SpecialityRatingList = ({speciality_rating_list,isPending})=> {
 
    return (<div className={s.wrapper}>
            
-                {isPending&&<SectionLoader/>}
-            {!isPending&&<ul className={s.list}>
+               
+            <ul className={s.list}>
                 {
                     speciality_rating_list?.map((el)=> {
-                      const docx = el?.documents;
+                      const docx = el?.files;
                       if(docx.length === 0) return null;
                         return (
                             <li key={v4()} className={s.list_item}>
-                               <h4 className={s.year}>{el?.topic} рік</h4>
+                               <h4 className={s.year}>{el?.folderName} рік</h4>
 
                                <ul className={s.list_item}>
-                                {el?.documents?.map((el)=>{
+                                {docx.map((el)=>{
                                         const {id, name, webViewLink} = el;
                                     return(
                                             <li key={id} className={s.link_item}> 
@@ -45,7 +45,7 @@ const SpecialityRatingList = ({speciality_rating_list,isPending})=> {
                         )
                     })
                 }
-            </ul>}
+            </ul>
             
         </div>)
 };
