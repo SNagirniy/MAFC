@@ -1,18 +1,7 @@
-import s from './living_and_study_conditions.module.scss';
-import SectionWrapper from "@/components/layouts/SectionWrapper";
-import DocumentsList from '@/components/elements/DocumentsList/DocumentsList';
 import { useState, useEffect } from 'react';
-import DocListSceleton from '@/components/elements/docListSceleton/DocListSceleton';
+import AccordionComponent from '../Accordion/Accordion';
 
 
-
-const SectionItem = ({title, list}) => {
-    return <div className={s.container}>
-    <h4 className={s.subtitle}>{title}</h4>
-    <DocumentsList documents_list={list}/>
-    
-</div>
-}
 
 const LivingAndStudyConditions = ()=> {
 const [data, setData]=useState({});
@@ -38,17 +27,23 @@ setData(dataObject)};
     },[]);
 
 
+    const accordionData = [
+        {
+            header:'Відомості про гуртожиток, вільні місця, розмір плати за проживання',
+            content: data?.hostel_info
+        },
+        {
+            header:'Умови доступності закладу освіти для навчання осіб з особливими освітніми потребами',
+            content: data?.special_conditions
+        },
+        {
+            header: 'Умови доступності закладу освіти під час воєнного стану',
+            content: data?.military_conditions
+        }
+    ]
 
-    return <section className={s.section}>
-            <SectionWrapper>
-                <h3 className={s.main_title}>Проживання, безпека, інклюзія</h3>
-                {Object.keys(data).length>0 ? <>
-                <SectionItem title={'Відомості про гуртожиток, вільні місця, розмір плати за проживання:'} list={data?.hostel_info}/>
-                <SectionItem title={'Умови доступності закладу освіти для навчання осіб з особливими освітніми потребами:'} list={data?.special_conditions}/>
-                <SectionItem title={'Умови доступності закладу освіти під час воєнного стану:'} list={data?.military_conditions}/></> : <div className={s.container}><DocListSceleton/></div>}
 
-            </SectionWrapper>
-        </section>
+    return <AccordionComponent title={'Проживання, безпека, інклюзія'} data={accordionData}/>
 };
 
 export default LivingAndStudyConditions;

@@ -1,5 +1,7 @@
 import DocsListSection from "../modules/DocsListSection/DocsListSection";
 import { v4 } from "uuid";
+import AccordionComponent from "../modules/Accordion/Accordion";
+
 
 const PublicProcurementPage = ({docxList})=> {
 
@@ -17,7 +19,7 @@ const PublicProcurementPage = ({docxList})=> {
 return(
     <>
     <DocsListSection docs_list={prozoro?.documents} title={'Система публічних закупівель PROZORO'}/>
-    <DocsListSection variant={'double'} docs_list={justification?.documents} title={'Обгрунтування технічних та якісних характеристик предмета закупівлі'}/>
+    <AccordionComponent title={'Обгрунтування технічних та якісних характеристик предмета закупівлі'} data={[{header: 'Обгрунтування технічних та якісних характеристик предмета закупівлі', content: justification?.documents}]}/>
     </>
 )
 

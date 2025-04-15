@@ -1,6 +1,7 @@
 import DocsListSection from "../modules/DocsListSection/DocsListSection";
 import LicensesAndCertificatesSection from "../modules/LicensesAndCertificatesSection/LicensesAndCertificatesSection";
 import findDocuments from "@/utils/findDocuments";
+import AccordionComponent from "../modules/Accordion/Accordion";
 
 
 const constitution= {
@@ -48,16 +49,24 @@ const RegulatoryDocumentsPage = ({docxList})=> {
 
    const UpbringingCollegeRegulationsActivities = findDocuments(docxList,'положення що регламентують виховну діяльність коледжу та діяльність органів студентського самоврядування');
 
+   const accordionData = [
+    {header: 'Положення, що регламентують діяльність коледжу',
+    content: CollegeRegulationsActivities?.documents,
+    },
+    {header: 'Положення, що регламентують освітню діяльність коледжу',
+    content: CollegeEducationRegulationsActivities?.documents,
+    },
+    {header: 'Положення, що регламентують виховну діяльність коледжу та діяльність органів студентського самоврядування',
+    content: UpbringingCollegeRegulationsActivities?.documents
+    }
+   ]
 
 
 return(
     <>
     <DocsListSection docs_list={foundingDocuments} title={'Установчі документи'}/>
     <LicensesAndCertificatesSection docx={PDFLicenses?.documents} images={ImagesLicenses?.documents}/>
-    <DocsListSection docs_list={CollegeRegulationsActivities?.documents} title={'Положення, що регламентують діяльність коледжу'}/>
-    <DocsListSection docs_list={CollegeEducationRegulationsActivities?.documents} title={'Положення, що регламентують освітню діяльність коледжу'}/>
-    <DocsListSection docs_list={UpbringingCollegeRegulationsActivities?.documents} title={'Положення, що регламентують виховну діяльність коледжу та діяльність органів студентського самоврядування'}/>
-   
+    <AccordionComponent data={accordionData}/>
     </>
 )
 

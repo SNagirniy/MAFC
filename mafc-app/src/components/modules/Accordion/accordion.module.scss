@@ -1,0 +1,67 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.section{
+  padding: 7rem 0;
+
+  &:nth-child(even){
+    background-color: $primaryBG;
+  }
+};
+
+.main_title{
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;}
+
+.accordion {
+    border-top: 1px solid #ccc;
+    margin-top: 1rem;
+  }
+  
+  .item {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .itemBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: left;
+    color: $primary-text-color;
+    background-color: transparent;
+    border: none;
+
+    transition: box-shadow $cubic;
+  }
+  
+  .itemBtn:hover {
+    box-shadow: $box_shadow;
+  }
+  
+  .itemBtnExpanded {
+    box-shadow: $box_shadow;
+  }
+  
+  .itemContent {
+    transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+  }
+  
+  .itemPanel {
+    padding: 1rem;
+  }
+  
+  .chevron {
+    margin-left: auto;
+    transition: transform 0.25s cubic-bezier(0, 0, 0, 1);
+  }
+  
+  .itemBtnExpanded .chevron {
+    transform: rotate(180deg);
+  }
+  

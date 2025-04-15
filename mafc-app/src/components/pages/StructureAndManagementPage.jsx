@@ -2,6 +2,7 @@ import StructureAndManagementSection from "../modules/StructureAndManagement/Str
 import DocsListSection from "../modules/DocsListSection/DocsListSection";
 import findDocuments from "@/utils/findDocuments";
 import OrganizationsStructure from "../modules/OrganizationsStructure/OrganizationsStructure";
+import AccordionComponent from "../modules/Accordion/Accordion";
 
 const StructureAndManagementPage = ({docxList})=> {
 
@@ -9,14 +10,17 @@ const StructureAndManagementPage = ({docxList})=> {
     const JobInstructions = findDocuments(docxList, 'посадові інструкції');
     const Structure = findDocuments(docxList, 'організаційна структура');
 
-   
+   const accortdionData = [{
+    header: 'Посадові інструкції працівників закладу освіти',
+    content: JobInstructions?.documents
+   }]
 
     return(
         <>
         <StructureAndManagementSection/>
         <OrganizationsStructure structure_image = {Structure?.documents}/>
         <DocsListSection docs_list={CollectiveAgreement?.documents} title={'Колективний договір'}/>
-        <DocsListSection variant={'double'} docs_list={JobInstructions?.documents} title={'Посадові інструкції працівників закладу освіти'}/>
+        <AccordionComponent data={accortdionData}/>
         </>
     )
 };

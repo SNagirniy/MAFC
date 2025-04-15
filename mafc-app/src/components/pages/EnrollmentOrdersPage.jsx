@@ -7,11 +7,11 @@ import EnrollmentOrdersList from "../elements/enrollmentOrdersList/EnrollmentOrd
 
 
 
-const EnrollmentOrdersPage =()=> {
+const EnrollmentOrdersPage =({data})=> {
     
     return <>
             <EnrollmentOrdersSection>
-                    <EnrollmentOrdersList/>
+                    <EnrollmentOrdersList data={data}/>
             </EnrollmentOrdersSection>
          </>
 };
