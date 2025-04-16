@@ -6,14 +6,14 @@ import truncate from "@/utils/turncate";
 import Link from "next/link";
 import FakeNews from "@/utils/fakeNews";
 
-const News = ()=> {
+const News = ({title, subtitle})=> {
     return (
         <section className={s.section}>
             <SectionWrapper>
                 <div className={s.center_box}>
                     <div className={s.head_container}>
-                        <h2 className={s.title}>НАШ ГЕКТАР НОВИН</h2>
-                        <p >КОЖЕН ДЕНЬ ЗАСІВАЄМО ІНФОРМАЦІЙНЕ ПОЛЕ!</p>
+                        <h2 className={s.title}>{title}</h2>
+                        <p>{subtitle}</p>
                     </div>
                 
                     <ul className={s.news_list}>

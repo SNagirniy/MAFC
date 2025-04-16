@@ -30,16 +30,18 @@ const teachers = [
 }];
 
 
-const StructureAndManagementSection = ()=> {
+
+
+const StructureAndManagementSection = ({title, personsDataArray = teachers})=> {
 
 
     return(
         <section className={s.section}>
             <SectionWrapper>
-                <h3 className={s.main_title}>адміністрація коледжу</h3>
+                <h3 className={s.main_title}>{title}</h3>
             <ul className={s.list}>
 
-                {teachers?.map((teacher)=> {
+                {personsDataArray?.map((teacher)=> {
                     return(
                         <li key={teacher?.id} className={s.item}>
                             <TeacherCard 

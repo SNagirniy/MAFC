@@ -23,6 +23,14 @@ body {
   line-height: 1.1;
   
 }
+
+section{
+  padding: 7rem 0;
+
+  &:nth-child(even){
+    background-color: $primaryBG;
+  }
+};
 //    Style none
 ul {
   list-style: none;

@@ -14,7 +14,7 @@ const nav_items =[
             {item: 'структура та управління',
             link: '/about/structure_and_management',},
             {item: 'циклові (предметні) комісії',
-            link: '/',},
+            link: '/about/subject_commissions',},
             {item: 'наші партнери',
                 link: '/',},
             {item: 'контактна інформація',

@@ -17,7 +17,7 @@ const StructureAndManagementPage = ({docxList})=> {
 
     return(
         <>
-        <StructureAndManagementSection/>
+        <StructureAndManagementSection title={'адміністрація коледжу'}/>
         <OrganizationsStructure structure_image = {Structure?.documents}/>
         <DocsListSection docs_list={CollectiveAgreement?.documents} title={'Колективний договір'}/>
         <AccordionComponent data={accortdionData}/>
