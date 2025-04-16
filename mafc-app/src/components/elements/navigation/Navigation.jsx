@@ -18,7 +18,7 @@ const nav_items =[
             {item: 'наші партнери',
                 link: '/',},
             {item: 'контактна інформація',
-                link: '/',},
+                link: '/about/contacts',},
             
          ]
     },

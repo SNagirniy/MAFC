@@ -1,0 +1,91 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.label{
+    display: flex;
+   justify-content: flex-start;
+   flex-direction: column;
+   gap: 8px;
+   text-transform: uppercase;
+   text-align: start;
+
+   }
+
+   .input{
+    outline: none;
+        border: 1px solid $dack-accent-color;
+        border-radius: 0.5rem;
+        padding: 12px;
+        background-color: transparent;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+        color: $primary-text-color;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover, 
+        &:-webkit-autofill:focus {
+          -webkit-text-fill-color: $primary-text-color !important;
+          -webkit-box-shadow: 0 0 0px 40rem #1F2224 inset !important;
+         
+        }
+         &.not_valid{
+            border: 1px solid red;
+         }
+
+         &.valid{
+            border: 1px solid rgb(41, 231, 41);
+         }
+   
+    };
+
+
+    .msg_box{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+       
+
+        &>textarea{
+            display: block;
+            width: 100%;
+            height: 15rem;
+            outline: none;
+            border: 1px solid $dack-accent-color;
+            border-radius: 1rem;
+            padding: 12px;
+            background-color: transparent;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            color: $primary-text-color;
+            resize: vertical;
+        }
+    };
+
+
+    .form_btn{
+    display: inline-block;
+    margin: 0 auto;
+    padding: 15px 35px;
+    background: #ff7f46;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: transform $cubic, text-shadow $cubic;
+   
+    &:hover{
+        transform: scale(1.01);
+        text-shadow: 0px 0px 1px #ffffff;
+    }
+    }
