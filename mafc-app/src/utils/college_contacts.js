@@ -11,24 +11,27 @@ const collegeContacts = {
     director: {
         name: 'Пахович Наталія Марцинівна',
         phone: '(04574)3-33-84',
-        position: 'директор'
+        position: 'директор',
+        mail: 'nmpakhovich@ukr.net'
     },
     deputy:{
         name: 'Колісник Олеся Іванівна',
         phone: '(04574)3-33-34',
-        position: 'Заступник директора з навчальної роботи'
+        position: 'Заступник директора з навчальної роботи',
+        mail: 'olessiakolpal@gmail.com'
     },
     contact_person: {
         name: 'Корх Вікторія Вадимівна',
         phone: '0987959937',
-        position: 'Контактна особа'
+        position: 'Контактна особа',
+        mail: 'matbnau@ukr.net'
     },
     admissions_committee: {
         phone: '(04574) 3-33-21',
         mobile: '0970260657'
     },
     info: ['(04574)3-33-21','(04574)3-33-34','0684725678'],
-    mail: 'matbnau@ukr.net'
+   
 
 };
 

@@ -8,7 +8,7 @@ import Social from '@/components/elements/social/Social';
 
 
 const CollegeContacts = ()=> {
-    const {director, deputy, contact_person, admissions_committee, info, mail} = collegeContacts;
+    const {director, deputy, contact_person, admissions_committee, info} = collegeContacts;
 
     const contactPersons= [director, deputy, contact_person];
 
@@ -32,6 +32,7 @@ const CollegeContacts = ()=> {
                                         <span>{item.position}</span>
                                         <span>{item.name}</span>
                                          <a href={`tel:${item.phone}`}>{item.phone}</a>
+                                         <a href={`mailto:${item.mail}`}>{item.mail}</a>
                                         </p>
                                     </li>
                                 )
@@ -53,23 +54,12 @@ const CollegeContacts = ()=> {
                             </p>
                         </div>
 
-                        <div className={s.contact_persons}>
-                            <p className={s.position}>
-                            <span>електронна пошта</span>
-                           <a href={`mailto:${mail}`}>{mail}</a>
-                            </p>
-                        </div>
-
                         <Social isFooter={true}/>
 
                     </div>
 
-
-                    <div className={s.form_container}>
-                    <p>Маєте запитання або пропозиції?</p>
-                    <h3>Напишіть нам!</h3>
                     <ContactForm/> 
-                    </div>
+                    
 
                 </div>
 

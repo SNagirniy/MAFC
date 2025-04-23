@@ -2,6 +2,9 @@ import { open_sans } from '@/globalStyles/fonts';
 import 'normalize.css/normalize.css';
 import "../globalStyles/main.scss";
 import PageLayout from '@/components/layouts/PageLayout';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 
@@ -15,6 +18,18 @@ export default function RootLayout({ children }) {
     <html lang="uk">
       <body className={`${open_sans.className}`}>
         <PageLayout>
+        <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={true}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+theme="light"
+className="toast_container"
+/>
             {children}
         </PageLayout>
       </body>

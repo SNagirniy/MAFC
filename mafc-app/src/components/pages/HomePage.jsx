@@ -9,8 +9,8 @@ return (
     <>
     <Hero/>
     <QuickAccessPanel/>
+    <Profesions/>
     <News title={'НАШ ГЕКТАР НОВИН'} subtitle={'КОЖЕН ДЕНЬ ЗАСІВАЄМО ІНФОРМАЦІЙНЕ ПОЛЕ!'}/>
-     <Profesions/>
     <GovernmentResourses/>
     </>
 )
