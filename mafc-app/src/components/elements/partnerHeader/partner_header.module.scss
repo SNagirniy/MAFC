@@ -1,0 +1,17 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.box{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+};
+
+.thumb{
+    width: 3rem;
+    height: auto;
+};
+
+.image{
+    object-fit: contain;
+}

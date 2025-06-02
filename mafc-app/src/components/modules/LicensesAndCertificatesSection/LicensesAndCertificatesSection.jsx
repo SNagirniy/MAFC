@@ -32,7 +32,7 @@ const LicensesAndCertificatesSection = ({docx, images})=> {
                 {ReversedArr?.map((item)=> {
                     return( <SwiperSlide key={item?.id}>
                         <div className={s.thumb}>
-                        <img className={s.image} src={`/api/about/images_proxy?id=${item.id}`} loading="lazy" alt={item?.name} />
+                        <img className={s.image} src={`/api/about/images_proxy?id=${item.id}`} alt={item?.name} />
                         </div>
                     </SwiperSlide>)
                 })}

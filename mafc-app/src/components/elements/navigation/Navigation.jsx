@@ -16,7 +16,7 @@ const nav_items =[
             {item: 'циклові (предметні) комісії',
             link: '/about/subject_commissions',},
             {item: 'наші партнери',
-                link: '/',},
+                link: '/about/partners',},
             {item: 'контактна інформація',
                 link: '/about/contacts',},
             

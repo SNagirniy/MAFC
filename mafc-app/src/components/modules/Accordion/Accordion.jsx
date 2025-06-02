@@ -34,8 +34,8 @@ const AccordionComponent = ({title,data})=> {
                {title && <h3 className={styles.main_title}>{title}</h3>}
         <Accordion>
             {data?.map((item)=> {return (
-                <AccordionItem key={v4()} header={item?.header}>
-                <DocumentsList documents_list={item?.content}/>
+                <AccordionItem key={v4()} header={item?.header || item?.topic}>
+                <DocumentsList documents_list={item?.content || item?. documents}/>
               </AccordionItem>
             )})}
         </Accordion>
