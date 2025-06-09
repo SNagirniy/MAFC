@@ -1,7 +1,7 @@
 "use server"
 
 
-const baseURL = JSON.parse(process.env.STRAPI_URL);;
+const baseURL = process.env.STRAPI_URL;
 
 export async function getEducationalCalendar() {
   try {
