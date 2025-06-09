@@ -7,6 +7,8 @@ const Calendar = async()=> {
 
     const data = await getEducationalCalendar();
 
+    if(!data) {return <ApplicantsCalendar calendarData={[]}/>}
+
     return <ApplicantsCalendar calendarData={data}/>
 };
 
