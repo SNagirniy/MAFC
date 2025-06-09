@@ -15,6 +15,9 @@ const nav_items =[
             link: '/about/structure_and_management',},
             {item: 'циклові (предметні) комісії',
             link: '/about/subject_commissions',},
+            {item: 'антикорупційна діяльність',
+                link: '/about/anti_corruption_activities'
+            },
             {item: 'наші партнери',
                 link: '/about/partners',},
             {item: 'контактна інформація',
@@ -58,7 +61,9 @@ const nav_items =[
      ]
     },
     {title:'Студентське життя ',
-    menu: [
+    menu: [{item: 'Розклад і графіки',
+            link: '/student_life/schedules',
+            },
             {item: 'Напрямки освітньої діяльності',
             link: '/',
             },

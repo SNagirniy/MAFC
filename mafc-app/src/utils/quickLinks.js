@@ -18,7 +18,7 @@ const quickLinks =[
     icon: (style)=> <Met_cab className={style}/>
     },
     {title: 'розклад занять',
-        link: 'http://matbnau.in.ua/stud/zamin_rozkl/zminy_rozkladu.pdf',
+        link: '/student_life/schedules#schedule_changes',
         icon: (style)=> <Calendar className={style}/>
         }
 ];

@@ -94,7 +94,7 @@ const professions = {
     description: 'Обʼєкт вивчення та діяльності: технологічні процеси і обладнання вирощування сільськогосподарських культур',
     term_of_study: '4 роки (на базі 9 класів); 3 роки (на базі 11 класів)',
     tuition_fees: 15000,
-    image: '/agro.jpg',
+    image: '/7.jpg',
     icon: <Agro/>,
     profession_docs: agro_docs,
    
