@@ -28,7 +28,7 @@ export async function fetchAllDocxFromSubfolders(folderId) {
     const results = await Promise.all(
       folders.map(async (folder) => {
         const { data: filesData } = await drive.files.list({
-          q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/')`,
+          q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/ and trashed = false')`,
           fields: 'files(id, name, webViewLink,createdTime)',
         });
 

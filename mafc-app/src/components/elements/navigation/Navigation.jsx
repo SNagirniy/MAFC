@@ -33,13 +33,19 @@ const nav_items =[
             {item: 'матеріально-технічна база',
                 link: '/',},
             {item: 'моніторинг якості освіти',
-                link: '/',},
+                link: '/educational_process/monitoring_the_quality_of_education',},
 
             {item: 'практичне навчання',
-                link: '/',},
+                link: '/educational_process/practical_classes',},
 
             {item: 'дистанційне навчання',
                 link: '/',},
+            {item: 'академічна мобільність',
+                link: '/educational_process/academic_mobility'
+                },
+            {item: 'академічна доброчесність',
+                    link: '/educational_process/academic_integrity'
+                },
             
          ]
     },

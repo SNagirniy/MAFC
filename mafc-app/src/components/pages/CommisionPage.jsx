@@ -51,34 +51,12 @@ const teachers = [
 }];
 
 
-const titles ={
-    zootechnical: {title:'Муу-менти тижня',
-        subtitle: 'Всі важливі події зі світу тваринництва — з гумором, змістом і хвостиком новин '
-    },
-    social: {title: 'Суспільний резонанс',
-        subtitle: 'Тут говоримо про людей, ідеї та події, які формують світогляд і наш день сьогоднішній.'
-    },
-    economic:{title:'Курс подій',
-        subtitle: 'Події, що мають цінність. Новини, що впливають на майбутнє економіки та фінансів.'
-    } ,
-    technical: {title: 'Шестірня подій',
-        subtitle: 'Усе, що рухає технічний прогрес у коледжі — в одній стрічці. Кожен гвинтик — має значення.'
-    },
-    agrarian:{title: 'Польова хроніка',
-        subtitle: 'Новини з аграрного фронту: сіяли, збирали, досягали. Щотижнева доза агроактивності.'
-    },
-    general_educational:{title: 'Азбука подій',
-        subtitle: 'Буква за буквою — складається освітній шлях. Дивись, що нового в нашій загальній науці.'
-    } 
-};
-
-
 const ComissionPage = ({slug})=> {
 
 return(
     <>
         <StructureAndManagementSection personsDataArray={teachers} title={comissionsSlugObject[slug]}/>
-        <News title={titles[slug].title} subtitle={titles[slug].subtitle}/>
+        <News title={'Діяльність циклової комісії'} subtitle={'Останні новини з навчально-методичної діяльності нашої циклової комісії'}/>
     </>
 )
 }
