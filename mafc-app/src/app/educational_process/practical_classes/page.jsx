@@ -1,5 +1,5 @@
 import PracticalClassesPage from "@/components/pages/PracticalClassesPage";
-import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
+import { fetchAllDocxFromSubfolders, fetchAllDocxFromClosedSubfolders } from "@/server/google/drive";
 
 export const revalidate = 3600;
 
@@ -10,7 +10,7 @@ const PracticalClasses = async()=>{
     const docxList = await res.json();
 
     const practicalProgramsfolderId = '11YUjYz-TUEV0b-Bhl8ZcVIt9CxJ5ZRcs'
-    const practicalProgramsRes = await fetchAllDocxFromSubfolders(practicalProgramsfolderId);
+    const practicalProgramsRes = await fetchAllDocxFromClosedSubfolders(practicalProgramsfolderId);
     const practicalProgramsList = await practicalProgramsRes.json();
 
     return <PracticalClassesPage practicalProgramsList={practicalProgramsList} doc_list={docxList}/>

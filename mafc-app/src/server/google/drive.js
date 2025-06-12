@@ -28,7 +28,7 @@ export async function fetchAllDocxFromSubfolders(folderId) {
     const results = await Promise.all(
       folders.map(async (folder) => {
         const { data: filesData } = await drive.files.list({
-          q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/ and trashed = false')`,
+          q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/')`,
           fields: 'files(id, name, webViewLink,createdTime)',
         });
 
@@ -168,4 +168,48 @@ export async function getAllPdfFiles(folderId) {
   } catch (error) {
     return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
   }
-}
+};
+
+
+export async function fetchAllDocxFromClosedSubfolders(folderId) {
+
+  try {
+    const credentials =JSON.parse(process.env.NEXT_PUBLIC_GOOGLE_SERVICE_KEY);
+   
+    const auth = new google.auth.GoogleAuth({
+        credentials,
+        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+    });
+
+    const drive = google.drive({ version: 'v3', auth });
+
+    // Отримуємо список папок (тем)
+    const { data: foldersData } = await drive.files.list({
+      q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.folder'`,
+      fields: 'files(id, name)',
+    });
+
+    const folders = foldersData.files;
+
+    // Отримуємо PDF-файли для кожної папки
+    const results = await Promise.all(
+      folders.map(async (folder) => {
+        const { data: filesData } = await drive.files.list({
+          q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/ and trashed = false')`,
+          fields: 'files(id, name, webViewLink,createdTime)',
+        });
+
+        return {
+          topic: folder.name,
+          documents: filesData.files,
+        };
+      })
+    );
+
+    return new NextResponse(JSON.stringify(results), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
+  }
+};
