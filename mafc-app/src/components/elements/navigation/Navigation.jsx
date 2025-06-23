@@ -31,7 +31,7 @@ const nav_items =[
             link: '/educational_process/educational_programs?profession=crop_production',
             },
             {item: 'матеріально-технічна база',
-                link: '/',},
+                link: '/educational_process/material_and_technical_base',},
             {item: 'моніторинг якості освіти',
                 link: '/educational_process/monitoring_the_quality_of_education',},
 

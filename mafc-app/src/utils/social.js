@@ -11,7 +11,7 @@ const socialLinks = [
    
        {icon: (style)=> <Facebook className={style}/>,
         alt: 'Facebook',
-        url: '/'
+        url: 'https://www.facebook.com/profile.php?id=100024298360159'
        },
        {icon: (style)=> <Tiktok className={style}/>,
         alt: 'TikTok',

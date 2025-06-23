@@ -1,0 +1,25 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+ .gallery_box{
+    height: 80vh;
+    margin-bottom: 3rem;
+  }
+
+  .swiper{
+    height: 100%;
+    width: 100%;
+}
+
+.thumb{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.image{
+ height: 100%;
+ width: auto;
+  object-fit: contain;
+  object-position: center;
+}

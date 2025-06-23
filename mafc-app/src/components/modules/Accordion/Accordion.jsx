@@ -35,7 +35,7 @@ const AccordionComponent = ({title,data})=> {
         <Accordion>
             {data?.map((item)=> {return (
                 <AccordionItem key={v4()} header={item?.header || item?.topic}>
-                <DocumentsList documents_list={item?.content || item?. documents}/>
+                <DocumentsList documents_list={item?.content || item?.documents}/>
               </AccordionItem>
             )})}
         </Accordion>

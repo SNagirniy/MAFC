@@ -9,17 +9,15 @@ const StructureAndManagementPage = ({docxList})=> {
     const CollectiveAgreement = findDocuments(docxList, 'колективний договір');
     const JobInstructions = findDocuments(docxList, 'посадові інструкції');
     const Structure = findDocuments(docxList, 'організаційна структура');
+    const StaffingTable = findDocuments(docxList, 'штатний розпис закладу освіти');
 
-   const accortdionData = [{
-    header: 'Посадові інструкції працівників закладу освіти',
-    content: JobInstructions?.documents
-   }]
+ const accortdionData = docxList?.filter(el => el?.topic !== 'організаційна структура');
+
 
     return(
         <>
         <StructureAndManagementSection title={'адміністрація коледжу'}/>
         <OrganizationsStructure structure_image = {Structure?.documents}/>
-        <DocsListSection docs_list={CollectiveAgreement?.documents} title={'Колективний договір'}/>
         <AccordionComponent data={accortdionData}/>
         </>
     )
