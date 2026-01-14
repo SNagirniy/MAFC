@@ -1,0 +1,79 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.title{
+   @include MainTitle();
+};
+
+
+.list{
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+
+    &>li{
+        height: 100%;
+    }
+
+    &.secondary{
+         grid-template-columns: repeat(2,1fr);
+
+         @include for-size('tablet'){
+             grid-template-columns: repeat(4,1fr);
+         }
+    }
+}
+
+
+.link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1rem;
+    overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: $box_shadow;
+   text-align: center;
+    hyphens: auto;
+    padding: 2rem 1rem;
+
+    text-transform: uppercase;
+    color: rgb(217, 55, 90);
+    transition: transform $cubic, color $cubic;
+
+    @include for-size('tablet'){
+     flex-direction: row;
+     justify-content: flex-start;
+       text-align: start;
+    }
+
+    &.secondary{
+        
+         justify-content: center;
+         text-align: center;
+         color: $primary-text-color;
+      
+    }
+
+    &:hover{
+        transform: scale(1.02);
+        color: $primary-text-color;
+
+        &.secondary{
+            color: rgb(217, 55, 90);
+        }
+    }
+
+}
+
+
+.logo{
+    width: 60%;
+    height: auto;
+
+    @include for-size('tablet'){
+         width: 20%;
+    }
+}

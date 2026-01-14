@@ -1,13 +1,6 @@
 @use '../../../globalStyles/variables.scss' as *;
 
 
-.section{
-   padding: 7rem 0;
-};
-
 .title{
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
+   @include MainTitle();
 }

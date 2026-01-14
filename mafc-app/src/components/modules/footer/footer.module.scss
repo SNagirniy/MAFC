@@ -9,9 +9,17 @@
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 1.5rem;
     padding-bottom: 6rem;
+    text-align: center;
+
+    @include for-size('tablet'){
+         grid-template-columns:1fr 1fr 1fr;
+         gap: 4rem;
+    }
+
+   
 }
 
 .logo_box{
@@ -25,7 +33,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: center;
     color: $light-text-color;
     transition: transform $cubic;
 
@@ -36,33 +44,37 @@
 
 .logo{
     display: block;
-    width: 12rem;
+    width: 16rem;
     height: auto;
 };
 
 .text_container{
-    font-size: 3.5rem;
-    font-weight: 600;
-}
-
-.title{
     font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
 }
 
 .footter_botom{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1rem;
+    align-items: center;
     background-color: $primaryBG;
+    text-align: center;
     color: $second-text-color;
 }
 
 .sighn{
-    margin: 0 auto;
-    padding: 1.2rem 0;
-    font-size: 0.8rem;
+     font-size: 0.5rem;
+
 
     & > span{
         margin-right: 0.2rem;
+    }
+
+    @include for-size('desktop'){
+         font-size: 0.8rem;
     }
     
 }

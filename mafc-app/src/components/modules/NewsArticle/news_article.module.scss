@@ -1,25 +1,33 @@
 @use '../../../globalStyles/variables.scss' as *;
 
-.section{
-    padding: 7rem 0;
-    background-color: $primaryBG;
-}
 
 .article{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 1rem;
-
+    width: 100%;
     color: $second-text-color;
 
 };
 
 
+.category_desc{
+    align-self: flex-start;
+    padding: 0.8rem 1rem;
+    color: $light-text-color;
+    text-transform: uppercase;
+
+    background-color: $secondary-color;
+}
+
 .main_title{
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
     color: $primary-text-color;
+
+    @include for-size('desktop'){
+        font-size: 3rem;
+    }
   
 };
 
@@ -29,13 +37,13 @@
 };
 
 .thumb{
-    display: flex;
-    width: 80%;
+   display: block;
     height: auto;
     margin: 0 auto;
 };
 
 .article_body{
+  
     text-indent: 2rem;
     hyphens: auto;
 }

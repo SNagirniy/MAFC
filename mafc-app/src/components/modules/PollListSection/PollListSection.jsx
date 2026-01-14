@@ -1,15 +1,15 @@
 import SectionWrapper from '@/components/layouts/SectionWrapper';
 import s from './poll_list_section.module.scss';
-import DocIcon from '../../../../public/doc_icon.svg';
 import PollIcon from '../../../../public/poll_icon.svg';
 import { v4 } from 'uuid';
+import clsx from 'clsx';
 
 
 
 
 const PollListSection =({title,pollList})=> {
   
-    if(!pollList) return null;
+    if(!pollList || pollList?.length === 0) return null;
 
     return (
         <section className={s.section}>
@@ -17,18 +17,11 @@ const PollListSection =({title,pollList})=> {
             <h3 className={s.main_title}>{title}</h3>
             <div className={s.list_wrapper}>
                 <ul className={s.list}>
-                {pollList?.map(({poll,result})=>{
+                {pollList?.map((item)=>{
             return (
-                <li key={v4()} className={s.list_item}>
-                    <div className={s.item}>
-                    <PollIcon className={s.icon}/>
-                    <a className={s.link} href={poll.src} target="_blank" >{poll.title}</a>
-                    </div>
-                    <div className={s.item}>
-                    <DocIcon className={s.icon}/>
-                    <a className={s.link} href={result.src} target="_blank" >{result.title}</a>
-                    </div>
-                  
+                <li key={v4()} className={clsx(s.item, {[s.result] : item?.type === 'result'})}>
+                    <PollIcon className={clsx(s.icon, {[s.result] : item?.type === 'result'})}/>
+                    <a className={s.link} href={item?.url} target="_blank" >{item?.title}</a>
                 </li>)
         })}
 

@@ -1,7 +1,10 @@
 import PracticalClassesPage from "@/components/pages/PracticalClassesPage";
 import { fetchAllDocxFromSubfolders, fetchAllDocxFromClosedSubfolders } from "@/server/google/drive";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+
+export const metadata = generateStaticPageMeta('/educational_process/practical_classes');
 
 const PracticalClasses = async()=>{
 

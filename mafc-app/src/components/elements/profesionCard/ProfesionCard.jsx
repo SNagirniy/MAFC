@@ -1,5 +1,4 @@
 import s from './profesion_card.module.scss';
-import Image from 'next/image';
 import clsx from 'clsx';
 import Link from 'next/link';
 
@@ -9,7 +8,7 @@ const ProfesionCard = ({title, code, discipline, educational_program, descriptio
     return(
         <div className={clsx(s.grid, {[s.right_alighn]: isRightAlihgn})}>
             <div className={s.thumb}>
-                <Image className={s.image} src={image} alt={title} width={150} height={100}/>
+                <img className={s.image} src={image} alt={title}/>
             </div>
             <div className={s.definition}>
                 <h3 className={s.title}> ОПП "{educational_program}"</h3>
@@ -17,7 +16,7 @@ const ProfesionCard = ({title, code, discipline, educational_program, descriptio
                 <p>Спеціальність:<span>{code}</span><span>"{title}"</span></p>
                 <p className={s.description}>{description}</p>
 
-                <Link href={`entrants/areas_of_educational_activity?profession=${slug}`} className={s.btn}>Дізнатися більше</Link>
+                <Link aria-label={`ОПП "${educational_program}"`} href={`entrants/areas_of_educational_activity/${slug}`} className={s.btn}>Дізнатися більше</Link>
             </div>
         </div>
     )

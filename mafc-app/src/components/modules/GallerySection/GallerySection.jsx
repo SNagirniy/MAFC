@@ -3,6 +3,7 @@ import SectionWrapper from '@/components/layouts/SectionWrapper';
 import Gallery from '@/components/elements/gallery/Gallery';
 
 const GallerySection = ({title, imageArr})=> {
+    if(!imageArr) return null;
     return(
         <section className={s.section}> 
             <SectionWrapper>

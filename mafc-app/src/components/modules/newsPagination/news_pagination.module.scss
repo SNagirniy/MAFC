@@ -1,0 +1,39 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  list-style: none;
+  padding: 0;
+}
+
+.pageItem {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pageLink {
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  background: #f0f0f0;
+  border: none;
+
+  transition: all $cubic;
+
+  &:hover,
+  &:focus{
+    background: $secondary-color;
+  color: white;
+  font-weight: bold;
+}
+}
+
+.active .pageLink {
+ padding: 0.7rem 0.9rem;
+  background: $secondary-color;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}

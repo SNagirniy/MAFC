@@ -1,5 +1,5 @@
 "use server"
-
+import QueryString from "qs";
 
 const baseURL = process.env.STRAPI_URL;
 
@@ -21,4 +21,1026 @@ export async function getEducationalCalendar() {
     console.error('Error fetching educational calendar:', error);
     return null;
   }
+}
+
+
+export async function getMaterialCharacteristic() {
+  try {
+    const res = await fetch(`${baseURL}/api/material-technical-base?populate=*`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+    if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data ?? null;
+
+  } catch (error) {
+    console.error('Error fetching material-technical-base:', error);
+    return null;
+  }
+};
+
+
+
+export async function getNMTData() {
+ const route = '/api/nmt';
+
+  const query = QueryString.stringify({
+  populate: {
+    nmt_link_lists: {
+      populate: "*"
+    },
+    
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+export async function getDistanceLearningPage() {
+  const route = '/api/distance-learning-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    edu_platform: {
+      populate: {
+        login_link: true,
+        ref_link: true
+      }
+    },
+    video_section: {
+      populate: {
+        ids: true,
+      },
+    },
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+}
+
+
+
+export async function getYourSafetyPageData() {
+  try {
+    const res = await fetch(`${baseURL}/api/your-safety-page?populate=*`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+
+
+export async function getDomitoryPageData() {
+  try {
+    const res = await fetch(`${baseURL}/api/domitory-page?populate=*`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+export async function getIntroductoryQuidePageData() {
+
+   const route = '/api/introductory-guide-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    professions: {
+      populate: ['image','discipline']
+    },
+    
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+export async function getEducationalProgramPageData() {
+
+   const route = '/api/introductory-guide-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    professions: {
+      populate: ['image','discipline','pool']
+    },
+    
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+
+export async function getHomePageData() {
+
+   const route = '/api/home-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    professions: {
+      populate: ['image','discipline']
+    },
+
+    hero: {
+      populate:['image','link','video']
+    }
+    
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+
+
+export async function getExtracurricularPageData() {
+ const route = `/api/extracurricular-activities-page`;
+
+  const query = QueryString.stringify({
+  populate: {
+     extracurricular_activities_lists: {
+      populate:{
+         activity: {
+        populate: '*'
+      }
+      }
+     
+    },
+    
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+      const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+export async function getExtracurricularActiviryItem (id){
+
+  const route = `/api/extracurricular-activities-lists/${id}`;
+ const query = QueryString.stringify(
+    {
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching news item:', error);
+    return null;
+  }
+
+}
+
+
+
+export async function getContactsData(pageName) {
+ const route = '/api/contacts-pages';
+
+  const query = QueryString.stringify({
+  filters: {
+        page: {
+        $eq: pageName,},
+  },
+  populate: '*',
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
+
+
+export async function getSubjectCommissionsList() {
+  try {
+    const res = await fetch(`${baseURL}/api/subject-commissions-lists?populate=*`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+export async function getSubjectCommissionData(slug) {
+  const route = '/api/subject-commissions-lists'
+
+  const query = QueryString.stringify({
+  filters: {
+    category:{
+      code: {
+        $eq: slug,},
+    }    
+  },
+  populate:{
+    members: {
+       populate: '*'
+    }
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+
+export async function getAdministration() {
+  const route = '/api/administration-page'
+
+  const query = QueryString.stringify({
+  populate: {
+    organization_structure: {
+      populate: "*"
+    },
+    administrations: {
+      populate: "*"
+    }
+  }
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+export async function getRegulatoryDocumentsPage() {
+  const route = '/api/regulatory-documents-page';
+
+  const query = QueryString.stringify({
+  populate: "*"
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    cache: 'no-store'
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
+export async function getNews(slug, page = 1, pageSize = 4) {
+  const route = '/api/news';
+  const filters = !slug || slug === 'all'
+    ? undefined : {
+        category: {
+          code: {
+            $eq: slug,
+          },
+        },
+      };
+
+  const query = QueryString.stringify(
+    {
+      filters,
+      sort: ['date:desc'],
+      pagination: {
+        page: page,
+        pageSize: pageSize,
+      },
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+    
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching news:', error);
+    return null;
+  }
+}
+
+
+export async function getAllNews() {
+  const route = '/api/news';
+  const query = QueryString.stringify(
+    {
+     
+      sort: ['date:desc'],
+      pagination: {
+       limit: 150,
+      },
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+    
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching news:', error);
+    return null;
+  }
+}
+
+
+export async function getTotalPages(category, page = 1, pageSize = 4) {
+  const route = '/api/news';
+  const filters = !category || category === 'all'
+    ? undefined : {
+        category: {
+          code: {
+            $eq: category,
+          },
+        },
+      };
+
+  const query = QueryString.stringify(
+    {
+      filters,
+      sort: ['date:desc'],
+      pagination: {
+        page: page,
+        pageSize: pageSize,
+      },
+    },
+    { encodeValuesOnly: true }
+  );
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+    
+
+    return json?.meta || null;
+  } catch (error) {
+    console.error('Error fetching news:', error);
+    return null;
+  }
+}
+
+export async function getNewsItem (slug){
+  const route = `/api/news/${slug}`;
+ const query = QueryString.stringify(
+    {
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching news item:', error);
+    return null;
+  }
+
+}
+
+
+export async function getAllCategories (){
+  const route = `/api/categories`;
+ const query = QueryString.stringify(
+    {
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching news item:', error);
+    return null;
+  }
+
+}
+
+
+export async function getProfessions (){
+  const route = `/api/professions`;
+ const query = QueryString.stringify(
+    {},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getProfessionBySlug(slug){
+  const route = `/api/professions`;
+   const query = QueryString.stringify(
+    {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+
+export async function getE_LibraryPage (){
+  const route = `/api/e-libraries`;
+ const query = QueryString.stringify(
+    {populate: '*',},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+export async function getLibraryPage (){
+  const route = `/api/library`;
+ const query = QueryString.stringify(
+    {populate: '*',},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+export async function getVacancyPage(){
+  const route = `/api/college-vacancy`;
+ const query = QueryString.stringify(
+    {populate:{
+     companies:{
+      populate: "*"
+     } 
+    },},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+
+
+export async function getCareerPage(){
+  const route = `/api/sareer-page`;
+ const query = QueryString.stringify(
+    {populate:{
+     companies:{
+      populate: "*"
+     } 
+    },},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getCompaniesList(){
+  const route = `/api/companies`;
+ const query = QueryString.stringify(
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+export async function getCompanyData(id){
+  const route = `/api/companies/${id}`;
+ const query = QueryString.stringify(
+    {populate: "*"},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getGraduators(){
+  const route = `/api/graduators`;
+const query = QueryString.stringify(
+    {populate: '*',},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getBankAccountPage (){
+  const route = `/api/bank-account-page`;
+ const query = QueryString.stringify(
+    {populate: '*',},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getCommonPool (){
+
+  const route = '/api/common-pools';
+ const query = QueryString.stringify(
+    {
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    if(json?.data && json?.data?.length > 0) {
+     const poll_list = json?.data?.map((item)=>item?.pool);
+     return poll_list
+    } else { return json?.data || null;}
+
+   
+  } catch (error) {
+    console.error('Error fetching news item:', error);
+    return null;
+  }
+
 }

@@ -3,38 +3,8 @@ import s from './structure_and_management.module.scss';
 import TeacherCard from '@/components/elements/teacherCard/TeacherCard';
 
 
-const teachers = [
-    {
-        id:6,
-        name: 'Пахович Наталія Марцинівна',
-        viewImageSrc: '/Pahovich.png',
-        position: 'Директор коледжу, спеціаліст вищої категорії, викладач-методист',
-        mail: 'nmpakhovich@ukr.net',
-        phone: '0(4574)-3-33-21'
-    },
-{
-    id:4,
-    name: 'колІсник Олеся іваніВна',
-    viewImageSrc: '/Kolisnyk.png',
-    position: 'Заступник директора з навчальної роботи, спеціаліст вищої категорії, викладач-методист',
-    mail: 'olessiakolpal@gmail.com',
-    phone: '0(4574)-3-33-34'
-},
-{
-    id:5,
-    name: 'Почтар Наталія Іванівна',
-    viewImageSrc: '/Poshtar.png',
-    position: 'Заступник директора з виховної роботи, спеціаліст вищої категорії, викладач-методист',
-    mail: 'Pochtarnatali@gmail.com',
-    phone: ''
-}];
-
-
-
-
-const StructureAndManagementSection = ({title, personsDataArray = teachers})=> {
-
-
+const StructureAndManagementSection = ({title, personsDataArray})=> {
+if(!personsDataArray || personsDataArray?.length === 0) return null;
     return(
         <section className={s.section}>
             <SectionWrapper>
@@ -42,16 +12,20 @@ const StructureAndManagementSection = ({title, personsDataArray = teachers})=> {
             <ul className={s.list}>
 
                 {personsDataArray?.map((teacher)=> {
+                   
+                    const url = teacher?.image?.url? teacher?.image?.url : '/default_teacher.png';
+                    const {name, mail, position, phone}= teacher?.teacher_info;
+                    
                     return(
                         <li key={teacher?.id} className={s.item}>
                             <TeacherCard 
-                            name={teacher?.name}
-                            viewImageSrc={teacher?.viewImageSrc}
-                            position={teacher?.position}
-                            mail={teacher?.mail}
-                            phone={teacher?.phone}
+                            name={name}
+                            viewImageSrc={url}
+                            position={position}
+                            mail={mail}
+                            phone={phone}
                             description={teacher?.description}
-                            consultation={teacher?.consultation}/>
+                            consultation={teacher?.consultations}/>
                         </li>
                     )
                 })}

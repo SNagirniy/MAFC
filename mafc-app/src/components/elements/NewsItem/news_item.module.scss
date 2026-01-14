@@ -23,12 +23,20 @@
     gap: 0.5rem;
     align-items: flex-start;
 };
+.category_desc{
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: $light-text-color;
+  
+    background-color: $secondary-color;
+}
 
 .thumb{
     display: flex;
     width: 100%;
-    height:auto;
-    object-fit: cover;
+    max-width: 19rem;
+    max-height: 11rem;
     overflow: hidden;
 };
 
@@ -36,7 +44,7 @@
     display: block;
     width: 100%;
     height: auto;
-
+    object-fit: contain;
     transition: transform $cubic;
 }
 
@@ -46,6 +54,7 @@
     font-weight: 400;
     color: $second-text-color;
     font-style: italic;
+    flex-grow: 1;
 }
 
 .title{

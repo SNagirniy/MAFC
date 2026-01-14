@@ -1,20 +1,5 @@
 @use '../../../globalStyles/variables.scss' as *;
-
-    .section{
-        padding: 7rem 0;
-    
-        &:nth-child(even){
-          background-color: $primaryBG;
-        }
-    };
- 
   
   .main_title{
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
+   @include MainTitle()
   };
-  
-
- 

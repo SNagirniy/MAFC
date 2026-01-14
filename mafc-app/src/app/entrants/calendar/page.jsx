@@ -1,7 +1,10 @@
 import ApplicantsCalendar from "@/components/modules/ApplicantsCalendar/ApplicantsCalendar";
 import { getEducationalCalendar } from "@/server/strapi/strapi";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/entrants/calendar');
+
 
 const Calendar = async()=> {
 

@@ -1,25 +1,26 @@
-import DocsListSection from "../modules/DocsListSection/DocsListSection";
 import { v4 } from "uuid";
 import AccordionComponent from "../modules/Accordion/Accordion";
+import EmptyState from "../modules/EmptyState/EmptyState";
 
 
 const PublicProcurementPage = ({docxList})=> {
 
-        const ProzorroWebSite = {
+    if(!docxList || docxList?.length === 0) return <EmptyState/>;
+
+    const ProzorroWebSite = {
         id: v4(),
         name: 'Тендери', 
         webViewLink: 'https://prozorro.gov.ua/uk/search/tender?buyer=36969901'
     };
 
-    const prozoro = docxList?.find((el)=> el.topic.toLowerCase() === 'prozoro');
-    const justification = docxList?.find((el)=> el.topic.toLowerCase() === 'обгрунтування');
+    const Prozoro ={folderId: v4(), topic: 'Система публічних закупівель PROZORO', description: '0', documents: [ProzorroWebSite ] }
 
-    prozoro?.documents?.push(ProzorroWebSite)
+    const FoldersToRender = [Prozoro, ... docxList];
+   
 
 return(
     <>
-    <DocsListSection docs_list={prozoro?.documents} title={'Система публічних закупівель PROZORO'}/>
-    <AccordionComponent title={'Обгрунтування технічних та якісних характеристик предмета закупівлі'} data={[{header: 'Обгрунтування технічних та якісних характеристик предмета закупівлі', content: justification?.documents}]}/>
+    {FoldersToRender?.map((el)=> {return <AccordionComponent key={el?.folderId} folderId={el?.folderId} title={el?.topic} data={[el]}/>})}
     </>
 )
 

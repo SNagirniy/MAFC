@@ -1,11 +1,18 @@
-import EntrantsPage from "@/components/pages/EntrantsPage";
-import { Suspense } from "react";
-import Loader from "@/components/elements/loader/Loader";
+import { redirect } from "next/navigation";
+import { getIntroductoryQuidePageData } from "@/server/strapi/strapi";
+import { notFound } from "next/navigation";
 
-const AreasOfEducationalActivity = ()=> {
+export const revalidate = 3600;
 
-    return <Suspense fallback={<Loader/>}><EntrantsPage/></Suspense>
-}
+const EduActivity = async()=> {
+    const  rootPath='/entrants/areas_of_educational_activity';
+    const pageData = await getIntroductoryQuidePageData();
+    if(!pageData?.professions[0] || pageData?.error ){notFound()}
 
+    const slug = pageData?.professions[0]?.slug;
 
-export default AreasOfEducationalActivity;
+    redirect(`${rootPath}/${slug}`)
+
+};
+
+export default EduActivity;

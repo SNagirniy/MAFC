@@ -2,35 +2,113 @@
 
 
 .social_list{
-    display: flex;
+     display: flex;
     flex-direction: row;
     gap: 0.2rem;
-};
+     
 
-.footer_soc{
-    gap: 0.5rem;
-}
-
-.link{
-    display: block;
-    padding: 12px 0;
-    cursor: pointer;
-
-    &:hover{
+    & li{
+        & .link{
+            display: block;
+            padding: 12px 0;
+            cursor: pointer;
+          &:hover{
         & .icon{
-            scale: 1.2;
+            scale: 1.2; } } }
+            
+            & .icon{
+            display: block;
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: scale $cubic;
+            }
         }
+         
+    };
+
+.footer_soc_title{
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    &::first-letter{
+        text-transform: capitalize;
     }
 }
 
-.icon{
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-   transition: scale $cubic;
+    .footer_social_list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:1rem;
+    align-items: center;
+
+
+    & li{
+        & .link{
+            display: block;
+            padding: 12px;
+            border-radius: 1rem;
+            background-color: $secondaryBG;
+            box-shadow: $box_shadow;
+            transition: scale $cubic;
+            &:hover{
+                scale: 1.05;
+                 & .icon{
+            scale: 1;
+        }
+            }
+            
+            & .icon{
+                margin: 0 auto;
+                width: 4.5rem;
+                height: 4.5rem;
+                transition: none;
+            }
+        }
+         
+    }
 }
 
-.footer_icon{
-    width: 2.5rem;
-    height: 2.5rem;
+
+
+.title{
+      @include MainTitle();
+    }
+
+.large_social_list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:1rem;
+    align-items: center;
+
+     @include for-size('desktop'){
+          display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+     }
+
+    & li{
+        & .link{
+            display: block;
+             padding: 12px;
+            border-radius: 1rem;
+            box-shadow: $box_shadow;
+            transition: scale $cubic;
+            &:hover{
+                scale: 1.1;
+                 & .icon{
+            scale: 1;
+        }
+            }
+            
+            & .icon{
+                margin: 0 auto;
+                width: 6.5rem;
+                height: 6.5rem;
+                transition: none;
+            }
+        }
+         
+    }
 }
+
+

@@ -29,7 +29,7 @@ const EnrollmentOrdersSection = ({children})=> {
     const current_level = searchParams.get('basic_education');
     
     const titleToRender = (key)=> {
-        if(key === '9'){return `на базі БСО`}else if(key === '11') {return 'на базі ПЗСО'} else if(key === 'ptu') {return 'на базі КР'} else {return 'заочна форма'}
+        if(key === '9'){return `на базі БСО`}else if(key === '11') {return 'на базі ПЗСО'} else if(key === 'ptu') {return 'на базі КР'}
     };
 
 

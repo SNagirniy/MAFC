@@ -2,15 +2,20 @@
 
 
 .main_title{
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 3rem;}
+    @include MainTitle()}
 
     .link_list{
         display: grid;
-       grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(1,1fr);
         gap: 1rem;
+
+        @include for-size('tablet'){
+        grid-template-columns: repeat(2,1fr);
+        }
+
+         @include for-size('desktop'){
+        grid-template-columns: repeat(3,1fr);
+        }
     };
 
     .link_item{

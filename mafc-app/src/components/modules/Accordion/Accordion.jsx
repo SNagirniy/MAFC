@@ -5,6 +5,7 @@ import ChevronDown from '../../../../public/chevron_down.svg';
 import SectionWrapper from "@/components/layouts/SectionWrapper";
 import DocumentsList from "@/components/elements/DocumentsList/DocumentsList";
 import { v4 } from "uuid";
+import RteTextBox from "@/components/elements/rteTextBox/RteTextBox";
 
 
 const AccordionItem = ({ header, ...rest }) => (
@@ -12,7 +13,7 @@ const AccordionItem = ({ header, ...rest }) => (
       {...rest}
       header={
         <>
-          {header}
+          {<span>{header}</span>}
           <ChevronDown className={styles.chevron}/>
           
         </>
@@ -27,15 +28,18 @@ const AccordionItem = ({ header, ...rest }) => (
     />
   );
 
-const AccordionComponent = ({title,data})=> {
+const AccordionComponent = ({title,data, folderId})=> {
+if(!data || data?.error) return null;
+
     return (
-        <section className={styles.section}>
+        <section key={folderId} className={styles.section}>
             <SectionWrapper>
                {title && <h3 className={styles.main_title}>{title}</h3>}
         <Accordion>
             {data?.map((item)=> {return (
-                <AccordionItem key={v4()} header={item?.header || item?.topic}>
+                <AccordionItem key={v4()} header={item?.header || item?.topic || item?.folderName}>
                 <DocumentsList documents_list={item?.content || item?.documents}/>
+                {item?.markdown && <RteTextBox markdown={item?.markdown}/>}
               </AccordionItem>
             )})}
         </Accordion>

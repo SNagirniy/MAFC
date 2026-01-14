@@ -13,8 +13,6 @@ return <section className={s.section} id='schedule_changes'>
         <iframe
         className={s.frame}
             src={`https://drive.google.com/file/d/${id}/preview`}
-            width="80%"
-            height="600"
             allow="autoplay">
             </iframe>
     </SectionWrapper>

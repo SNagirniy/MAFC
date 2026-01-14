@@ -1,7 +1,11 @@
 import MaterialAndTechnicalBasePage from "@/components/pages/MaterialAndTechnicalBasePage";
 import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
+import { getMaterialCharacteristic } from "@/server/strapi/strapi";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+
+export const metadata = generateStaticPageMeta('/educational_process/material_and_technical_base')
 
 const MaterialAndTechnicalBase = async()=>{
 
@@ -9,7 +13,9 @@ const MaterialAndTechnicalBase = async()=>{
     const res = await fetchAllDocxFromSubfolders(folderId);
     const docxList = await res.json();
 
-    return <MaterialAndTechnicalBasePage docxList={docxList}/>
+    const materialCharacteristic = await getMaterialCharacteristic();
+
+    return <MaterialAndTechnicalBasePage characteristic={materialCharacteristic} docxList={docxList}/>
 }; 
 
 

@@ -28,7 +28,7 @@ const calendarDataForrender = calendarData?.find(item => item?.type === educatio
 
 const currentYear = new Date( calendarDataForrender?.publishedAt).getFullYear();
 
-console.log(calendarData)
+
 
 if (calendarData.length === 0) {return <DefaultComponent/>};
     return(

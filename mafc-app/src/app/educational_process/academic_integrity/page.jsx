@@ -1,7 +1,10 @@
 import AcademicIntegrityPage from "@/components/pages/AcademicIntegrityPage";
 import { fetchDocxFromCurrentFolder } from "@/server/google/drive";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+
+export const metadata = generateStaticPageMeta('/educational_process/academic_integrity')
 
 const AcademicIntegrity = async()=>{
 

@@ -2,5 +2,8 @@
 
 
 .section_wrapper{
-    padding: 0 70px;
+    padding: 0 15px;
+    @include for-size(tablet) {
+        padding: 0 70px;
+    }
 }

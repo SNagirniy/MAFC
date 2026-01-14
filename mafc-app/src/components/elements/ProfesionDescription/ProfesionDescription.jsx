@@ -2,16 +2,15 @@ import s from './profesio_description.module.scss';
 
 
 const ProfesionDescription = ({profesion})=> {
-    const {title, code, discipline, educational_program, description, term_of_study, tuition_fees, image} = profesion;
+    const {title, code, discipline, educational_program, term_of_study, tuition_fees, image} = profesion;
 
     return(
         <div className={s.profesion_wrapper}> 
                 <div className={s.thumb}>
                     <img 
                     className={s.image}
-                    src={image} alt={educational_program}
-                    width={150}
-                    height={100}/>
+                    src={image?.url} alt={educational_program}
+                  />
                 </div>
                 <div className={s.detail}>
                     <p> Галузь знань
@@ -37,10 +36,6 @@ const ProfesionDescription = ({profesion})=> {
                         <span>{tuition_fees} грн</span>
                     </p>
                 </div>
-
-                <p className={s.description}>
-                    {description}
-                </p>
 
                 </div>
     )

@@ -2,11 +2,12 @@ import SectionWrapper from "@/components/layouts/SectionWrapper";
 import s from './news.module.scss';
 import MainCard from "@/components/elements/MainCard/MainCard";
 import NewsItem from "@/components/elements/NewsItem/NewsItem";
-import truncate from "@/utils/turncate";
 import Link from "next/link";
-import FakeNews from "@/utils/fakeNews";
+import formatPreviewText from "@/utils/formatted_text";
+import extractImageSourcesFromHTML from "@/utils/extractImageSourcesFromHTML";
 
-const News = ({title, subtitle})=> {
+
+const News = ({newsList,title, subtitle, category})=> {
     return (
         <section className={s.section}>
             <SectionWrapper>
@@ -17,22 +18,34 @@ const News = ({title, subtitle})=> {
                     </div>
                 
                     <ul className={s.news_list}>
-                        {FakeNews.map((el, i)=> { 
+                        {newsList.map((el, i)=> { 
                             const Card = i === 0? MainCard : NewsItem;
+                            const {date, title, article, images, videos, category, documentId} = el;
+
+                            const imageFormats = images? images[0]?.formats : null;
+                           const videoThunbnail = videos.length > 0? [`https://img.youtube.com/vi/${videos[0]?.video_id}/hqdefault.jpg`]: [];
+                           const imagesFromHTML = extractImageSourcesFromHTML(article);
+
+                            const posterUrl = [...videoThunbnail, ... imagesFromHTML];
+
+                            
                             return (
-                            <li key={el.slug}>
+                            <li key={el.documentId}>
                              <Card 
-                                date={el.createdAt}
-                                title={el.title}
-                                description={truncate(el.article, 110)}
-                                imageUrl={el.imageUrl}
-                                slug={el.slug}
+                                date={new Date(date).toLocaleDateString('uk-UA')}
+                                title={title}
+                                description={formatPreviewText(article)}
+                                formats={imageFormats}
+                                imageUrl={posterUrl[0]}
+                                slug={category.code}
+                                documentId={documentId}
+                                category_desc={category.description}
                                 />
                             </li>
                                 )})}
                     </ul>
 
-                    <Link target="_self" className={s.more_button} href={'/news'}><span>Більше новин</span></Link>
+                    <Link target="_self" className={s.more_button} href={`/news/all_news/${category}/1`}><span>Більше новин</span></Link>
                 </div>
             </SectionWrapper>
         </section>

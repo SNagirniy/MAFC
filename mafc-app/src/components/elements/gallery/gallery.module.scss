@@ -1,8 +1,13 @@
 @use '../../../globalStyles/variables.scss' as *;
 
  .gallery_box{
-    height: 80vh;
-    margin-bottom: 3rem;
+    height: 50vh;
+    margin-bottom: 2rem;
+
+    @include for-size('tablet'){
+       height: 80vh;
+        margin-bottom: 3rem;
+    }
   }
 
   .swiper{

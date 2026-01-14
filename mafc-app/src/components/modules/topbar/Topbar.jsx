@@ -1,6 +1,8 @@
 import s from './topbar.module.scss';
 import Language from '@/components/elements/language/Language';
 import Social from '@/components/elements/social/Social';
+import FontSizeSwitcher from '@/components/elements/FontSizeSwitcher/FontSizeSwitcher';
+
 
 const Topbar = ()=> {
 
@@ -10,7 +12,11 @@ const Topbar = ()=> {
                 <p>Доєднуйтесь до нас</p>
                <Social/>
             </div>
-            <Language/>
+            <div className={s.switcher_box}>
+                <FontSizeSwitcher/>
+                <Language/>
+            </div>
+            
         </section>
     )
 };

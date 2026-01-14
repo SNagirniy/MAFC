@@ -16,7 +16,7 @@ const Logo = ()=> {
             
         
     <div className={s.text_container}>
-        <p className={s.text}>МАФК</p>
+        <abbr className={s.text} title="маслівський аграрний фаховий коледж">МАФК</abbr>
     </div>
     </Link>
     )

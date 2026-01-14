@@ -1,15 +1,25 @@
 @use '../../../globalStyles/variables.scss' as *;
 
 .header{
-    display: grid;
+    display: flex;
     position: sticky;
     top: 0;
     z-index: 100;
-    gap: 10rem;
-    grid-template-columns: 6rem 3fr;
+    gap: 6rem;
+    grid-template-columns: 3rem 3fr;
     justify-content: space-between;
-    padding: 8px 70px;
+    padding: 8px 15px;
     background-color: $primaryBG;
     align-items: center;
     box-shadow: $box_shadow;
+
+      @include for-size('tablet'){
+         padding: 8px 70px;
+         
+    }
+
+    @include for-size('desktop'){
+        display: grid;
+        grid-template-columns: 6rem 3fr;
+    }
 }

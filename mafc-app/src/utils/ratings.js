@@ -32,8 +32,7 @@ const ratings = {
         educational_program: 'Обслуговування та ремонт автомобілів і двигунів',
         icon: <Mechanic/>,
     }
-                       
-                       
+                                     
     };
 
 

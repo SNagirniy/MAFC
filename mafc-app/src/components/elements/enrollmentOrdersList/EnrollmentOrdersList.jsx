@@ -31,7 +31,7 @@ const EnrollmentOrdersList =({data})=> {
             {
                ordersToRender?.map((el)=> {
                   
-                const docx = el?.files;
+                const docx = el?.documents;
 
                 if(docx?.length === 0) return null
 

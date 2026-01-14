@@ -1,7 +1,7 @@
-import NewsPage from "@/components/pages/NewsPage";
+import { redirect } from "next/navigation";
 
-const News = ()=> {
-    return <NewsPage/>
+const News =()=> {
+redirect('news/all_news/all/1')
 }
 
 

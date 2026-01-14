@@ -1,17 +1,18 @@
-import SpecialityRatingPage from "@/components/pages/SpecialityRatingPage";
-import { Suspense } from "react";
-import Loader from "@/components/elements/loader/Loader";
-import { getAllPdfFiles } from "@/server/google/drive";
+import { redirect } from "next/navigation";
+import { getIntroductoryQuidePageData } from "@/server/strapi/strapi";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3600;
 
-const SpecialityRating = async()=> {
-    const res = await getAllPdfFiles('1oDP_3lxIk9h6kwTVSHXjBsV8w7zeN5Cm');
-    const data = await res.json();
+const SpecRating = async()=> {
+    const  rootPath='/entrants/specialty_rating';
+    const pageData = await getIntroductoryQuidePageData();
+    if(!pageData?.professions[0] || pageData?.error ){notFound()}
 
-    
-    return <Suspense fallback={<Loader/>}><SpecialityRatingPage data={data?.subfolders}/></Suspense> 
-}
+    const slug = pageData?.professions[0]?.slug;
 
+    redirect(`${rootPath}/${slug}`)
 
-export default SpecialityRating;
+};
+
+export default SpecRating;

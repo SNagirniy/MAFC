@@ -8,27 +8,62 @@ import clsx from 'clsx';
 
 const localesList = {
    uk: {locale: 'uk',
-    icon: <Uk className={s.icon}/>},
+    icon: <Uk className={s.icon}/>,
+   label: 'Українська'}
+    ,
    en: {
     locale: 'en',
-    icon: <En className={s.icon}/>
+    icon: <En className={s.icon}/>,
+     label: 'English'
 }};
 
+function translatePage(lang) {
+  const cookieValue = `/uk/${lang}`
+  document.cookie = `googtrans=${cookieValue};path=/;domain=${window.location.hostname}`
+  document.cookie = `googtrans=${cookieValue};path=/`
+
+  const select = document.querySelector('.goog-te-combo')
+  if (select) {
+    select.value = lang
+    select.dispatchEvent(new Event('change'))
+  } else {
+    console.warn('Selector not found — fallback reload')
+    window.location.reload()
+  }
+}
 
 const Language = ()=> {
     const [isOpen, setIsOpen] = useState(false);
     const [locale, setLocale] = useState('uk');
     const rootRef = useRef(null);
+    const buttonRef = useRef(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
   
   
     const handleChangeLang = e => {
-        const lang = e.currentTarget?.id;
+        const lang = e.currentTarget?.value;
         setLocale(lang)
-        toggleDropdown();
+        translatePage(lang)
+        toggleDropdown()
+        buttonRef.current?.focus()
+
     };
-  
+
+      useEffect(() => {
+    const cookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('googtrans='));
+    if (cookie) {
+      const langCode = cookie.split('/').pop();
+      if (langCode && localesList[langCode]) {
+        setLocale(langCode);
+      }
+    }
+  }, []);
+
+
+
     useEffect(() => {
       const handleClick = event => {
         const { target } = event;
@@ -44,28 +79,44 @@ const Language = ()=> {
       };
     }, [isOpen]);
 
+    
+
     const FreeLocale = Object.keys(localesList)?.filter((el) => el !== locale);
 
 return(
 
-<div onClick={toggleDropdown} className={s.container}>
-<div ref={rootRef} className={s.item}>
+<div ref={rootRef} className={s.container}>
+<button 
+  onClick={toggleDropdown}
+   className={s.item}
+  aria-haspopup="listbox"
+  aria-expanded={isOpen}
+  aria-label={`Поточна мова: ${localesList[locale].label}`}>
     {localesList[locale].icon}
    
-</div>
+</button>
 
-  <ul className={clsx(s.dropdown, {[s.open]: isOpen})}>
+  <ul 
+      role="listbox"
+      aria-label="Вибір мови сайту"
+      className={clsx(s.dropdown, {[s.open]: isOpen})}>
 
     {FreeLocale?.map((el)=> {return (
         <li
         id={el}
         key={el}
         className={s.item}
-        onClick={handleChangeLang}
+        role="option" aria-selected={locale === el}
+       
       >
-        <div className={s.btn}>
+        <button className={s.btn}
+          value={el}
+          type='button'
+          onClick={handleChangeLang}
+          aria-label={`Змінити мову на ${localesList[el].label}`}>
         {localesList[el].icon}
-        </div>
+        <span className={s.sr_only}>{localesList[el].label}</span>
+        </button>
       </li>
     )}) }
      

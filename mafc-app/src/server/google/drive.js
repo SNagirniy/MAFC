@@ -19,7 +19,7 @@ export async function fetchAllDocxFromSubfolders(folderId) {
     // Отримуємо список папок (тем)
     const { data: foldersData } = await drive.files.list({
       q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.folder'`,
-      fields: 'files(id, name)',
+      fields: 'files(id, name, description)',
     });
 
     const folders = foldersData.files;
@@ -33,7 +33,9 @@ export async function fetchAllDocxFromSubfolders(folderId) {
         });
 
         return {
+          folderId: folder.id,
           topic: folder.name,
+          description: folder.description,
           documents: filesData.files,
         };
       })
@@ -122,7 +124,7 @@ export async function getAllPdfFiles(folderId) {
         // Отримуємо список підпапок
         const res = await drive.files.list({
           q: `'${parentFolderId}' in parents and mimeType='application/vnd.google-apps.folder'`,
-          fields: 'files(id, name)',
+          fields: 'files(id, name, description)',
           pageToken: nextPageToken,
         });
 
@@ -141,7 +143,7 @@ export async function getAllPdfFiles(folderId) {
       // Повертаємо об'єкт з підпапками та PDF-файлами
       const result = {
         folderId: parentFolderId,
-        files: pdfFiles,
+        documents: pdfFiles,
         subfolders: [],
       };
 
@@ -151,7 +153,8 @@ export async function getAllPdfFiles(folderId) {
         result.subfolders.push({
           folderName: folder.name,
           folderId: folder.id,
-          files: subfolderFiles.files,
+          description: folder.description,
+          documents: subfolderFiles.documents,
           subfolders: subfolderFiles.subfolders,
         });
       }
@@ -185,7 +188,7 @@ export async function fetchAllDocxFromClosedSubfolders(folderId) {
 
     // Отримуємо список папок (тем)
     const { data: foldersData } = await drive.files.list({
-      q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.folder'`,
+      q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.folder' and trashed = false`,
       fields: 'files(id, name)',
     });
 
@@ -209,6 +212,36 @@ export async function fetchAllDocxFromClosedSubfolders(folderId) {
     return new NextResponse(JSON.stringify(results), {
       headers: { 'Content-Type': 'application/json' },
     });
+  } catch (error) {
+    return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
+  }
+};
+
+
+
+export async function getSubfolders(folderId) {
+
+  try {
+   
+    const credentials =JSON.parse(process.env.NEXT_PUBLIC_GOOGLE_SERVICE_KEY);
+   
+    const auth = new google.auth.GoogleAuth({
+        credentials,
+        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+    });
+
+
+    const drive = google.drive({ version: 'v3', auth });
+
+    const { data: filesData } = await drive.files.list({
+      q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.folder'`,
+      fields: 'files(id, name)',
+       orderBy: 'createdTime desc'
+    });
+
+    const results = filesData?.files;
+
+    return results
   } catch (error) {
     return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
   }

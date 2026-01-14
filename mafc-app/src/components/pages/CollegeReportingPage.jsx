@@ -1,15 +1,15 @@
 import DocsListSection from "../modules/DocsListSection/DocsListSection";
-
+import EmptyState from "../modules/EmptyState/EmptyState";
 
 
 const CollegeReportingPage = ({docxList})=> {
+if(!docxList || docxList?.length === 0) {return <EmptyState/>};
 
-    const estimate = docxList?.find((el)=> el.topic.toLowerCase() === 'кошторис');
-    const financial_reporting = docxList?.find((el)=> el.topic.toLowerCase() === 'фінансова звітність');
 
     return <>
-    <DocsListSection docs_list={estimate?.documents} title={'Кошторис закладу освіти та всі зміни до нього'}/>
-    <DocsListSection docs_list={financial_reporting?.documents} title={'Фінансова звітність закладу освіти'}/>
+    {docxList && docxList?.map((el)=> {
+        return <DocsListSection docs_list={el?.documents} title={el?.topic}/>
+    })}
     </>
 }
 

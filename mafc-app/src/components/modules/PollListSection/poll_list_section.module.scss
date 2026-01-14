@@ -1,32 +1,17 @@
 @use '../../../globalStyles/variables.scss' as *;
 
-.section{
-    padding: 7rem 0;
-
-    &:nth-child(even){
-      background-color: $primaryBG;
-    }
-};
 
 .main_title{
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 3rem;}
+   @include MainTitle();}
 
 
     .list {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
         padding: 0;
+        
       };
 
-      .list_item{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
       
       .item {
         display: grid;
@@ -45,15 +30,9 @@
             }
         }
 
-        &:last-child{
-            grid-template-columns: 1.5rem 1fr;
-            margin-left: 3.5rem;
-
-            & .icon{
-                width: 1.5rem;
-                height: auto;
-               fill: $light-text-color;
-              }
+        &.result{
+          display: flex;
+          margin-left: 3.5rem; 
         }
       }
 
@@ -62,6 +41,9 @@
         width: 3rem;
         height: auto;
         fill: $secondary-color;
+         &.result{
+            display: none;
+          }
       }
 
 

@@ -1,11 +1,18 @@
-import EducationalProgramPage from "@/components/pages/EducationalProgramPage";
-import { Suspense } from "react";
-import Loader from "@/components/elements/loader/Loader";
+import { redirect } from "next/navigation";
+import { getIntroductoryQuidePageData } from "@/server/strapi/strapi";
+import { notFound } from "next/navigation";
 
-const EducationalAndProfesionalPrograms= ({})=>{
-   
-return <Suspense fallback={<Loader/>}><EducationalProgramPage /></Suspense>
-}
+export const revalidate = 3600;
 
+const EduPrograms = async()=> {
+    const  rootPath='/educational_process/educational_programs'
+    const pageData = await getIntroductoryQuidePageData();
+    if(!pageData?.professions[0] || pageData?.error ){notFound()}
 
-export default EducationalAndProfesionalPrograms;
+    const slug = pageData?.professions[0]?.slug;
+
+    redirect(`${rootPath}/${slug}`)
+
+};
+
+export default EduPrograms;

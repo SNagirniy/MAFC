@@ -2,110 +2,82 @@
 import s from './navigation.module.scss';
 import { v4 } from 'uuid';
 import Link from 'next/link';
+import Burger from '../../../../public/burger.svg';
+import clsx from 'clsx';
+import useWindowSize from '@/hooks/useWindowSize';
+import nav_structure from '@/utils/nav_structure';
 
+import { useState, useEffect,useRef } from 'react';
 
-
-const nav_items =[
-   
-    {title:'Про коледж',
-    menu: [
-            {item: 'регламентуючі документи',
-            link: '/about/regulatory_documents',},
-            {item: 'структура та управління',
-            link: '/about/structure_and_management',},
-            {item: 'циклові (предметні) комісії',
-            link: '/about/subject_commissions',},
-            {item: 'антикорупційна діяльність',
-                link: '/about/anti_corruption_activities'
-            },
-            {item: 'наші партнери',
-                link: '/about/partners',},
-            {item: 'контактна інформація',
-                link: '/about/contacts',},
-            
-         ]
-    },
-    {title: 'Освітній процес',
-     menu: [
-            {item: 'освітньо-професійні програми',
-            link: '/educational_process/educational_programs?profession=crop_production',
-            },
-            {item: 'матеріально-технічна база',
-                link: '/educational_process/material_and_technical_base',},
-            {item: 'моніторинг якості освіти',
-                link: '/educational_process/monitoring_the_quality_of_education',},
-
-            {item: 'практичне навчання',
-                link: '/educational_process/practical_classes',},
-
-            {item: 'дистанційне навчання',
-                link: '/',},
-            {item: 'академічна мобільність',
-                link: '/educational_process/academic_mobility'
-                },
-            {item: 'академічна доброчесність',
-                    link: '/educational_process/academic_integrity'
-                },
-            
-         ]
-    },
-    {title: 'Вступникам',
-     menu: [
-        {item: 'Документи',
-            link: '/entrants/documents',},
-        {item: 'Вступний гід',
-        link: '/entrants/areas_of_educational_activity?profession=crop_production',
-        },
-        {item: 'рейтинг за спеціальностями',
-            link: '/entrants/specialty_rating?profession=crop_production',},
-        {item: 'календар абітурієнта',
-            link: '/entrants/calendar',},
-            {item: 'Результати вступних випробувань',
-                link: '/entrants/admission_results',},
-            {item: 'Накази про зарахування',
-                link: '/entrants/enrollment_orders?basic_education=9',},
-     ]
-    },
-    {title:'Студентське життя ',
-    menu: [{item: 'Розклад і графіки',
-            link: '/student_life/schedules',
-            },
-            {item: 'Напрямки освітньої діяльності',
-            link: '/',
-            },
-            {item: 'Накази про зарахування',
-            link: '/',
-                }
-         ]
-    },
-    {title: 'Документи та звітність',
-    menu: [
-            {item: 'Звіт про діяльність керівника закладу освіти',
-            link: '/documents_and_reporting/director_report',
-            },
-            {item: 'Звітність закладу освіти',
-            link: '/documents_and_reporting/college_reporting',
-                },
-            {item: 'публічні закупівлі',
-                link: '/documents_and_reporting/public_procurement',},
-            {item: 'благодійна допомога',
-                link: '/documents_and_reporting/charitable_assistance',}
-         ]
-    },
-
-];
 
 
 const Navigation =()=> {
+const[isMenuOpen, setIsMenuOpen]= useState(false);
+const [openDropdown, setOpenDropdown] = useState(null);
+ const {width}= useWindowSize();
+
+const ref = useRef();
+
+const toggleMenu = ()=> {
+    setIsMenuOpen(!isMenuOpen)
+};
+  const toggleDropdown = (title) => {
+    setOpenDropdown(openDropdown === title ? null : title);
+  };
+
+
+
+const onClick = ()=> {
+    setIsMenuOpen(false)
+    setOpenDropdown(null)
+}
+
+
+useEffect(() => {
+      const handleClick = event => {
+        const { target } = event;
+        if (target instanceof Node && !ref.current?.contains(target)) {
+          isMenuOpen && setIsMenuOpen(false);
+        }
+      };
+  
+      window.addEventListener('click', handleClick, true);
+  
+      return () => {
+        window.removeEventListener('click', handleClick, true);
+      };
+    }, [isMenuOpen]);
+
+    useEffect(()=> {
+        if(width >=1280) { setIsMenuOpen(false)}
+    }, [width]);
+
 return(
-    <nav className={s.nav_box}>
+    <nav ref={ref} className={s.nav_box}>
+        <button 
+        aria-expanded={isMenuOpen} 
+        aria-label="Відкрити меню" 
+        onClick={toggleMenu} 
+        className={ clsx(s.burger,{[s.open]:isMenuOpen})}>
+            <Burger className={ clsx(s.burger_btn)}/>
+        </button>
+       
         <ul className={s.list}>
-        {nav_items?.map(({title, menu})=>{ return (
+        {nav_structure?.map(({title, menu})=>{ return (
             <li key={v4()} className={s.list_item}>
-            <a className={s.triger}>{title}</a>
-            <ul className={s.dropdown}>
-                {menu?.map((item)=> <li key={item.item}><Link className={s.link} href={item.link}>{item.item}</Link></li>)}
-            </ul>
+                <button 
+                onClick={(e) => {e.stopPropagation(),toggleDropdown(title)}} 
+                aria-expanded={openDropdown === title}
+                aria-haspopup="true"
+                className={s.triger}>{title}
+                </button>
+                <ul role="menu" className={clsx(s.dropdown, {
+                [s.open]: openDropdown === title
+              })}>
+                {menu?.map((item)=> <li role="menuitem" key={item.item}>
+                <Link onClick={onClick} className={s.link} href={item.link}>{item.item}</Link>
+                    </li>)}
+                </ul>
             </li>)})}
         </ul>
     </nav>

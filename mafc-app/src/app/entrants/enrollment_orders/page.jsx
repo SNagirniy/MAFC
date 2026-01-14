@@ -2,8 +2,11 @@ import EnrollmentOrdersPage from "@/components/pages/EnrollmentOrdersPage";
 import { Suspense } from "react";
 import Loader from "@/components/elements/loader/Loader";
 import { getAllPdfFiles } from "@/server/google/drive";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/entrants/enrollment_orders?basic_education=9');
+
 
 const EnrollmentOrders = async()=> {
 

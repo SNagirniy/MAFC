@@ -1,20 +1,10 @@
 import s from './speciality_rating_list.module.scss';
 import { v4 } from 'uuid';
 import DocIcon from '../../../../public/doc_icon.svg';
-import SectionLoader from '@/components/elements/SectionLoader/SectionLoader';
-
-
-
-
- 
-
 
 
 const SpecialityRatingList = ({speciality_rating_list})=> {
-   
-
-
-    
+if(!speciality_rating_list || speciality_rating_list.length === 0) return null;
 
    return (<div className={s.wrapper}>
            
@@ -22,11 +12,11 @@ const SpecialityRatingList = ({speciality_rating_list})=> {
             <ul className={s.list}>
                 {
                     speciality_rating_list?.map((el)=> {
-                      const docx = el?.files;
-                      if(docx.length === 0) return null;
+                      const docx = el?.documents;
+                      if(docx?.length === 0) return null;
                         return (
                             <li key={v4()} className={s.list_item}>
-                               <h4 className={s.year}>{el?.folderName} рік</h4>
+                               <h4 className={s.year}>{el?.topic} рік</h4>
 
                                <ul className={s.list_item}>
                                 {docx.map((el)=>{

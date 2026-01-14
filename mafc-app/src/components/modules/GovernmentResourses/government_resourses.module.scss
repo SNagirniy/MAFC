@@ -1,9 +1,5 @@
 @use '../../../globalStyles/variables.scss' as *;
 
-.section{
-    padding: 8rem 0;
-    background-color: $section_bg;
-};
 
 .list{
     display: flex;
@@ -22,12 +18,16 @@
     flex-direction: row;
     align-items: center;
     height: 5rem;
-    max-width: 25%;
+   
     padding: 0 0.5rem;
     background-color: $primaryBG;
     border-radius: 1rem;
     box-shadow: $box_shadow;
     transition: transform $cubic;
+
+    @include for-size('tablet'){
+     max-width: 25%;
+    }
 
 
     &:hover{

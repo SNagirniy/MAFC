@@ -2,11 +2,13 @@ import Psyco from '../../public/psyco.svg';
 import Met_cab from '../../public/met_cab.svg';
 import Calendar from '../../public/calendar.svg';
 import Museum from '../../public/museum.svg';
+import StopCorruption from '../../public/stop_corruption.svg';
+import Discussion from '../../public/discussion.svg';
 
 
 const quickLinks =[
-    {title: 'сайт психолога',
-        link: 'http://matbnau.in.ua/stud/zamin_rozkl/zminy_rozkladu.pdf',
+    {title: 'сторінка психолога',
+        link: 'https://sites.google.com/matbnau.in.ua/mapcpsychologist/',
         icon: (style)=> <Psyco className={style}/>
         },
         {title: 'сайт музею історії коледжу',
@@ -20,6 +22,14 @@ const quickLinks =[
     {title: 'розклад занять',
         link: '/student_life/schedules#schedule_changes',
         icon: (style)=> <Calendar className={style}/>
+        },
+          {title: 'повідомлення про корупцію',
+        link: '/about/anti_corruption_activities#stop_corruption_anchor',
+        icon: (style)=> <StopCorruption className={style}/>
+        },
+         {title: 'на обговоренні',
+        link: '/discussion',
+        icon: (style)=> <Discussion className={style}/>
         }
 ];
 

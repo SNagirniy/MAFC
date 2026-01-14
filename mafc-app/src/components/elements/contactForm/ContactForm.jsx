@@ -6,7 +6,7 @@ import SectionLoader from '../SectionLoader/SectionLoader';
 import { useTransition } from 'react';
 
 
-const ContactForm = ()=> {
+const ContactForm = ({formTitles, page})=> {
 
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
@@ -33,16 +33,19 @@ const ContactForm = ()=> {
             message: message
         };
 
+        const mailData={userData, page}
+
         startTransition(async()=> { 
             try {
                 const res = await fetch('/api/contacts', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json', },
-                    body: JSON.stringify(userData), });
+                    body: JSON.stringify(mailData), });
     
                 const result = await res.json();
                 if(result?.ok){toast.success("Ваше повідомлення отримано. Очікуйте на відповідь.")}
+                if(!result?.ok) {throw new Error(result)}
             } catch (error) {
             toast.error('Щось пішло не так... Ми вже працюємо над вирішенням проблеми.')
             } finally{resetFields()}})
@@ -63,8 +66,8 @@ const ContactForm = ()=> {
            {isPending && <div className={s.overlay}>
                 <SectionLoader/>
             </div>} 
-            <p>Маєте запитання або пропозиції?</p>
-            <h3>Напишіть нам!</h3>
+            {formTitles?.subtitle && <p>{formTitles?.subtitle}</p>}
+           {formTitles?.title && <h3>{formTitles?.title}</h3>}
         <form onSubmit={handleSubmit} className={s.form}>
             <label className={s.label}>Ім'я
                                 <input 

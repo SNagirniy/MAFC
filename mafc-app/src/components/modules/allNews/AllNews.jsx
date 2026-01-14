@@ -1,38 +1,35 @@
-import SectionWrapper from "@/components/layouts/SectionWrapper";
 import s from './allnews.module.scss';
 import MainCard from "@/components/elements/MainCard/MainCard";
-import truncate from "@/utils/turncate";
-import FakeNews from "@/utils/fakeNews";
+import formatPreviewText from "@/utils/formatted_text";
+import extractImageSourcesFromHTML from "@/utils/extractImageSourcesFromHTML";
 
 
-const AllNews = ()=> {
+
+const AllNews = ({news_list})=> {
     return (
-        <section className={s.section}>
-            <SectionWrapper>
-                <div className={s.center_box}>
-                    <div className={s.head_container}>
-                        <h2 className={s.title}>НАШ ГЕКТАР НОВИН</h2>
-                        <p >КОЖЕН ДЕНЬ ЗАСІВАЄМО ІНФОРМАЦІЙНЕ ПОЛЕ!</p>
-                    </div>
-                
                     <ul className={s.news_list}>
-                        {FakeNews.map((el, i)=> { 
+                        {news_list?.map((el, i)=> { 
+                            const {date, title, article, images, videos, category, documentId} = el;
+                            const imageFormats = images? images[0]?.formats : null;
+                           const videoThunbnail = videos.length > 0? [`https://img.youtube.com/vi/${videos[0]?.video_id}/hqdefault.jpg`]: [];
+                           const imagesFromHTML = extractImageSourcesFromHTML(article);
+
+                            const posterUrl = [...videoThunbnail, ... imagesFromHTML];
                             return (
-                            <li key={el.slug}>
+                            <li key={documentId}>
                              <MainCard 
-                                date={el.createdAt}
-                                title={el.title}
-                                description={truncate(el.article, 110)}
-                                imageUrl={el.imageUrl}
-                                slug={el.slug}
+                                date={new Date(date).toLocaleDateString('uk-UA')}
+                                title={title}
+                                description={formatPreviewText(article)}
+                                formats={imageFormats}
+                                imageUrl={posterUrl[0]}
+                                slug={category.code}
+                                documentId={documentId}
+                                category_desc={category.description}
                                 />
                             </li>
                                 )})}
                     </ul>
-
-                </div>
-            </SectionWrapper>
-        </section>
     )
 };
 

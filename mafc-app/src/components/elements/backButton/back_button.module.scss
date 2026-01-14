@@ -1,0 +1,26 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.button{
+    position:fixed;
+    top: 10rem;
+    left: 1rem;
+    padding: 0.5rem;
+    border: 1px solid $secondary-color;
+    border-radius: 1rem;
+    background-color: $light-text-color;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: $secondary-color;
+    cursor: pointer;
+    z-index: 100;
+    transition: all $cubic;
+
+    &:hover,
+    &:focus{
+        color: $light-text-color;
+        border: 1px solid $light-text-color;
+        background-color: $secondary-color;
+    }
+    
+}

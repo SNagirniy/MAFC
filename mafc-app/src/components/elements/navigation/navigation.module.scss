@@ -3,51 +3,44 @@
 .nav_box{
     position: static;
 }
-.list{
+
+
+ .burger{
+  display: block;
+  cursor: pointer;
+
+  &.open .burger_btn{
+    fill: $secondary-color;
+  }
+  
+    &.open ~.list{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    color: $primary-text-color;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 600;
-    align-items: flex-start;
-    text-align: center;
-   
-};
-
-
-.list_item{
-position: relative;
-display: inline-block;
-
-  &:hover .dropdown{
-    display: block;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
     opacity: 1;
+    right: 0;
   }
 
-  &:last-child{
-    & .dropdown{
-        right: 0;
-    }
+  @include for-size('desktop'){
+    display: none;
   }
 }
 
-.triger{
-    display: block;
-    color: $primary-text-color;
-    padding: 1.5rem 0;
-    text-transform: uppercase;
-    cursor: pointer;
+.burger_btn{
+  fill: $second-text-color;
+  width: 3rem;
+  height: 3rem;
 
-    transition: color $cubic;
-    &:hover{
-        color: $secondary-color;
-    }
-         
+  transition: fill $cubic;
+   &:hover,
+   &:focus{
+    fill: $secondary-color;
+   }
 }
 
-.dropdown{
+
+.list{
     display: none;
     position: absolute;
     top: 100%;
@@ -56,17 +49,116 @@ display: inline-block;
     padding: 1rem;
     border-radius: 0.5rem;
     width: max-content;
+    
     box-shadow:$box_shadow;
     z-index: 1;
 
     transition: opacity $cubic;
+
+@include for-size("desktop"){
+
+    display: flex;
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    opacity: 1;
+    border-radius: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: $primary-text-color;
+   
+    font-size: 0.9rem;
+    font-weight: 600;
+    
+    text-align: center;}
+   
+};
+
+
+.list_item{
+position: relative;
+display: inline-block;
+
+ 
+
+  @include for-size('desktop'){
+
+ &:last-child,
+ &:nth-child(5){
+    & .dropdown{
+      left: auto;
+        right: 0;
+    }
+  }
+  }
+}
+
+
+
+.triger{
+    display: block;
+    color: $primary-text-color;
+    padding: 1rem 0;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    transition: all $cubic;
+    &:hover,
+    &:focus{
+        color: $secondary-color;
+        background-color: #fff;
+        box-shadow: $card-shadow;
+
+
+        @include for-size('desktop'){
+           background-color: transparent;
+            box-shadow: none;
+        }
+    }
+
+    @include for-size('tablet'){
+       padding: 1.5rem 0;
+    }
+         
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    opacity: 0;
+    background-color: $secondaryBG;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+    box-shadow:$box_shadow;
+    z-index: 1;
+    transition: opacity $cubic;
+
+    @include for-size('tablet'){
+      width: max-content;
+    }
+    @include for-size('desktop'){
+      left: 0;
+      width: max-content;
+    }
+
+    &.open{
+       display: block;
+    opacity: 1;
+    }
+
   }
 
 
   .link{
     display: block;
     color: $primary-text-color;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     text-transform: uppercase;
     text-align: left;
     cursor: pointer;

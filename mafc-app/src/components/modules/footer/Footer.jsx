@@ -1,12 +1,12 @@
 import s from './footer.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
-import Link from 'next/link';
-import Image from 'next/image';
 import Social from '@/components/elements/social/Social';
-import Contacts from '@/components/elements/contacts/Contacts';
 import UsefulLinks from '@/components/elements/usefulLinks/UsefulLinks';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const Footer = ()=> {
+
+const Footer = ({contactsData})=> {
 
 
     const year = new Date().getFullYear();
@@ -16,27 +16,29 @@ const Footer = ()=> {
         <footer className={s.footer}>
             <SectionWrapper>
                 <div className={s.grid}>
-                    <div className={s.logo_box}>
-                        <Link className={s.link} href='/'>
-                            <Image
+                     <Link className={s.link} href='/'>
+                     <div className={s.thumb}>
+                          <Image
                             width={256}
                             height={167}
                             src={'/logo.png'}
                             className={s.logo}
-                            alt="MAFC logo image"/>
-                             <h3 className={s.title}>
-                            ВСП "Маслівський аграрний <br/>фаховий коледж <br/>ім.П.Х.Гаркавого БНАУ"
-                        </h3>
-                        </Link>
-                        <Social isFooter={true}/>
-                    </div>
+                            alt="MAFC logo image"/></div>
+                     <div className={s.text_container}>
+                         <p className={s.text}>{contactsData?.sub_title}</p>
+                        </div>
+                    </Link>
+
+                        
                         <UsefulLinks/>
-                        <Contacts/>
+                        <Social isFooter={true}/>
+                       
                 </div>
              
             </SectionWrapper>
             <div className={s.footter_botom}>
-                <p className={s.sighn}>&copy;<span>{year}</span>ВСП "Маслівський аграрний фаховий коледж ім.П.Х. Гаркавого БНАУ"</p>
+                <p className={s.sighn}>&copy;<span>{year}</span>{contactsData?.sub_title}</p>
+                <p className={s.sighn}>Весь контент доступний на умовах ліцензії <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Commons Attribution 4.0 International license</a></p>
             </div>
         </footer>
     )

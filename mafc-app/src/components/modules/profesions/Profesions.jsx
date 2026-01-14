@@ -2,13 +2,9 @@ import s from './profesions.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
 import ProfesionCard from '@/components/elements/profesionCard/ProfesionCard';
 import { v4 } from 'uuid';
-import professions from '@/utils/professions';
 
+const Profesions = ({professionsData})=> {
 
-
-const Profesions = ()=> {
-
-    const professions_list= Object.keys(professions);
 
     return (
         <section className={s.section}>
@@ -20,9 +16,9 @@ const Profesions = ()=> {
                     </div>
                 
                     <ul className={s.list}>
-                        {professions_list.map((el,i)=>{
+                        {professionsData?.map((el,i)=>{
                            
-                            const {title, code, educational_program,discipline,description,image} = professions[el]
+                            const {title, code, educational_program,discipline,description,image, slug} = el;
                             const isRightAlihgn = i%2 === 0? false : true;
 
                                 return(
@@ -33,9 +29,9 @@ const Profesions = ()=> {
                                         educational_program={educational_program}
                                         discipline={discipline}
                                         description={description}
-                                        image={image}
+                                        image={image.url}
                                         isRightAlihgn={isRightAlihgn}
-                                        slug={el}
+                                        slug={slug}
                                         />
                                     </li>
                                 )

@@ -1,7 +1,9 @@
 import AdmissionResultsPage from "@/components/pages/AdmissionResultsPage";
 import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/entrants/admission_results');
 
 const AdmissionResults = async()=>{
 

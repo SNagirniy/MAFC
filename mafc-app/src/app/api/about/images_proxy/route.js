@@ -23,7 +23,7 @@ export async function GET(req, res) {
         status: 200,
         headers: {
           'Content-Type': 'image/jpeg',
-          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=43200', // Кеш 1 день
+          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=43200',
         },
       });
     } catch (error) {

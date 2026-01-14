@@ -2,21 +2,25 @@
 
 .link_container{
    
-    padding:0 3rem;
-    background-color: #fff;
+    padding:0;
+    background-color:$section_bg;
     box-shadow: $box_shadow;
 
 };
 
 .link_list{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @include for-size('tablet'){
+        display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    
-    
+justify-content: space-evenly }
 };
 
 .link{
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,6 +32,7 @@
     color: $second-text-color;
     transition: transform $cubic, text-shadow $cubic, color $cubic;
     text-transform: uppercase;
+    text-align: center;
 
 
     &::first-letter{

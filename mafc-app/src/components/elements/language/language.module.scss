@@ -57,3 +57,7 @@ display: block;
       }
   }
   
+
+  .sr_only{
+    @include visually_hiden()
+  }

@@ -5,8 +5,13 @@
 
 .grid_container{
     display: grid;
-    grid-template-columns: 2fr 3fr;
-    box-shadow: $box_shadow;}
+    grid-template-columns:auto;
+    box-shadow: $box_shadow;
+
+    @include for-size('desktop'){
+grid-template-columns: 2fr 3fr;
+    }
+}
 
 .contacts_side{
     display: flex;
@@ -17,6 +22,18 @@
     color: $light-text-color;
     font-size: 0.8rem;
     font-weight: 300;
+
+   
+       & >div{
+        color: $light-text-color;
+        & > ul > li{
+        line-height: 0.9;
+        &::marker {
+            color: $light-text-color;}
+       }
+       } 
+     
+
 
     & h3{
         text-align: center;

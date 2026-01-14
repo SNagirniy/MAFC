@@ -1,29 +1,27 @@
 @use '../../../globalStyles/variables.scss' as *;
 
-.section{
-    padding: 7rem 0;
-
-    &:nth-child(even){
-      background-color: $primaryBG;
-    }
-};
 
 .main_title{
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 5rem;
+   @include MainTitle();
    }
 
 
     .thumb{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-       height: 75vh;}
+          
+      overflow: hidden;           
+      width: 100%;
+
+      @include for-size('desktop'){
+        height: 75vh;
+      }
+
+  
+   }
 
     .image{
-        height: 100%;
-        width: auto;
-        object-fit: cover;
-    }
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+       }

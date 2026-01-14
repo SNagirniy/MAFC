@@ -4,29 +4,18 @@ import Link from 'next/link';
 
 
 const links = [{
-    path: '/',
-    title: 'lorem ipsum'
+    path: '/entrants/documents',
+    title: 'Вступний гід'
 },
 {
-    path: '/',
-    title: 'lorem ipsum'
+    path: '/news',
+    title: 'Новини'
 },
 {
-    path: '/',
-    title: 'lorem ipsum'
+    path: '/about/contacts',
+    title: 'контактна інформація'
 },
-{
-    path: '/',
-    title: 'lorem ipsum'
-},
-{
-    path: '/',
-    title: 'lorem ipsum'
-},
-{
-    path: '/',
-    title: 'lorem ipsum'
-}]
+]
 
 const UsefulLinks = ()=> {
 

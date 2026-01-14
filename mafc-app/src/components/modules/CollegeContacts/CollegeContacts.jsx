@@ -1,66 +1,53 @@
 import  s from './college_contacts.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
-import collegeContacts from '@/utils/college_contacts';
+
 import { v4 } from 'uuid';
 
 import ContactForm from '@/components/elements/contactForm/ContactForm';
 import Social from '@/components/elements/social/Social';
 
+const PhoneList = ({phoneArr}) =>{
 
-const CollegeContacts = ()=> {
-    const {director, deputy, contact_person, admissions_committee, info} = collegeContacts;
+    return (phoneArr?.map((phone) => 
+            <a href={`tel:${phone}`}>{phone}</a>))};
 
-    const contactPersons= [director, deputy, contact_person];
+
+const CollegeContacts = ({contactsData, isSocialShow = true})=> {
+if(!contactsData) return null;
+
+    const {sub_title, contact, formTitles, markdown, side_title, page} = contactsData;
+
 
     return(
-        <section className={s.section}>
+        <section id='stop_corruption_anchor' className={s.section}>
             <SectionWrapper>
                 <div className={s.grid_container}>
                     <div className={s.contacts_side}>
-                        <h3 className={s.contacts_side_title}>Наші контакти</h3>
-                        <h4>{collegeContacts?.title.uk}</h4>
-                        <p className={s.adress}>
-                            <span>адреса:</span>
-                            <span>{collegeContacts?.adress.uk}</span>
-                        </p>
+                        <h3 className={s.contacts_side_title}>{side_title}</h3>
+                        {sub_title && <h4>{sub_title}</h4>}
+                        {markdown && <div className="ck-content" dangerouslySetInnerHTML={{ __html: markdown }}></div>}
 
                         <ul className={s.contact_persons}>
-                            {contactPersons?.map((item)=> {
+                            {contact?.map((item)=> {
+
+                                const {name, position, phone, mail, adress}= item;
                                 return (
                                     <li key={v4()}>
                                         <p className={s.position}>
-                                        <span>{item.position}</span>
-                                        <span>{item.name}</span>
-                                         <a href={`tel:${item.phone}`}>{item.phone}</a>
-                                         <a href={`mailto:${item.mail}`}>{item.mail}</a>
+                                        <span>{position}</span>
+                                        {adress&& <span>{adress}</span>}
+                                        {name && <span>{name}</span>}
+                                        {phone && <PhoneList phoneArr={phone}/>}
+                                        {mail && <a href={`mailto:${mail}`}>{mail}</a>}
                                         </p>
                                     </li>
                                 )
                             })}
                             
                         </ul>
-                        <div className={s.contact_persons}>
-                            <p className={s.position}>
-                            <span>приймальна комісія</span>
-                            <a href={`tel:${admissions_committee.phone}`}>{admissions_committee.phone}</a>
-                            <a href={`tel:${admissions_committee.mobile}`}>{admissions_committee.mobile}</a>
-                            </p>
-                        </div>
-
-                        <div className={s.contact_persons}>
-                            <p className={s.position}>
-                            <span>телефони для довідок</span>
-                            {info.map(tel=> <a  key={v4()} href={`tel:${tel}`}>{tel}</a>)}
-                            </p>
-                        </div>
-
-                        <Social isFooter={true}/>
-
+                       {isSocialShow && <Social/>}
                     </div>
-
-                    <ContactForm/> 
-                    
-
+                    <ContactForm page={page} formTitles={formTitles}/> 
                 </div>
 
             </SectionWrapper>

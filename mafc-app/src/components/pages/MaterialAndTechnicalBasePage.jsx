@@ -1,15 +1,15 @@
 import AccordionComponent from "../modules/Accordion/Accordion";
 import GallerySection from "../modules/GallerySection/GallerySection";
+import RteTextBox from "../elements/rteTextBox/RteTextBox";
+import EmptyState from "../modules/EmptyState/EmptyState";
 
-const MaterialAndTechnicalBasePage = ({docxList})=> {
-
-        const PDFDocuments = docxList?.filter(el => el?.topic === 'матеріально-технічне забезпечення закладу освіти');
-        const images = docxList?.flatMap((el)=> {if(el?.topic !== "матеріально-технічне забезпечення закладу освіти"){return el?.documents};  });
-
+const MaterialAndTechnicalBasePage = ({docxList, characteristic})=> {
+if(!characteristic && !docxList) return <EmptyState/>;
 
 return <>
-        <AccordionComponent data={PDFDocuments} title={'матеріально-технічна база'}/>
-        <GallerySection imageArr={images}/>
+        <AccordionComponent data={docxList} title={'матеріально-технічна база'}/>
+        <RteTextBox markdown={characteristic?.characteristic}/>
+        <GallerySection imageArr={characteristic?.images}/>
         </>
 
 }

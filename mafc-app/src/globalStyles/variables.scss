@@ -65,3 +65,16 @@ $cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 
 }
+
+@mixin MainTitle(){
+   text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+
+  @include for-size('desktop'){
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+}

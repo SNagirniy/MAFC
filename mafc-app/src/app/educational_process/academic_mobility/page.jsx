@@ -1,7 +1,10 @@
 import AcademicMobilityPage from "@/components/pages/AcademicMobilityPage";
 import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+
+export const metadata = generateStaticPageMeta('/educational_process/academic_mobility');
 
 const AcademicMobility = async()=>{
 

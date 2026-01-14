@@ -1,15 +1,20 @@
 import s from './organizations_structure.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
+import ResponsiveImage from '@/components/elements/responsiveImage/ResponsiveImage';
 
-const OrganizationsStructure = ({structure_image})=> {
+const OrganizationsStructure = ({structure_image_obj})=> {
 
-    const ImageData = structure_image[0];
+    const {formats, name, url, } = structure_image_obj
     return(
         <section className={s.section}>
             <SectionWrapper>
                 <h3 className={s.main_title}>Організаційна структура</h3>
                 <div className={s.thumb}>
-                    <img className={s.image} src={`/api/about/images_proxy?id=${ImageData.id}`} alt="structure" loading='lazy'/>
+                    <ResponsiveImage 
+                    formats={formats}
+                    singleImgUrl={url}
+                    alt={name}
+                    className={s.image}/>
                 </div>
             </SectionWrapper>
         </section>

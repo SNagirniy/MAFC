@@ -3,11 +3,13 @@
 
 const PASS = process.env.EMAIL_SERVICE_PASS;
 const EMAIL = process.env.EMAIL_SERVICE;
-const recipient = process.env.RECIPIENT_EMAIL;
+const defaultRecipient = process.env.RECIPIENT_EMAIL;
+const StopCorruptionRecipient = process.env.STOP_CORRUPTION_RECIPIENT;
 
 
 
- export const sendEmail = async(messageData)=> {
+ export const sendEmail = async(mailData)=> {
+ 
 
     const transporter = createTransport({
         port: 465,
@@ -18,10 +20,10 @@ const recipient = process.env.RECIPIENT_EMAIL;
         },
         secure: true,
       });
+      const recipient = mailData?.page === 'contact'? defaultRecipient : StopCorruptionRecipient;
+      const {name, email, message} = mailData?.userData;
 
-      const {name, email, message} = messageData;
-
-      const mailData = {
+      const sendData = {
         from: EMAIL,
         to: recipient,
         subject: `Повідомлення від: ${name}, ${email}`,
@@ -30,10 +32,8 @@ const recipient = process.env.RECIPIENT_EMAIL;
         ${email}</p>`
       };
 
-  
-
     try {
-      const res = await transporter.sendMail(mailData);
+      const res = await transporter.sendMail(sendData);
       return res;
       } catch (error) {
         throw error;

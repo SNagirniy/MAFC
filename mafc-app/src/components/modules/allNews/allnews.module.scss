@@ -1,10 +1,5 @@
 @use '../../../globalStyles/variables.scss' as *;
 
-.section{
-    padding: 7rem 0;
-    background-color: $section_bg;
-};
-
 .center_box{
 display: flex;
 flex-direction: column;
@@ -20,11 +15,21 @@ align-items: center;
 }
 
 .title{
+    font-size: 2rem;
+    @include for-size('desktop'){
     font-size: 3rem;
+    }
 }
 
 .news_list{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);;
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+
+    @include for-size('tablet'){
+        grid-template-columns: repeat(2, 1fr);
+    }
+      @include for-size('desktop'){
+        grid-template-columns: repeat(4, 1fr);
+    }
 };

@@ -2,16 +2,8 @@
 
 
 
-.section{
-    padding: 7rem 0;
-};
-
-
 .main_title{
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
+   @include MainTitle();
 };
 
 .container{
@@ -23,7 +15,7 @@
 
 .radio_group{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 1rem;
 };
 

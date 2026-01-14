@@ -1,9 +1,5 @@
 @use '../../../globalStyles/variables.scss' as *;
-.section{
-   
-    padding: 8rem 0;
-   
-}
+
 
 .center_box{
     display: flex;
@@ -18,10 +14,14 @@
         gap: 1rem;
         align-items: center;
         text-transform: uppercase;
+        text-align: center;
     }
     
     .title{
+       font-size: 2rem;
+       @include for-size('desktop'){
         font-size: 3rem;
+       }
     }
 
 .list{
@@ -33,9 +33,11 @@
 }
 
 .item{
-   display: flex;
-   &:nth-child(even){
+   display: block;
+@include for-size('desktop'){
+ &:nth-child(even){
+    display: flex;
     justify-content: flex-end;
    }
-  
+}
 }

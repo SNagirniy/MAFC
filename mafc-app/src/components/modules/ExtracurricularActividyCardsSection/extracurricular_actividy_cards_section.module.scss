@@ -1,0 +1,78 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.list{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    @include for-size('tablet'){
+         grid-template-columns: 1fr 1fr;
+    };
+
+      @include for-size('desktop'){
+         grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+.list li {
+  height: 100%;
+}
+
+.thumb{
+position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; // або 4 / 3, 1 / 1
+  overflow: hidden;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.link{
+display: flex;
+flex-direction: column;
+height: 100%;
+font-size: 1.2rem;
+font-weight: 500;
+text-align: center;
+align-items: center;
+
+border-radius: 0.5rem;
+box-shadow: $card-shadow;
+
+overflow: hidden;
+
+cursor: pointer;
+
+transition: transform $cubic;
+
+&:hover,
+&:focus{
+transform: scale(1.05);
+}
+};
+
+
+
+.title_box{
+    padding: 12px 14px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.activity_title {
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -3,14 +3,19 @@ import News from "../modules/news/News";
 import GovernmentResourses from "../modules/GovernmentResourses/GovernmentResourses";
 import Profesions from "../modules/profesions/Profesions";
 import QuickAccessPanel from "../modules/quickAccessPanel/QuickAccessPanel";
+import GraduatesSection from "../modules/GraduatesSection/GraduatesSection";
 
-const HomePage = ()=>{
+const HomePage = ({news, pageData, graduators})=>{
+
+
+
 return (
     <>
-    <Hero/>
+    <Hero hero_data={pageData?.hero}/>
     <QuickAccessPanel/>
-    <Profesions/>
-    <News title={'НАШ ГЕКТАР НОВИН'} subtitle={'КОЖЕН ДЕНЬ ЗАСІВАЄМО ІНФОРМАЦІЙНЕ ПОЛЕ!'}/>
+    {pageData?.professions && <Profesions professionsData = {pageData?.professions}/>}
+    {news && <News newsList={news} title={'НАШ ГЕКТАР НОВИН'} subtitle={'КОЖЕН ДЕНЬ ЗАСІВАЄМО ІНФОРМАЦІЙНЕ ПОЛЕ!'} category={'all'}/>}
+    {graduators && <GraduatesSection graduators_list={graduators}/>}
     <GovernmentResourses/>
     </>
 )
