@@ -18,13 +18,13 @@ const GraduatesSection = ({title = "наші випускники", graduators_l
               
                <div className={s.gallery_box}>
             <Swiper
-            navigation={true}
+            navigation={false}
             pagination={true}
             mousewheel={true}
             keyboard={true}
             modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
              autoplay={{
-                  delay: 3500,
+                  delay: 5500,
                   disableOnInteraction: false, }}
             className={s.swiper}
             >

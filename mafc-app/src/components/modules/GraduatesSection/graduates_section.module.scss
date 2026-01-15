@@ -18,11 +18,18 @@ box-shadow: $card-shadow;
 
 .article{
    display: grid;
-   grid-template-columns: 1fr 2fr;
+   grid-template-columns: 1fr;
+   
+   gap: 1rem;
+   width: 100%;
+  justify-self: center;
+ 
+  @include for-size('tablet'){
+    grid-template-columns: 1fr 2fr;
    gap: 2rem;
    width: 80%;
   justify-self: center;
- 
+  }
 }
 
 .thumb{
