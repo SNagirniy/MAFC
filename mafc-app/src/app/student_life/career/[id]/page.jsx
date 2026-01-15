@@ -3,7 +3,7 @@ import { getCompaniesList, getCompanyData } from "@/server/strapi/strapi";
 import BackButton from "@/components/elements/backButton/BackButton";
 
 export const revalidate = 3600;
-export const dynamicParams = true;
+
 
 
   export async function generateStaticParams() {

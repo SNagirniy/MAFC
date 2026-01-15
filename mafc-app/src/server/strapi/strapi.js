@@ -9,7 +9,7 @@ export async function getEducationalCalendar() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
 
@@ -30,7 +30,7 @@ export async function getMaterialCharacteristic() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
     if(!res) return null;
@@ -64,7 +64,7 @@ export async function getNMTData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+    
     });
 
      if(!res) return null;
@@ -104,7 +104,7 @@ export async function getDistanceLearningPage() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -127,7 +127,7 @@ export async function getYourSafetyPageData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+  
     });
 
      if(!res) return null;
@@ -151,7 +151,7 @@ export async function getDomitoryPageData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -185,7 +185,7 @@ export async function getIntroductoryQuidePageData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+    
     });
 
      if(!res) return null;
@@ -219,7 +219,7 @@ export async function getEducationalProgramPageData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+    
     });
 
      if(!res) return null;
@@ -258,7 +258,7 @@ export async function getHomePageData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -298,7 +298,7 @@ export async function getExtracurricularPageData() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -328,7 +328,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -363,7 +363,7 @@ export async function getContactsData(pageName) {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -385,7 +385,7 @@ export async function getSubjectCommissionsList() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+    
     });
 
      if(!res) return null;
@@ -422,7 +422,7 @@ export async function getSubjectCommissionData(slug) {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+  
     });
 
      if(!res) return null;
@@ -458,7 +458,7 @@ export async function getAdministration() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -485,7 +485,7 @@ export async function getRegulatoryDocumentsPage() {
       headers: {
         'Content-Type': 'application/json',
       },
-    cache: 'no-store'
+   
     });
 
      if(!res) return null;
@@ -530,7 +530,7 @@ export async function getNews(slug, page = 1, pageSize = 4) {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+     
     });
 
     if (!res.ok) {
@@ -567,7 +567,7 @@ export async function getAllNews() {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+     
     });
 
     if (!res.ok) {
@@ -613,7 +613,7 @@ export async function getTotalPages(category, page = 1, pageSize = 4) {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -644,7 +644,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -676,7 +676,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -706,7 +706,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -743,7 +743,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -774,7 +774,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -803,7 +803,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -836,7 +836,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -872,7 +872,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -901,7 +901,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -930,7 +930,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -960,7 +960,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -990,7 +990,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
@@ -1023,7 +1023,7 @@ try {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store',
+      
     });
 
     if (!res.ok) {
