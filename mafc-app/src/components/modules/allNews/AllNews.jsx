@@ -9,7 +9,7 @@ const AllNews = ({news_list})=> {
     return (
                     <ul className={s.news_list}>
                         {news_list?.map((el, i)=> { 
-                            const {date, title, article, images, videos, category, documentId} = el;
+                            const {date, title, article, images, videos, categories, documentId} = el;
                             const imageFormats = images? images[0]?.formats : null;
                            const videoThunbnail = videos.length > 0? [`https://img.youtube.com/vi/${videos[0]?.video_id}/hqdefault.jpg`]: [];
                            const imagesFromHTML = extractImageSourcesFromHTML(article);
@@ -23,9 +23,8 @@ const AllNews = ({news_list})=> {
                                 description={formatPreviewText(article)}
                                 formats={imageFormats}
                                 imageUrl={posterUrl[0]}
-                                slug={category.code}
                                 documentId={documentId}
-                                category_desc={category.description}
+                                categories={categories}
                                 />
                             </li>
                                 )})}

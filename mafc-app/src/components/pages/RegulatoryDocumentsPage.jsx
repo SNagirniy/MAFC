@@ -1,17 +1,27 @@
 import LicensesAndCertificatesSection from "../modules/LicensesAndCertificatesSection/LicensesAndCertificatesSection";
 import AccordionComponent from "../modules/Accordion/Accordion";
+import PageWrapper from "../layouts/PageWrapper";
+import { v4 } from "uuid";
 
 
-const RegulatoryDocumentsPage = ({docxList, pageData})=> {
+const RegulatoryDocumentsPage = ({foldersList,page_title,license,document_link_list})=> {
 
-     const docxToRender = [...(docxList ?? [])].sort(
+    const regulatoryAndLegalActs = {id:v4(),topic: 'Зовнішні нормативно-правові акти',documents: (document_link_list?? [])};
+   
+
+     const sortedFolders = [...(foldersList ?? [])].sort(
   (a, b) => a?.description - b?.description);
 
+  const docxToRender= [regulatoryAndLegalActs, ...sortedFolders]
+
     return(
-        <>
-        <AccordionComponent title={'регламентуючі документи'} data={docxToRender}/>
-        <LicensesAndCertificatesSection images={pageData?.license}/>
-        </>
+        <PageWrapper main_title={page_title}>
+        <AccordionComponent 
+        data={docxToRender}/>
+        <LicensesAndCertificatesSection 
+        images={license}/>
+        
+        </PageWrapper>
     )
 
 }

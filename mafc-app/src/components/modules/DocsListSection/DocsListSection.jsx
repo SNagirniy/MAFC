@@ -5,12 +5,15 @@ import DocListSceleton from '@/components/elements/docListSceleton/DocListScelet
 
 const DocsListSection = ({title, docs_list, isPending, variant, folderId})=> {
     if(!docs_list || docs_list?.length === 0 || docs_list.error) {return null};
+
+     const docxToRender = [...(docs_list ?? [])].sort(
+  (a, b) => a?.description - b?.description);
     
     return (
         <section className={s.section} key={folderId}>
             <SectionWrapper>
-                    <h3 className={s.main_title}>{title}</h3>
-                    {isPending? <DocListSceleton/> : <DocumentsList variant={variant} documents_list={docs_list}/>}
+                    {title && <h3 className={s.main_title}>{title}</h3>}
+                    {isPending? <DocListSceleton/> : <DocumentsList variant={variant} documents_list={docxToRender}/>}
                    
               
             </SectionWrapper>

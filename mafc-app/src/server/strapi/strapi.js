@@ -3,6 +3,37 @@ import QueryString from "qs";
 
 const baseURL = process.env.STRAPI_URL;
 
+
+
+export async function getDepartment(route){
+ 
+const query = QueryString.stringify(
+    {populate:"*"},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
 export async function getEducationalCalendar() {
   try {
     const res = await fetch(`${baseURL}/api/admission-calendars?populate=*`, {
@@ -27,6 +58,91 @@ export async function getEducationalCalendar() {
 export async function getMaterialCharacteristic() {
   try {
     const res = await fetch(`${baseURL}/api/material-technical-base?populate=*`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+    if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data ?? null;
+
+  } catch (error) {
+    console.error('Error fetching material-technical-base:', error);
+    return null;
+  }
+};
+
+export async function getMisionAndGoalsPage() {
+
+   const route = '/api/mission-and-goals-page';
+
+  const query = QueryString.stringify({
+  populate: "*"
+}, { encodeValuesOnly: true });
+
+  try {
+     const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+    if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data ?? null;
+
+  } catch (error) {
+    console.error('Error fetching material-technical-base:', error);
+    return null;
+  }
+};
+
+export async function getCollegeHistoryPage() {
+
+   const route = '/api/college-history-page';
+
+  const query = QueryString.stringify({
+  populate: "*"
+}, { encodeValuesOnly: true });
+
+  try {
+     const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+    if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data ?? null;
+
+  } catch (error) {
+    console.error('Error fetching material-technical-base:', error);
+    return null;
+  }
+};
+
+
+export async function getCModernWarMuseumPage() {
+
+   const route = '/api/modern-war-museum';
+
+  const query = QueryString.stringify({
+  populate: "*"
+}, { encodeValuesOnly: true });
+
+  try {
+     const res = await fetch(`${baseURL}${route}?${query}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -121,13 +237,29 @@ export async function getDistanceLearningPage() {
 
 
 
-export async function getYourSafetyPageData() {
+export async function getWorkSafetyPageData() {
+   const route = '/api/your-safety-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    data: {
+      populate: "*"
+    },
+    video_item:{
+      populate: '*'
+    },
+    images: {
+      populate: "*"
+    }
+  }
+}, { encodeValuesOnly: true });
+
   try {
-    const res = await fetch(`${baseURL}/api/your-safety-page?populate=*`, {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
       headers: {
         'Content-Type': 'application/json',
       },
-  
+   
     });
 
      if(!res) return null;
@@ -137,7 +269,46 @@ export async function getYourSafetyPageData() {
     return json?.data || null;
 
   } catch (error) {
-    console.error('Error fetching nmt data:', error);
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
+
+
+
+export async function getAccessibilityAndInclusiveLearningPageData() {
+   const route = '/api/accessibility-and-inclusive-learning-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    data: {
+      populate: "*"
+    },
+    insructions:{
+      populate: '*'
+    },
+    images: {
+      populate: "*"
+    }
+  }
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
     return null;
   }
 };
@@ -379,13 +550,25 @@ export async function getContactsData(pageName) {
 };
 
 
-export async function getSubjectCommissionsList() {
-  try {
-    const res = await fetch(`${baseURL}/api/subject-commissions-lists?populate=*`, {
+export async function getSubjectCommissionPage() {
+   const route = `/api/subject-commission-page`;
+ const query = QueryString.stringify(
+    {
+      populate: {
+        subject_commissions_lists: {
+          populate: "*"
+        },
+        
+      },
+    },
+    { encodeValuesOnly: true }
+  );
+   try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
       headers: {
         'Content-Type': 'application/json',
       },
-    
+   
     });
 
      if(!res) return null;
@@ -447,8 +630,8 @@ export async function getAdministration() {
     organization_structure: {
       populate: "*"
     },
-    administrations: {
-      populate: "*"
+    teachers: {
+     populate: "*"
     }
   }
 }, { encodeValuesOnly: true });
@@ -464,6 +647,7 @@ export async function getAdministration() {
      if(!res) return null;
 
     const json = await res.json();
+ 
 
     return json?.data || null;
 
@@ -505,9 +689,9 @@ export async function getNews(slug, page = 1, pageSize = 4) {
   const route = '/api/news';
   const filters = !slug || slug === 'all'
     ? undefined : {
-        category: {
+        categories: {
           code: {
-            $eq: slug,
+            $containsi: slug,
           },
         },
       };
@@ -589,9 +773,9 @@ export async function getTotalPages(category, page = 1, pageSize = 4) {
   const route = '/api/news';
   const filters = !category || category === 'all'
     ? undefined : {
-        category: {
+        categories: {
           code: {
-            $eq: category,
+            $containsi: category,
           },
         },
       };
@@ -760,41 +944,30 @@ try {
 
 }
 
-
-
-export async function getE_LibraryPage (){
-  const route = `/api/e-libraries`;
- const query = QueryString.stringify(
-    {populate: '*',},
-    { encodeValuesOnly: true }
-  );
-
-try {
-    const res = await fetch(`${baseURL}${route}?${query}`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      
-    });
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch. Status: ${res.status}`);
-    }
-
-    const json = await res.json();
-
-    return json?.data || null;
-  } catch (error) {
-    console.error('Error fetching professions:', error);
-    return null;
-  }
-
-}
-
 export async function getLibraryPage (){
   const route = `/api/library`;
  const query = QueryString.stringify(
-    {populate: '*',},
+    {populate: {
+      e_libraries: {
+        populate: "*"
+      },
+      work_schedule: {
+        populate:"*"
+      },
+      services: {
+        populate:"*"
+      },
+      images:{
+        populate: "*"
+      },
+      rules: {
+        populate:"*"
+      },
+      dashboard: {
+        populate:"*"
+      }
+      
+    },},
     { encodeValuesOnly: true }
   );
 
@@ -1040,6 +1213,36 @@ try {
    
   } catch (error) {
     console.error('Error fetching news item:', error);
+    return null;
+  }
+
+}
+
+
+export async function getMemoryPage (){
+  const route = `/api/memory-page`;
+ const query = QueryString.stringify(
+    {populate: '*',},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
     return null;
   }
 

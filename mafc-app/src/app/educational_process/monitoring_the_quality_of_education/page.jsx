@@ -9,10 +9,10 @@ export const metadata = generateStaticPageMeta('/educational_process/monitoring_
 const EduMonitoring = async()=>{
 
     const folderId = '1iskxoFgG6nDbAi0AP2VUp_qiZAiWWDFr'
-    const res = await fetchDocxFromCurrentFolder(folderId);
-    const docxList = await res.json();
+    const docxList = await fetchDocxFromCurrentFolder(folderId);
+ 
 
-    return <EduMonitoringPage docxList={docxList}/>
+    return <EduMonitoringPage docxList={docxList.documents}/>
 }; 
 
 

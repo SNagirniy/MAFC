@@ -1,6 +1,6 @@
 import EducationalProgramPage from "@/components/pages/EducationalProgramPage";
 import { getIntroductoryQuidePageData, getProfessionBySlug, getCommonPool } from "@/server/strapi/strapi";
-import { fetchDocxFromCurrentFolder } from "@/server/google/drive";
+import { fetchDocxFromCurrentFolder, fetchAllDocxFromSubfolders } from "@/server/google/drive";
 import { notFound } from "next/navigation";
 import { seoConfig } from "../../../../../seo.config";
 
@@ -50,15 +50,14 @@ const EduProgram= async({params})=>{
 
   const professionDocxFolderId = profession[0]?.google_drive_doc_folder_id;
   const commonPool= await getCommonPool();
-  const professionDocxRes = await fetchDocxFromCurrentFolder(professionDocxFolderId);
-  const professionDocx = await professionDocxRes.json();
-  const generalDocxRes = await fetchDocxFromCurrentFolder(generalDocxFolderId);
-  const generalDocx = await generalDocxRes.json();
+  const professionDocx = await fetchAllDocxFromSubfolders(professionDocxFolderId);
+  const generalDocx = await fetchDocxFromCurrentFolder(generalDocxFolderId);
+
 
 
     return <EducationalProgramPage 
     commonPool={commonPool} 
-    generalDocx={generalDocx} 
+    generalDocx={generalDocx.documents} 
     profession={profession[0]}
     professionDocx={professionDocx}/>
 };

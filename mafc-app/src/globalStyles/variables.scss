@@ -78,3 +78,18 @@ $cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
 }
+
+@mixin SecondaryTitle(){
+   text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+
+  @include for-size('desktop'){
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+}
+
+

@@ -8,8 +8,8 @@ export const metadata = generateStaticPageMeta('/student_life/students_rating');
 const StudentRating = async()=> {
 
     const folderID = '1eJnqxRPMQ5v0H4gZ6iTHhr2uaKKX-Ey7';
-    const res = await fetchAllDocxFromSubfolders(folderID);
-    const folders = await res?.json();
+    const folders = await fetchAllDocxFromSubfolders(folderID);
+
 
 return <StudentRatingPage folders = {folders}/>
 };

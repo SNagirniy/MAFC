@@ -1,20 +1,20 @@
-import SubjectCommissionsMembers from "../modules/SubjectCommissionsMembers/SubjectCommissionsMembers";
 import AccordionComponent from "../modules/Accordion/Accordion";
 import EmptyState from "../modules/EmptyState/EmptyState";
+import PageWrapper from "../layouts/PageWrapper";
 
 
 
-const CouncilsAndCommissionsPage = ({subjectCommissionsList, councils_and_commissions_data})=> {
+const CouncilsAndCommissionsPage = ({councils_and_commissions_data})=> {
 
-   if(!subjectCommissionsList && !councils_and_commissions_data || councils_and_commissions_data?.length === 0) return <EmptyState/>;
+   if(!councils_and_commissions_data || councils_and_commissions_data?.length === 0) return <EmptyState/>;
+
+   const docxToRender = [...(councils_and_commissions_data ?? [])].sort(
+  (a, b) => a?.description - b?.description);
 return(
-   <>
+   <PageWrapper main_title={'ради і комісії'}>
    <AccordionComponent 
-      title={'ради і комісії'}
-      data={councils_and_commissions_data}/>
-   <SubjectCommissionsMembers 
-      subjectCommissionsList={subjectCommissionsList}/>
-   </>
+      data={docxToRender}/>
+   </PageWrapper>
    
 )
 }

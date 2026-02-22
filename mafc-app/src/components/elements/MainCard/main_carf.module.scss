@@ -36,11 +36,18 @@
     object-fit: cover;
 }
 
-.category_desc{
+.category_list{
     position: absolute;
     right: 0;
     bottom: 0;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+}
+
+.category_desc{
+   display: block;
     padding: 0.5rem 1rem;
     color: $light-text-color;
     text-transform: uppercase;

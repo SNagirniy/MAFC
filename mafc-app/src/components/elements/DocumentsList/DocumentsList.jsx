@@ -6,13 +6,14 @@ import clsx from 'clsx';
 
 
 const DocumentsList = ({documents_list, variant='singe'}) => {
+
     return (
         <ul className={clsx(s.list, {[s.double] : variant === 'double'}) }>
-        {documents_list?.map(({id,name, webViewLink})=>{
+        {documents_list?.map((el)=>{
             return (
-                <li key={id || v4()} className={s.item}>
+                <li key={el?.id || v4()} className={s.item}>
                   <DocIcon className={s.icon}/>
-                  <a className={s.link} href={webViewLink} target="_blank">{name}</a>
+                  <a className={s.link} href={el?.webViewLink || el?.url} target="_blank">{el?.name || el?.title}</a>
                 </li>)
         })}
     </ul>

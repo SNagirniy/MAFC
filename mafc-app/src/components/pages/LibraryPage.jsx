@@ -1,29 +1,38 @@
 import LibraryDashboardSection from "../modules/LibraryDashboardSection/LibraryDashboardSection";
 import AccordionComponent from "../modules/Accordion/Accordion";
 import GallerySection from "../modules/GallerySection/GallerySection";
-import EmptyState from "../modules/EmptyState/EmptyState";
+import NMTLIst from "../modules/NMTList/NMTlist";
+
+
 
 
 
 const LibraryPage =({libraryData})=> {
-if(!libraryData) return <EmptyState/>;
+
+const{page_title, e_libraries, work_schedule, services, images, rules, dashboard} = libraryData;
+
+const libListTorender = e_libraries?.map((el)=> {return {id: el?.id, url: el?.link?.url, title: el?.profession?.educational_program}})
 
 return (
     <>
     <LibraryDashboardSection 
-        page_title={libraryData?.page_title}
-        dashboardData={libraryData?.dashboard}
-        work_shedule_data={libraryData?.work_schedule}/>
+        page_title={page_title}
+        dashboardData={dashboard}
+        work_shedule_data={work_schedule}/>
 
     <AccordionComponent 
-    data={libraryData?.rules} 
+    data={rules} 
     title={'користувачам'}/> 
     
     <AccordionComponent 
-    data={libraryData?.services} 
+    data={services} 
     title={'послуги'}/>    
-
-   <GallerySection imageArr={libraryData?.images}/>
+    <GallerySection imageArr={images}/>
+    
+   <NMTLIst 
+            linkList={libListTorender} 
+            title={'Е-бібліотека'} 
+            type={'secondary'}/>
     </>   
 )
 

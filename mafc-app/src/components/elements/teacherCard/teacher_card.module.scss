@@ -10,16 +10,16 @@
     width: 100%;
     height: 100%;
     color: $second-text-color;
+    cursor: pointer;
    
     
 };
 
 .thumb{
-    display: flex;
+    display: block;
     position: relative;
     top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
+    align-self: center;
     width: 85%;
     height: 270px;
     overflow: visible;
@@ -38,12 +38,22 @@
 .article{
     display: flex;
     flex-direction: column;
+   
     border: 1px solid rgb(157, 152, 152);
     border-radius: 1rem;
     gap: 12px;
-    padding:0 10px 32px 10px; 
-    padding-top: 150px;
+    padding:150px 10px 32px 10px; 
     height: 100%;
+
+    text-align: center;
+
+    &>p{
+        text-transform: lowercase;
+
+        &::first-letter{
+            text-transform: uppercase;
+        }
+    }
   
 };
 
@@ -55,51 +65,3 @@
     text-transform: capitalize;
 };
 
-.consultation{
-    display: flex;
-    flex-direction: column;
-    gap:0.5rem;
-
-    & h5{
-        color: $primary-text-color;
-        text-align: center;
-    }
-}
-
-.consultation_list{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.consultation_item{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 2px;
-    font-size: 0.8rem;
-    text-transform: capitalize;
-
-    & span:first-child{
-        text-transform: uppercase;
-        grid-area: 1/1/1/4;
-    }
-}
-
-.contacts{
-    display: flex;
-    flex-direction: column;
-
-    & a{
-        display: flex;
-        flex-direction: row;
-      vertical-align: baseline;
-        gap: 0.5rem;
-    }
-}
-
-
-.icon{
-    width: 1rem;
-    height: auto;
-    stroke: $secondary-color;
-}

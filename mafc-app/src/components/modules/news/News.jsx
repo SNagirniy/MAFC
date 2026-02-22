@@ -8,6 +8,8 @@ import extractImageSourcesFromHTML from "@/utils/extractImageSourcesFromHTML";
 
 
 const News = ({newsList,title, subtitle, category})=> {
+
+    
     return (
         <section className={s.section}>
             <SectionWrapper>
@@ -20,7 +22,7 @@ const News = ({newsList,title, subtitle, category})=> {
                     <ul className={s.news_list}>
                         {newsList.map((el, i)=> { 
                             const Card = i === 0? MainCard : NewsItem;
-                            const {date, title, article, images, videos, category, documentId} = el;
+                            const {date, title, article, images, videos, categories, documentId} = el;
 
                             const imageFormats = images? images[0]?.formats : null;
                            const videoThunbnail = videos.length > 0? [`https://img.youtube.com/vi/${videos[0]?.video_id}/hqdefault.jpg`]: [];
@@ -37,9 +39,8 @@ const News = ({newsList,title, subtitle, category})=> {
                                 description={formatPreviewText(article)}
                                 formats={imageFormats}
                                 imageUrl={posterUrl[0]}
-                                slug={category.code}
                                 documentId={documentId}
-                                category_desc={category.description}
+                                categories={categories}
                                 />
                             </li>
                                 )})}

@@ -9,8 +9,8 @@ export const metadata = generateStaticPageMeta('/educational_process/academic_mo
 const AcademicMobility = async()=>{
 
     const folderId = '1Wr9aKFLebW67fWz5OvAcEsCHaLvNQUXy'
-    const res = await fetchAllDocxFromSubfolders(folderId);
-    const docxList = await res.json();
+    const docxList = await fetchAllDocxFromSubfolders(folderId);
+   
 
     return <AcademicMobilityPage partners_list={docxList}/>
 }; 

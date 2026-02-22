@@ -20,11 +20,11 @@ const quickLinks =[
     icon: (style)=> <Met_cab className={style}/>
     },
     {title: 'розклад занять',
-        link: '/student_life/schedules#schedule_changes',
+        link: '/educational_process/schedules#schedule_changes',
         icon: (style)=> <Calendar className={style}/>
         },
           {title: 'повідомлення про корупцію',
-        link: '/about/anti_corruption_activities#stop_corruption_anchor',
+        link: '/activity_vectors/anti_corruption_activities#stop_corruption_anchor',
         icon: (style)=> <StopCorruption className={style}/>
         },
          {title: 'на обговоренні',

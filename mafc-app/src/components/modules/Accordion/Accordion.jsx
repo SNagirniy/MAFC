@@ -29,7 +29,8 @@ const AccordionItem = ({ header, ...rest }) => (
   );
 
 const AccordionComponent = ({title,data, folderId})=> {
-if(!data || data?.error) return null;
+if(!data || data?.error || data?.length === 0) return null;
+
 
     return (
         <section key={folderId} className={styles.section}>

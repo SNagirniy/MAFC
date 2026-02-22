@@ -4,14 +4,17 @@ import Link from 'next/link';
 import ResponsiveImage from '../responsiveImage/ResponsiveImage';
 
 
-const MainCard = ({formats, title, date, description, imageUrl, documentId, category_desc})=> {
+const MainCard = ({formats, title, date, description, imageUrl, documentId, categories})=> {
 
     return (
         <article className={s.card}>
             <Link href={`/news/${documentId}`}>
         <div className={s.thumb}>
             <ResponsiveImage formats={formats} alt={title} className={s.image} singleImgUrl={imageUrl || '/default_news.jpg'}/>
-            <span className={s.category_desc}>{category_desc}</span>
+            <ul className={s.category_list}>
+                    {categories?.map(c => <li id={c?.code}><span  className={s.category_desc}>{c?.description}</span></li>)}
+
+                </ul>
         </div>
         <div className={s.description_box}>
             <span className={s.date}>| {date}</span>

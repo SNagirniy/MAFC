@@ -3,7 +3,7 @@ import ResponsiveImage from '../responsiveImage/ResponsiveImage';
 import Link from 'next/link';
 
 
-const NewsItem = ({formats, title, date, description, imageUrl,documentId, category_desc})=> {
+const NewsItem = ({formats, title, date, description, imageUrl,documentId, categories})=> {
 
     const posterUrl = imageUrl? imageUrl : '/default_news.jpg'
    
@@ -17,7 +17,12 @@ const NewsItem = ({formats, title, date, description, imageUrl,documentId, categ
                 <h3 className={s.title}>{title}</h3>
                 <p className={s.description}>{description}</p>
                 <span className={s.date}>{date}</span>
-                <span className={s.category_desc}>{category_desc}</span>
+                <ul className={s.category_list}>
+                    {categories?.map(c => <li id={c?.code}><span  className={s.category_desc}>{c?.description}</span></li>)}
+
+                </ul>
+                
+                
             </div>
             </Link>
         </article>

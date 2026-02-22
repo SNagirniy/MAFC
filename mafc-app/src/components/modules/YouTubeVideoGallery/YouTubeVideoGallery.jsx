@@ -62,7 +62,7 @@ return (
       slidesPerView: 3,
     },
     1280: {
-      slidesPerView: 6,
+      slidesPerView: 5,
     },
   }}
       >

@@ -3,24 +3,58 @@ const nav_structure =[
    
     {title:'Про коледж',
     menu: [
-            {item: 'регламентуючі документи',
-            link: '/about/regulatory_documents',},
-            {item: 'структура та управління',
-            link: '/about/structure_and_management',},
+            {item: 'нормативна база',
+            link: '/about/regulatory_framework',},
+            {item: 'мета, завдання та напрямки діяльності',
+            link: '/about/mission_and_goals'},
+            {item: 'наша вікова історія',
+            link: '/about/college_history'},
+            {item: 'сторінка памʼяті',
+            link: '/about/memory_page'},
+            {item: 'система управління',
+            link: '/about/management_system',},
             {item: 'ради і комісії',
             link: '/about/councils_and_commissions',},
-            {item: 'антикорупційна діяльність',
-            link: '/about/anti_corruption_activities'
-            },
+            {item: 'структурні підрозділи',
+            link: '/about/structural_units',},
+            {item: 'прозорість та інформаційна відкритість',
+            link: '/about/transparency_and_information_openness',}, 
+            {item: 'віртуальна екскурсія',
+            link: '/about/virtual_tour',},
             {item: 'наші партнери',
             link: '/about/partners',},
-            {item: 'контактна інформація',
-             link: '/about/contacts',},
-             {item: 'банківські реквізити',
-             link: '/about/bank_account',},
-            {item: 'робота в коледжі',
-            link: '/about/vacancy',},
+            {item: 'музей сучасної війни',
+            link: '/about/modern_war_museum'
+            },
+            {item: 'матеріально-технічна база',
+            link: '/about/material_and_technical_base',},
+           
             
+         ]
+    },
+     {title: "вектори діяльності",
+    menu: [
+         {item:'якість та зміст освіти',
+            link:'/activity_vectors/quality_and_content_of_education'
+            },
+            {item:'СТВОРЕННЯ БЕЗПЕЧНОЇ ТА ІНКЛЮЗИВНОЇ ЕКОСИСТЕМИ',
+            link: "/activity_vectors/safe_and_inclusive_ecosystem"
+            },
+             {item:'ВИХОВНА РОБОТА ТА СОЦІАЛЬНА ПІДТРИМКА',
+            link:'/activity_vectors/e_library'
+            },
+             {item:'ПАРТНЕРСТВО ТА МІЖНАРОДНЕ СПІВРОБІТНИЦТВО',
+            link:'/activity_vectorsy/e_library'
+            },
+             {item:'КАДРОВЕ ЗАБЕЗПЕЧЕННЯ ТА УПРАВЛІННЯ РЕСУРСАМИ',
+            link:'/activity_vectors/e_library'
+            },
+             {item:'ГОСПОДАРСЬКА ДІЯЛЬНІСТЬ',
+            link:'/activity_vectors/e_library'
+            },
+             {item:'АНТИКОРУПЦІЙНА ДІЯЛЬНІСТЬ',
+            link:'/activity_vectors/anti_corruption_activities'
+            },
          ]
     },
     {title: 'Освітній процес',
@@ -28,8 +62,9 @@ const nav_structure =[
             {item: 'освітньо-професійні програми',
             link: '/educational_process/educational_programs',
             },
-            {item: 'матеріально-технічна база',
-                link: '/educational_process/material_and_technical_base',},
+            {item: 'ОРГАНІЗАЦІЯ ТА РЕГЛАМЕНТ (ЯК МИ ВЧИМОСЯ)',
+            link: '/educational_process/schedules',
+            },
             {item: 'моніторинг якості освіти',
                 link: '/educational_process/monitoring_the_quality_of_education',},
 
@@ -49,10 +84,10 @@ const nav_structure =[
             },
          ]
     }, 
-    {title: 'Вступникам',
+    {title: 'Вступ',
      menu: [
-        {item: 'Документи',
-        link: '/entrants/documents',},
+        {item: 'ПРАВИЛА ВСТУПУ',
+        link: '/entrants/admission_rules',},
         {item: 'Вступний гід',
         link: '/entrants/areas_of_educational_activity',
         },
@@ -67,14 +102,9 @@ const nav_structure =[
      ]
     },  
     {title:'Студентське життя ',
-    menu: [{item: 'Розклад і графіки',
-            link: '/student_life/schedules',
-            },
+    menu: [
             {item: 'Правила поведінки',
             link: '/student_life/rules_of_conduct',
-            },
-            {item: 'ваша безпека',
-            link: '/student_life/your_safety',
             },
             {item: 'рейтинги студентів',
              link: '/student_life/students_rating'   
@@ -89,32 +119,17 @@ const nav_structure =[
             link:'/student_life/career'
             }
          ]
-    },  
-       {title: "бібліотека",
-    menu: [
-         {item:'про бібліотеку',
-            link:'/library/about'
-            },
-             {item:'е-бібліотека',
-            link:'/library/e_library'
-            },
-         ]
-    },  
+    },    
     {title: 'Документи та звітність',
     menu: [
             {item: 'Звіт про діяльність керівника закладу освіти',
             link: '/documents_and_reporting/director_report',
             },
-            {item: 'Звітність закладу освіти',
-            link: '/documents_and_reporting/college_reporting',
-                },
+           
             {item: 'Рішення педагогічної ради',
             link: '/documents_and_reporting/pedagogical_council_decision',
             },
-            {item: 'публічні закупівлі',
-                link: '/documents_and_reporting/public_procurement',},
-            {item: 'благодійна допомога',
-                link: '/documents_and_reporting/charitable_assistance',}
+           
          ]
     },
 

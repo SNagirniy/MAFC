@@ -35,7 +35,7 @@ export const metadata = {
 
 
 export default async function RootLayout({ children }) {
-const contactsData = await getContactsData('contact');
+const contactsData = {};
 
 const contacts = !contactsData || contactsData?.error? {sub_title: 'Відокремлений структурний підрозділ "Маслівський аграрний фаховий коледж ім. П.Х. Гаркавого Білоцерківського національного аграрного університету"'} : contactsData[0];
 

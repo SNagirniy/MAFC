@@ -1,6 +1,7 @@
 import DocsListSection from "../modules/DocsListSection/DocsListSection";
 import PollListSection from "../modules/PollListSection/PollListSection";
 import EducationalProgramDetail from "../modules/EducationalPrograms/EducationalProgramDetail";
+import AccordionComponent from "../modules/Accordion/Accordion";
 
 const EducationalProgramPage =({profession,professionDocx, generalDocx, commonPool})=> {
 
@@ -9,10 +10,12 @@ const EducationalProgramPage =({profession,professionDocx, generalDocx, commonPo
   ...(commonPool ?? [])
 ];
 
+const professionDocxTorender =  [...(professionDocx || [])].sort((a,b)=> a?.description - b?.description);
+
+
     return (<>
     <EducationalProgramDetail profession={profession}/>
-    <DocsListSection 
-    title={'Матеріали освітньо-професійної програми'} docs_list={professionDocx}/>
+    <AccordionComponent data={professionDocxTorender}/>
      <DocsListSection 
     title={'Моніторинг, перегляд та реалізація ОПП'} 
     docs_list={generalDocx}/>

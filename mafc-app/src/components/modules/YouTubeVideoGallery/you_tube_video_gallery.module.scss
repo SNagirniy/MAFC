@@ -15,7 +15,7 @@
     margin-bottom: 1rem;
 
     @include for-size('tablet'){
-       width: 60%;
+       width: 80%;
     }
 }
 
@@ -57,7 +57,7 @@
 
 .swiper_slide{
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 1.5fr;
   gap: 0,5rem;
   height: 100%;
  opacity: 1;

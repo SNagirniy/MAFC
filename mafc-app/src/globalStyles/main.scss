@@ -7,6 +7,7 @@
   box-sizing: border-box;
 }
 html{
+
    --base-font-size: 16px;
    font-size: var(--base-font-size);
 }
@@ -19,7 +20,7 @@ body {
   width: 100vw;
   margin: 0;
   overflow-x: hidden;
-  background-color: $section_bg;
+  background-color: $primaryBG;
   font-family: 'Montserrat';
   color: $primary-text-color;
   line-height: 1.1;
@@ -29,14 +30,14 @@ body {
 
 
 section{
-  padding: 3rem 0;
+  padding: 2rem 0;
 
-  &:nth-child(even){
-    background-color: $primaryBG;
+  &:nth-child(odd){
+    background-color: $section_bg; 
   }
 
   @include for-size('tablet'){
-      padding: 7rem 0;
+      padding: 3rem 0;
   }
 };
 section.Toastify{padding: 0;}
@@ -91,5 +92,8 @@ blockquote:before {
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
+
+
+
   
   

@@ -1,5 +1,5 @@
 @use '../../../globalStyles/variables.scss' as *;
   
   .main_title{
-   @include MainTitle()
+   @include SecondaryTitle()
   };

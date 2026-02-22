@@ -10,7 +10,7 @@ const LicensesAndCertificatesSection = ({images})=> {
     return (
         <section className={s.section}>
         <SectionWrapper>
-            <h4 className={s.main_title}>Ліцензії та сертифікати</h4>
+            <h3 className={s.main_title}>Ліцензії та сертифікати</h3>
             <Gallery imageArr={images}/>
         </SectionWrapper>
         </section>

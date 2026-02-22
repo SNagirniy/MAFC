@@ -9,8 +9,8 @@ export const metadata = generateStaticPageMeta('/educational_process/practical_c
 const PracticalClasses = async()=>{
 
     const folderId = '1bK4AtDaciNIok8za81lhg2fmO_ntWVH7'
-    const res = await fetchAllDocxFromSubfolders(folderId);
-    const docxList = await res.json();
+    const docxList = await fetchAllDocxFromSubfolders(folderId);
+   
 
     const practicalProgramsfolderId = '11YUjYz-TUEV0b-Bhl8ZcVIt9CxJ5ZRcs'
     const practicalProgramsRes = await fetchAllDocxFromClosedSubfolders(practicalProgramsfolderId);

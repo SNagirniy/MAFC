@@ -9,8 +9,8 @@ export const metadata = generateStaticPageMeta('/about/partners')
 const Partners = async()=> {
 
     const folderId = '1O_Bd3S0m1Q4_pXz0c_c-pJf_WffHI8-R'
-    const res = await fetchAllDocxFromSubfolders(folderId);
-    const docxList = await res.json();
+    const docxList = await fetchAllDocxFromSubfolders(folderId);
+   
 
    
 

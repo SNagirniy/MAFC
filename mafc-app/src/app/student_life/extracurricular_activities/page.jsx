@@ -8,8 +8,8 @@ export const metadata = generateStaticPageMeta('/student_life/extracurricular_ac
 
 const ExtracurricularActivities = async ()=> {
 const folderId = '1NJCEnO9ZsXRKrsQgY8XxiUCdZBAZfvL1';
- const res = await fetchAllDocxFromSubfolders(folderId);
- const docx = await res.json();
+ const docx = await fetchAllDocxFromSubfolders(folderId);
+
 
  const pageData = await getExtracurricularPageData();
 

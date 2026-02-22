@@ -1,2 +1,7 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.title{
+    @include SecondaryTitle()
+}
 
 

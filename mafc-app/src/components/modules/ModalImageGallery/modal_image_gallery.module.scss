@@ -1,0 +1,98 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.main_title{
+   @include SecondaryTitle();
+}
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: $second-text-color;
+    box-shadow: $box_shadow;
+    cursor: pointer;
+
+    transition: transform $cubic;
+
+    &:hover{
+        transform: scale(1.02)
+    }
+   
+    
+};
+
+.title{
+    display: block;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.thumb{
+    display: block;
+    align-self: center;
+    height: 15rem;
+    width: 100%;
+    overflow: visible;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+ 
+  background: #fff;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 20px;
+  max-height: 90vh;
+  overflow: hidden;
+ 
+}
+
+.modal_title{
+    display: block;
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+
+};
+
+.modal_thumb{
+    display: flex;
+    align-self: center;
+    overflow: hidden;
+
+}
+
+.modal_image{
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+}

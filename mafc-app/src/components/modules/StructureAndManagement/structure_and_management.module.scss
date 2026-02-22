@@ -2,19 +2,11 @@
 
 
 .main_title{
-   @include MainTitle();
+   @include SecondaryTitle();
 }
 
 .list{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
-
-    @include for-size('tablet'){
-     grid-template-columns: repeat(2, 1fr);
-     gap: 1.5rem;
-    }
-    @include for-size('desktop'){
-        grid-template-columns: repeat(4, 1fr);
-    }
 }

@@ -7,3 +7,15 @@
         padding: 0 70px;
     }
 }
+
+.main_title{
+    @include MainTitle()
+}
+
+.wrapper{
+    padding-top: 3rem;
+
+  @include for-size('tablet'){
+      padding-top: 7rem;
+  }
+}

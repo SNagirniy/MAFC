@@ -1,8 +1,17 @@
 @use '../../../globalStyles/variables.scss' as *;
 
 
+.section{
+  padding: 2rem 0;
+
+  @include for-size('tablet'){
+      padding: 3rem 0;
+  }
+};
+
+
 .main_title{
-    @include MainTitle()}
+    @include SecondaryTitle()}
 
     .link_list{
         display: grid;
@@ -18,8 +27,12 @@
         }
     };
 
+   .description{
+    margin: 2rem 0;
+   }
+
     .link_item{
-        border-top: 5px solid rgb(8, 165, 8);
+        border-top: 1rem solid rgb(8, 165, 8);
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         box-shadow: $card-shadow;
@@ -30,20 +43,20 @@
         }
 
         &:nth-child(2){
-            border-top: 5px solid $accent-color;
+            border-top: 1rem solid $accent-color;
         }
         &:nth-child(3){
-            border-top: 5px solid $secondary-color;
+            border-top: 1rem solid $secondary-color;
         }
 
         &:nth-child(4){
-            border-top: 5px solid rgb(0, 37, 171);
+            border-top: 1rem solid rgb(0, 37, 171);
         }
         &:nth-child(5){
-            border-top: 5px solid rgb(128, 5, 185);
+            border-top: 1rem solid rgb(128, 5, 185);
         }
         &:nth-child(6){
-            border-top: 5px solid rgb(226, 226, 4);
+            border-top: 1rem solid rgb(226, 226, 4);
         }
     }
 
@@ -53,13 +66,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 12rem;
-        padding: 0 2rem;
+        height: 6rem;
+        padding: 0 1rem;
         background-color: $primaryBG;
         text-align: center;
         text-transform: uppercase;
         font-weight: 500;
-        font-size: 1.2rem;
+        font-size: rem;
         line-height: 1.5;
         color: $second-text-color;
         

@@ -1,19 +1,23 @@
 import s from './subject_commissions_members.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
 import Link from 'next/link';
+import AccordionComponent from '../Accordion/Accordion';
 
 
 
-const SubjectCommissionsMembers = ({subjectCommissionsList})=> {
+const SubjectCommissionsMembers = ({subjectCommissionsList, page_title, description, docxList})=> {
 
     return(
-        <section>
+        <>
+        <section className={s.section}>
             <SectionWrapper>
-                <h3 className={s.main_title}>циклові комісії</h3>
+                <h1 className={s.main_title}>{page_title || "циклові комісії"}</h1>
+               {description && <div className={s.description}>
+                <div className="ck-content" dangerouslySetInnerHTML={{ __html: description }}></div></div>}
                 <ul className={s.link_list}>
                     {subjectCommissionsList?.map((item)=> {
                         return ( <li key={item?.category?.code} className={s.link_item}>
-                            <Link className={s.link} href={`/about/councils_and_commissions/${item?.category?.code}`}>
+                            <Link className={s.link} href={`/subject_comissions/${item?.category?.code}`}>
                             {item?.title}
                             </Link>
                         </li>)
@@ -22,6 +26,8 @@ const SubjectCommissionsMembers = ({subjectCommissionsList})=> {
                 </ul>
             </SectionWrapper>
         </section>
+        <AccordionComponent data={docxList}/>
+        </>
     )
 };
 

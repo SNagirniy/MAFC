@@ -23,7 +23,14 @@
     gap: 0.5rem;
     align-items: flex-start;
 };
+
+.category_list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 .category_desc{
+    display: block;
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
     text-transform: uppercase;

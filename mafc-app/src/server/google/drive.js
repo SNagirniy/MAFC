@@ -29,7 +29,7 @@ export async function fetchAllDocxFromSubfolders(folderId) {
       folders.map(async (folder) => {
         const { data: filesData } = await drive.files.list({
           q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/')`,
-          fields: 'files(id, name, webViewLink,createdTime)',
+          fields: 'files(id, name, webViewLink,createdTime, description)',
         });
 
         return {
@@ -41,11 +41,11 @@ export async function fetchAllDocxFromSubfolders(folderId) {
       })
     );
 
-    return new NextResponse(JSON.stringify(results), {
-      headers: { 'Content-Type': 'application/json' },
-    });
+    if(!results) return null;
+
+    return results;
   } catch (error) {
-    return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
+    return null;
   }
 };
 
@@ -53,7 +53,11 @@ export async function fetchAllDocxFromSubfolders(folderId) {
 
 
 export async function fetchDocxFromCurrentFolder(folderId) {
-
+if(!folderId) { return {
+      id: folderId,
+      topic: null,
+      documents: [],
+    };}
   try {
    
     const credentials =JSON.parse(process.env.NEXT_PUBLIC_GOOGLE_SERVICE_KEY);
@@ -66,19 +70,41 @@ export async function fetchDocxFromCurrentFolder(folderId) {
 
     const drive = google.drive({ version: 'v3', auth });
 
-    const { data: filesData } = await drive.files.list({
+     const folderRes = await drive.files.get({
+      fileId: folderId,
+      fields: 'id, name',
+    });
+
+    const folderName = folderRes?.data?.name ?? '';
+
+    const res = await drive.files.list({
       q: `'${folderId}' in parents and mimeType='application/pdf'`,
-      fields: 'files(id, name, webViewLink)',
+      fields: 'files(id, name, webViewLink, description)',
        orderBy: 'createdTime desc'
     });
 
-    const results = filesData?.files;
+    const files = res?.data?.files ?? [];
 
-    return new NextResponse(JSON.stringify(results), {
-      headers: { 'Content-Type': 'application/json' },
-    });
+    if (!files.length) {
+      return {
+      id: folderId,
+      topic: folderName,
+      documents: [],
+    };
+    }
+
+    return {
+      id: folderId,
+      topic: folderName,
+      documents: files,
+    };
   } catch (error) {
-    return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
+   return {
+      id: folderId,
+      topic: null,
+      documents: [],
+      error: error.message,
+    };
   }
 };
 
