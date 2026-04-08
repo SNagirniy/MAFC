@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { sendEmail } from '@/server/email_service/email_service';
 import { Resend } from 'resend'
 
-/*
+
 export async function POST(req) {
   const data = await req.json();
 
@@ -20,9 +20,9 @@ export async function POST(req) {
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
-*/
 
 
+/*
 const resend = new Resend(process.env.RESEND_API_KEY);
 const defaultRecipient = process.env.RECIPIENT_EMAIL;
 const StopCorruptionRecipient = process.env.STOP_CORRUPTION_RECIPIENT;
@@ -54,4 +54,4 @@ export async function POST(req) {
   } catch (error) {
     return Response.json({ ok: false, message: error.message })
   }
-}
+}*/
