@@ -5,7 +5,7 @@ import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 
 export const revalidate = 3600;
-export const metadata = generateStaticPageMeta('educational_process/schedules')
+export const metadata = generateStaticPageMeta('/educational_process/schedules');
 
 const Schedules = async()=> {
 

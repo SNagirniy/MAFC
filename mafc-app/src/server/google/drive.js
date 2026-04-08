@@ -45,6 +45,7 @@ export async function fetchAllDocxFromSubfolders(folderId) {
 
     return results;
   } catch (error) {
+  
     return null;
   }
 };
@@ -225,21 +226,23 @@ export async function fetchAllDocxFromClosedSubfolders(folderId) {
       folders.map(async (folder) => {
         const { data: filesData } = await drive.files.list({
           q: `'${folder.id}' in parents and (mimeType='application/pdf' or mimeType contains 'image/ and trashed = false')`,
-          fields: 'files(id, name, webViewLink,createdTime)',
+          fields: 'files(id, name, webViewLink,createdTime, description)',
         });
 
         return {
+          folderId: folder.id,
           topic: folder.name,
+          description: folder.description,
           documents: filesData.files,
         };
       })
     );
 
-    return new NextResponse(JSON.stringify(results), {
-      headers: { 'Content-Type': 'application/json' },
-    });
+    if(!results) return null;
+
+    return results;
   } catch (error) {
-    return new NextResponse(JSON.stringify({ error: error.message }), { status: 500 });
+    return null;
   }
 };
 

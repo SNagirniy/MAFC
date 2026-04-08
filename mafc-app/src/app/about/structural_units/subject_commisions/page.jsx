@@ -7,7 +7,7 @@ import EmptyState from "@/components/modules/EmptyState/EmptyState";
 
 export const revalidate = 3600;
 
-export const metadata = generateStaticPageMeta('/about/councils_and_commissions')
+export const metadata = generateStaticPageMeta('/about/structural_units/subject_commisions');
 
 const SubjectCommissions=async()=> {
     const pageData = await getSubjectCommissionPage();

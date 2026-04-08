@@ -6,15 +6,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
 
-const ProfesionsNavPanel =({professions, rootPath})=> {
+const ProfesionsNavPanel =({professions, rootPath, title})=> {
 
    const pathname = usePathname();
 
     return(
         <section className={s.section}>
-            <h1 className={s.main_title}>Напрямки освітньої діяльності</h1>
+            <h1 className={s.main_title}>{title || 'Напрямки освітньої діяльності'}</h1>
             <SectionWrapper>
-    <nav aria-label="Навігація освітніми програмами">
+    <nav aria-label={title || "Навігація освітніми програмами"}>
         <ul className={s.radio_group}>
                     {professions?.map((el) =>  { 
                         const {educational_program, slug} = el;

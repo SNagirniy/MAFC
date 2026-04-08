@@ -1,5 +1,6 @@
 import s from './library_dashboard_section.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
+import WorkSchedule from '@/components/elements/work_schedule/work_schedule';
 
 
 const LibraryDashboardSection = ({page_title, dashboardData, work_shedule_data})=> {
@@ -23,19 +24,9 @@ return(
                 })}
                 </ul>
             </div>}
-            <div className={s.dash_box}>
-                <h4>Графік роботи</h4>
-                <ul className={s.shedule_list}>
-                    {work_shedule_data?.map(({id, title, value})=> {
-                    return(
-                        <li className={s.shedule_item} key={id}>
-                            <p>{title}</p>
-                            <p>{value}</p>
-                        </li>
-                    )
-                })}
-                </ul>
-            </div>
+           <WorkSchedule
+           work_shedule_data={work_shedule_data}
+            />
         </SectionWrapper>
     </section>
 )

@@ -3,6 +3,9 @@ import DepartmentSection from "@/components/modules/DepartmentSection/Department
 import { getDepartment } from "@/server/strapi/strapi";
 import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
 import EmptyState from "@/components/modules/EmptyState/EmptyState";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
+export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/about/structural_units/document_management_and_hr_department');
 
 const DepartmentPage = async()=> {
 

@@ -6,7 +6,7 @@ import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 export const revalidate = 3600;
 
 
-export const metadata = generateStaticPageMeta('/activity_vectors/anti_corruption_activities')
+export const metadata = generateStaticPageMeta('/activity_vectors/anti_corruption_activities');
 
 const AntiCorruption = async()=> {
 

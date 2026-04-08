@@ -5,10 +5,11 @@ import EmptyState from "@/components/modules/EmptyState/EmptyState";
 import GallerySection from "@/components/modules/GallerySection/GallerySection";
 import HotlineAndComplaintBox from "@/components/modules/HotlineAndComplaintBox/HotlineAndComplaintBox";
 import SectionWrapper from "@/components/layouts/SectionWrapper";
-
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/activity_vectors/safe_and_inclusive_ecosystem/accessibility_and_inclusive_learning');
 
 const AccessibilityAndInclusiveLearning= async()=> {
 

@@ -4,7 +4,7 @@ import "../globalStyles/main.scss";
 import PageLayout from '@/components/layouts/PageLayout';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { getContactsData } from '@/server/strapi/strapi';
+import { getContactsData, getSocialMediaData } from '@/server/strapi/strapi';
 import GoogleTranslateProvider from '@/components/modules/GoogleTranslate/GoogleTranslate';
 import Script from 'next/script';
 import { seoConfig } from '../../seo.config';
@@ -35,7 +35,8 @@ export const metadata = {
 
 
 export default async function RootLayout({ children }) {
-const contactsData = {};
+const contactsData = await getContactsData('contact');
+const social = await getSocialMediaData();
 
 const contacts = !contactsData || contactsData?.error? {sub_title: 'Відокремлений структурний підрозділ "Маслівський аграрний фаховий коледж ім. П.Х. Гаркавого Білоцерківського національного аграрного університету"'} : contactsData[0];
 
@@ -66,7 +67,7 @@ const contacts = !contactsData || contactsData?.error? {sub_title: 'Відокр
         />
          <GoogleTranslateProvider />
 
-        <PageLayout contactsData={contacts}>
+        <PageLayout social={social} contactsData={contacts}>
         <ToastContainer
             position="top-right"
             autoClose={5000}

@@ -9,7 +9,7 @@ const SpecialityRatingSection = ({children})=> {
     return(
         <section className={s.section}>
             <SectionWrapper>
-            <h2 className={s.main_title} >рейтинг за спеціальностями</h2>
+            <h2 className={s.main_title}>рейтинг за спеціальностями</h2>
             {children}
             </SectionWrapper>
         </section>

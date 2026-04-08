@@ -12,6 +12,10 @@
     @include MainTitle()
 }
 
+.secondary_title{
+    @include SecondaryTitle()
+}
+
 .wrapper{
     padding-top: 3rem;
 

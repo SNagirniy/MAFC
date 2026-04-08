@@ -27,6 +27,7 @@
 
     @include for-size('tablet'){
      max-width: 25%;
+     min-width: fit-content;
     }
 
 

@@ -3,12 +3,12 @@ import SectionWrapper from '@/components/layouts/SectionWrapper';
 import DocIcon from '../../../../public/doc_icon.svg';
 import { v4 } from 'uuid';
 
-const AdmissionResultsSection = ({resultsList})=> {
+const AdmissionResultsSection = ({resultsList, title})=> {
 
     return(
         <section className={s.section}>
             <SectionWrapper>
-                <h3 className={s.main_title}>Результати вступних випробувань</h3>
+                <h3 className={s.main_title}>{title ||'Результати вступних випробувань'}</h3>
 
                 <ul className={s.list}>
             {

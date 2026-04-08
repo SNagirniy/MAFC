@@ -12,10 +12,11 @@ const PhoneList = ({phoneArr}) =>{
             <a href={`tel:${phone}`}>{phone}</a>))};
 
 
-const CollegeContacts = ({contactsData, isSocialShow = true})=> {
+const CollegeContacts = ({social,contactsData, isSocialShow = true})=> {
 if(!contactsData) return null;
 
-    const {sub_title, contact, formTitles, markdown, side_title, page} = contactsData;
+
+    const {sub_title, contacts, formTitles, markdown, side_title, page} = contactsData;
 
 
     return(
@@ -28,9 +29,9 @@ if(!contactsData) return null;
                         {markdown && <div className="ck-content" dangerouslySetInnerHTML={{ __html: markdown }}></div>}
 
                         <ul className={s.contact_persons}>
-                            {contact?.map((item)=> {
+                            {contacts?.map((item)=> {
 
-                                const {name, position, phone, mail, adress}= item;
+                                const {name, position, phone, mail, adress}= item?.teacher_info;
                                 return (
                                     <li key={v4()}>
                                         <p className={s.position}>
@@ -45,7 +46,7 @@ if(!contactsData) return null;
                             })}
                             
                         </ul>
-                       {isSocialShow && <Social/>}
+                       {isSocialShow && <Social social={social}/>}
                     </div>
                     <ContactForm page={page} formTitles={formTitles}/> 
                 </div>

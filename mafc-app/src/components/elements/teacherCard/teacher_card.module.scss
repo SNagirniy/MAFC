@@ -11,6 +11,11 @@
     height: 100%;
     color: $second-text-color;
     cursor: pointer;
+
+    &:hover>.article{
+        border: 1px solid var(--gradient-color);
+        box-shadow: $card-shadow;
+    }
    
     
 };
@@ -46,6 +51,8 @@
     height: 100%;
 
     text-align: center;
+
+    transition: border $cubic, box-shadow $cubic;
 
     &>p{
         text-transform: lowercase;

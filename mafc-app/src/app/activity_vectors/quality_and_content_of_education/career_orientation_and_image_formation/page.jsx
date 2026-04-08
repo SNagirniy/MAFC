@@ -5,9 +5,11 @@ import News from "@/components/modules/news/News";
 import { getNews } from "@/server/strapi/strapi";
 import EmptyState from "@/components/modules/EmptyState/EmptyState";
 import LargeSocialPanel from "@/components/elements/social/LargeSocialPanel";
-
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/activity_vectors/quality_and_content_of_education/career_orientation_and_image_formation');
+
 
 const CareerOrientationAndImageFormation= async()=> {
 

@@ -11,12 +11,12 @@ const ProfesionCard = ({title, code, discipline, educational_program, descriptio
                 <img className={s.image} src={image} alt={title}/>
             </div>
             <div className={s.definition}>
-                <h3 className={s.title}> ОПП "{educational_program}"</h3>
-                <p>Галузь знань:<span>{discipline.code}</span><span>"{discipline.definition}"</span></p>
-                <p>Спеціальність:<span>{code}</span><span>"{title}"</span></p>
+                <h3 className={s.title}> ОПП {educational_program}</h3>
+                <p>Галузь знань:<span>{discipline.code}</span><span>{discipline.definition}</span></p>
+                <p>Спеціальність:<span>{code}</span><span>{title}</span></p>
                 <p className={s.description}>{description}</p>
 
-                <Link aria-label={`ОПП "${educational_program}"`} href={`entrants/areas_of_educational_activity/${slug}`} className={s.btn}>Дізнатися більше</Link>
+                <Link aria-label={`ОПП ${educational_program}`} href={`entrants/areas_of_educational_activity/${slug}`} className={s.btn}>Дізнатися більше</Link>
             </div>
         </div>
     )

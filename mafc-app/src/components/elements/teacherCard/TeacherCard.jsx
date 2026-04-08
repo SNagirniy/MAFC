@@ -19,20 +19,20 @@ const teacherPhoto = viewImageSrc? viewImageSrc : '/default_teacher.png';
 
     return(
         
-        <motion.div className={s.card}
+        <motion.button className={s.card}
                     layoutId={`card-${id}`}
                     onClick={onClick}>
         
                     <motion.div layoutId={`image-${id}`}  className={s.thumb} style={{background: `linear-gradient(to top, ${gradientColor} 70%,     transparent         70%)`}}>
                         <img className={s.image} src={teacherPhoto} alt="teacher" />
                     </motion.div >
-                    <div className={s.article}>
+                    <div className={s.article} style={{ "--gradient-color": gradientColor }}>
                         <motion.h4 layoutId={`name-${id}`} className={s.name}>{name?.toLowerCase()}</motion.h4>
                         <p>{position}</p>
                         <p>{qualification}</p>
                 
                     </div>
-        </motion.div>
+        </motion.button>
        
     )
 };

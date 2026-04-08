@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 
-const Footer = ({contactsData})=> {
+const Footer = ({social,contactsData})=> {
 
 
     const year = new Date().getFullYear();
@@ -31,7 +31,7 @@ const Footer = ({contactsData})=> {
 
                         
                         <UsefulLinks/>
-                        <Social isFooter={true}/>
+                        <Social social={social} isFooter={true}/>
                        
                 </div>
              

@@ -34,6 +34,268 @@ try {
 
 }
 
+export async function getVolunteeringPageData(route){
+ 
+const query = QueryString.stringify(
+    {populate:{
+      data: {
+        populate: "*"
+      },
+      news: {
+        populate: "*"
+      }
+    }},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getStudentSelfGovernmentPageData(){
+  const route ='/api/student-self-government-page';
+ 
+const query = QueryString.stringify(
+    {populate:{
+      data: {
+        populate: "*"
+      },
+      student_governments: {
+        populate: '*'
+      },
+      news: {
+        populate: "*"
+      }
+    }},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+
+export async function getIntelligentNetworkingPageData(){
+  const route ='/api/intelligent-networking-page';
+ 
+const query = QueryString.stringify(
+    {populate:{
+      data: {
+        populate: "*"
+      },
+     images: {
+      populate: "*"
+     },
+     intelligent_networking_activities: {
+      populate: {
+        activity: {
+          populate: "*"
+        }
+      }
+     }
+    }},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getAwardsAndDistinctionsPage(){
+ 
+  const route = '/api/awards-and-distinction-page';
+const query = QueryString.stringify(
+    {populate:{
+      images: {
+        populate: "*"
+      }
+    }},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getLearningByTeachingPage(){
+ 
+  const route = '/api/learning-by-teaching-page';
+const query = QueryString.stringify(
+    {populate:{
+      note: {
+        populate: "*"
+      }
+    }},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+export async function getDegreeEducationPageData(){
+  const route = '/api/degree-education-page';
+ 
+const query = QueryString.stringify(
+    {populate: {
+      data: {
+        populate: "*"
+      },
+      universities: {
+        populate: "*"
+      }
+    }},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
+
+export async function getAdmissionCommittePageData(){
+const pageRoute='/api/admiddion-committe-page';
+const query = QueryString.stringify(
+    {populate:"*"},
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${pageRoute}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
 export async function getEducationalCalendar() {
   try {
     const res = await fetch(`${baseURL}/api/admission-calendars?populate=*`, {
@@ -212,6 +474,9 @@ export async function getDistanceLearningPage() {
         ids: true,
       },
     },
+    administrator: {
+      populate: "*"
+    }
   },
 }, { encodeValuesOnly: true });
 
@@ -235,6 +500,82 @@ export async function getDistanceLearningPage() {
   }
 }
 
+
+export async function getHusbanryActivityPageData() {
+   const route = '/api/husbandry-activity-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    data: {
+      populate: "*"
+    },
+    images: {
+      populate: "*"
+    }
+  }
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
+
+
+
+export async function getSocialSupportPageData() {
+   const route = '/api/social-support-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    data: {
+      populate: "*"
+    },
+    teacher: {
+      populate: "*"
+    },
+    student_ratings_folder_id: {
+      populate: "*"
+    },
+     link: {
+      populate: "*"
+    },
+  }
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
 
 
 export async function getWorkSafetyPageData() {
@@ -317,12 +658,78 @@ export async function getAccessibilityAndInclusiveLearningPageData() {
 
 
 export async function getDomitoryPageData() {
+  const route = '/api/domitory-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    data: {
+      populate: "*"
+    },
+    images:{
+      populate: '*'
+    },
+    domitory_governments: {
+      populate: "*"
+    }
+  }
+}, { encodeValuesOnly: true });
+
   try {
-    const res = await fetch(`${baseURL}/api/domitory-page?populate=*`, {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
       headers: {
         'Content-Type': 'application/json',
       },
    
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
+
+
+export async function getIntroductoryQuidePageData() {
+
+   const route = '/api/introductory-guide-page';
+
+  const query = QueryString.stringify({
+  populate: {
+    professions: {
+      populate: ['image','discipline','graduate_profile']
+    },
+    initial_test_results_google_drive_folder:{
+      populate: "*"
+    },
+    enrollment_order_lists:{
+      populate: "*"
+    },
+    entrants_road_map: {
+     populate: {
+      road_map:{
+        populate: "*"
+      }
+     }
+    },
+    entrance_exams_info:{
+      populate: "*"
+    }
+    
+  },
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    
     });
 
      if(!res) return null;
@@ -338,17 +745,12 @@ export async function getDomitoryPageData() {
 };
 
 
-export async function getIntroductoryQuidePageData() {
+export async function getConceptualPrinciplesPageData() {
 
-   const route = '/api/introductory-guide-page';
+   const route = '/api/conceptual-principles-page';
 
   const query = QueryString.stringify({
-  populate: {
-    professions: {
-      populate: ['image','discipline']
-    },
-    
-  },
+  populate: "*"
 }, { encodeValuesOnly: true });
 
   try {
@@ -419,6 +821,9 @@ export async function getHomePageData() {
 
     hero: {
       populate:['image','link','video']
+    },
+    government_resourses:{
+      populate: "*"
     }
     
   },
@@ -446,6 +851,34 @@ export async function getHomePageData() {
 
 
 
+export async function getCouncilsAndCommissionPageData() {
+ const route = `/api/councils-and-commissions-page`;
+
+  const query = QueryString.stringify({
+  populate: "*",
+}, { encodeValuesOnly: true });
+
+  try {
+      const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching nmt data:', error);
+    return null;
+  }
+};
+
+
 
 export async function getExtracurricularPageData() {
  const route = `/api/extracurricular-activities-page`;
@@ -456,10 +889,13 @@ export async function getExtracurricularPageData() {
       populate:{
          activity: {
         populate: '*'
-      }
+      },
       }
      
     },
+     data: {
+        populate: "*"
+      }
     
   },
 }, { encodeValuesOnly: true });
@@ -516,6 +952,68 @@ try {
 
 }
 
+export async function getIntelligentNetworkingActivityItem(id){
+
+  const route = `/api/intelligent-networking-activities/${id}`;
+ const query = QueryString.stringify(
+    {
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching news item:', error);
+    return null;
+  }
+
+}
+
+
+export async function getSocialMediaData(pageName) {
+ const route = '/api/social-medias';
+
+  const query = QueryString.stringify({
+
+  populate: "*"
+}, { encodeValuesOnly: true });
+
+  try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+   
+    });
+
+     if(!res) return null;
+
+    const json = await res.json();
+
+    return json?.data || null;
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
+
+
 
 
 export async function getContactsData(pageName) {
@@ -526,7 +1024,15 @@ export async function getContactsData(pageName) {
         page: {
         $eq: pageName,},
   },
-  populate: '*',
+  populate:{
+    contacts: {
+      populate: "*"
+    },
+    formTitles:{
+      populate: "*"
+    }
+    
+  },
 }, { encodeValuesOnly: true });
 
   try {
@@ -594,9 +1100,15 @@ export async function getSubjectCommissionData(slug) {
     }    
   },
   populate:{
+    category: {
+      populate: "*"
+    },
     members: {
-       populate: '*'
-    }
+       populate: {
+        teacher_info: {populate: ['education', 'teacher_experience']},
+        image: {populate: true}
+       }
+    },
   },
 }, { encodeValuesOnly: true });
 
@@ -908,6 +1420,43 @@ try {
 }
 
 
+export async function getEnrollmentOrderBySlug(slug){
+  const route = `/api/enrollment-order-lists`;
+   const query = QueryString.stringify(
+    {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: '*',
+    },
+    { encodeValuesOnly: true }
+  );
+
+try {
+    const res = await fetch(`${baseURL}${route}?${query}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch. Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json?.data || null;
+  } catch (error) {
+    console.error('Error fetching professions:', error);
+    return null;
+  }
+
+}
+
+
 export async function getProfessionBySlug(slug){
   const route = `/api/professions`;
    const query = QueryString.stringify(
@@ -917,7 +1466,13 @@ export async function getProfessionBySlug(slug){
           $eq: slug,
         },
       },
-      populate: '*',
+      populate: {
+        poll: {populate: ['poll_item']},
+        discipline: true,
+        graduate_profile: true,
+        monitoring_and_updating_edu_program_golder_id: true,
+        image: true,
+        suggestion_box: true}
     },
     { encodeValuesOnly: true }
   );
@@ -1186,7 +1741,11 @@ export async function getCommonPool (){
   const route = '/api/common-pools';
  const query = QueryString.stringify(
     {
-      populate: '*',
+      populate: {
+        poll_item: {
+          populate: "*"
+        }
+      }
     },
     { encodeValuesOnly: true }
   );
@@ -1206,7 +1765,7 @@ try {
     const json = await res.json();
 
     if(json?.data && json?.data?.length > 0) {
-     const poll_list = json?.data?.map((item)=>item?.pool);
+     const poll_list = json?.data?.map((item)=>item?.poll_item?.poll_item);
      return poll_list
     } else { return json?.data || null;}
 

@@ -4,13 +4,13 @@ import Social from '@/components/elements/social/Social';
 import FontSizeSwitcher from '@/components/elements/FontSizeSwitcher/FontSizeSwitcher';
 
 
-const Topbar = ()=> {
+const Topbar = ({social})=> {
 
     return(
         <section className={s.top_bar}> 
             <div className={s.social}>
                 <p>Доєднуйтесь до нас</p>
-               <Social/>
+               <Social social={social}/>
             </div>
             <div className={s.switcher_box}>
                 <FontSizeSwitcher/>

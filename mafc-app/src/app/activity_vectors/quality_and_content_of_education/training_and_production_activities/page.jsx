@@ -4,11 +4,12 @@ import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
 import News from "@/components/modules/news/News";
 import { getNews } from "@/server/strapi/strapi";
 import EmptyState from "@/components/modules/EmptyState/EmptyState";
-
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/activity_vectors/quality_and_content_of_education/training_and_production_activities');
 
-const TrainingAndProductionActivities= async()=> {
+const PracticalTrainingPage= async()=> {
 
     const pageRoute = '/api/training-and-production-activity';
     const pageData = await getDepartment(pageRoute);
@@ -29,4 +30,4 @@ return <>
 
 }
 
-export default TrainingAndProductionActivities;
+export default PracticalTrainingPage;

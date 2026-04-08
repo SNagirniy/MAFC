@@ -1,0 +1,83 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.card{
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: $primaryBG;
+    border-radius: 1rem;
+    box-shadow: $card-shadow;
+
+    overflow: hidden;
+
+    @include for-size('tablet'){
+        grid-template-columns: 1fr 2fr;
+       
+    }
+}
+
+.thumb{
+display: flex;
+align-items: flex-end;
+justify-content: center;
+padding: 1rem 0 0 0;
+overflow: hidden;
+
+@include for-size('tablet'){
+    padding: 20% 0 0 0;
+}
+}
+
+.image{
+    height: 15rem;
+    width: auto;
+    filter: drop-shadow(0px 12px 16px #7a7878);
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.info_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.card_title{
+    display: block;
+    padding: 1rem 0;
+    background-color: $top_bar_bg;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    color: $light-text-color;
+    text-transform: uppercase;
+}
+
+.contacts{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
+
+    text-transform: lowercase;
+    
+
+    & span, & a{
+        &::first-letter{
+            text-transform: uppercase;
+        }
+    }
+
+    & span:first-child{
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    @include for-size('tablet'){
+         padding: 0 1rem 2rem 2rem;
+    }
+}

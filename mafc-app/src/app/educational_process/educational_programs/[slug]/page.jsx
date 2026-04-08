@@ -1,6 +1,6 @@
 import EducationalProgramPage from "@/components/pages/EducationalProgramPage";
 import { getIntroductoryQuidePageData, getProfessionBySlug, getCommonPool } from "@/server/strapi/strapi";
-import { fetchDocxFromCurrentFolder, fetchAllDocxFromSubfolders } from "@/server/google/drive";
+import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
 import { notFound } from "next/navigation";
 import { seoConfig } from "../../../../../seo.config";
 
@@ -42,24 +42,23 @@ export async function generateMetadata({ params }) {
 };
 
 const EduProgram= async({params})=>{
-  const generalDocxFolderId ='1BBlEPPneQXEwqd-jB5dfeivhWtTyafa2'
+
   const {slug} = await params;
   const profession = await getProfessionBySlug(slug);
 
   if(!profession[0] || profession?.error ){notFound()}
 
   const professionDocxFolderId = profession[0]?.google_drive_doc_folder_id;
+  const monitoring_and_update_Docx_FolderId = profession[0]?.monitoring_and_updating_edu_program_golder_id?.folder_id;
   const commonPool= await getCommonPool();
   const professionDocx = await fetchAllDocxFromSubfolders(professionDocxFolderId);
-  const generalDocx = await fetchDocxFromCurrentFolder(generalDocxFolderId);
-
-
+  const monitoring_and_update_Docx = await fetchAllDocxFromSubfolders(monitoring_and_update_Docx_FolderId);
 
     return <EducationalProgramPage 
     commonPool={commonPool} 
-    generalDocx={generalDocx.documents} 
     profession={profession[0]}
-    professionDocx={professionDocx}/>
+    professionDocx={professionDocx}
+    monitoringDocx = {monitoring_and_update_Docx}/>
 };
 
 export default EduProgram

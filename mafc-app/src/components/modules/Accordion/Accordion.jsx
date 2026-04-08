@@ -28,16 +28,17 @@ const AccordionItem = ({ header, ...rest }) => (
     />
   );
 
-const AccordionComponent = ({title,data, folderId})=> {
+const AccordionComponent = ({title,data, folderId, subtitle})=> {
 if(!data || data?.error || data?.length === 0) return null;
 
-
+const sortedDocList = [...(data || [])].sort((a,b)=> a?.description - b?.description);
     return (
         <section key={folderId} className={styles.section}>
             <SectionWrapper>
                {title && <h3 className={styles.main_title}>{title}</h3>}
+               {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         <Accordion>
-            {data?.map((item)=> {return (
+            {sortedDocList?.map((item)=> {return (
                 <AccordionItem key={v4()} header={item?.header || item?.topic || item?.folderName}>
                 <DocumentsList documents_list={item?.content || item?.documents}/>
                 {item?.markdown && <RteTextBox markdown={item?.markdown}/>}

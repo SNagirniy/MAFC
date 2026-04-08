@@ -2,9 +2,10 @@ import AccordionComponent from "@/components/modules/Accordion/Accordion";
 import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
 import EmptyState from "@/components/modules/EmptyState/EmptyState";
 import { v4 } from "uuid";
-
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/about/transparency_and_information_openness/financial_transparency');
 
 
 const FinancialTransparency= async()=> {

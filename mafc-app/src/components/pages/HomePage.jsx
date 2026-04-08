@@ -8,7 +8,6 @@ import GraduatesSection from "../modules/GraduatesSection/GraduatesSection";
 const HomePage = ({news, pageData, graduators})=>{
 
 
-
 return (
     <>
     <Hero hero_data={pageData?.hero}/>
@@ -16,7 +15,7 @@ return (
     {pageData?.professions && <Profesions professionsData = {pageData?.professions}/>}
     {news && <News newsList={news} title={'НАШ ГЕКТАР НОВИН'} subtitle={'КОЖЕН ДЕНЬ ЗАСІВАЄМО ІНФОРМАЦІЙНЕ ПОЛЕ!'} category={'all'}/>}
     {graduators && <GraduatesSection graduators_list={graduators}/>}
-    <GovernmentResourses/>
+    <GovernmentResourses linkArray={pageData?.government_resourses}/>
     </>
 )
 };

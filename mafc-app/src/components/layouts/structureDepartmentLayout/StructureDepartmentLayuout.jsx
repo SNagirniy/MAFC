@@ -33,7 +33,7 @@ const StructureDepartmentLayout=({rootPath,page_title,nav_list,children})=>{
                             <h3 className={s.menu_title}>{page_title}</h3>
                                 {nav_list?.map((unit)=> {
                                        
-                                       const href = `${rootPath}${unit?.link}`
+                                       const href = `${rootPath}${unit?.link}`;
                                         const isActive = pathname === href;
                                         return (
                                             <div key={v4()}>
@@ -41,7 +41,7 @@ const StructureDepartmentLayout=({rootPath,page_title,nav_list,children})=>{
                                                 {unit?.departments && <ul className={s.nav_list}>
                                                    {unit?.departments?.map((d)=> {
                                                     const href = d?.link ? `${rootPath}${d?.link}` : d?.external_link;
-                                                     const isActive = pathname === href;
+                                                      const isActive = pathname?.includes(d?.link);
                                                         return <li key={v4()}>
                                                         <Link target={d?.link? '_self' : '_blank'} onClick={onCloseSideMenu} className={clsx(s.link, {[s.active]: isActive})} href={href}>{d?.title}</Link>
                                                     </li>

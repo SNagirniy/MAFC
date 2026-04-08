@@ -10,16 +10,36 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+
+    margin-bottom: 4rem;
     align-items: center;
 
     &>li{
         height: 100%;
+
+        &:first-child >.link{
+        background: linear-gradient(
+    0deg,
+    rgb(82, 156, 2) 0%,
+    rgb(151, 228, 68) 100%
+  );
+        }
+
+           &:last-child >.link{
+        background: linear-gradient(
+    0deg,
+    rgb(182, 148, 25) 0%,
+    rgb(243, 208, 80) 100%
+  );
+        }
     }
 
     @include for-size('tablet'){
         grid-template-columns: repeat(3,1fr);
          gap: 2rem;
     }
+
+   
     
 };
 
@@ -31,20 +51,28 @@
     height: 100%;
     padding: 1rem;
    
+   
     text-align: center;
-    color: $light-text-color;
+    color: $primary-text-color;
     text-transform: uppercase;
     font-size: 0.9rem;
     font-weight: 600;
-    border: 1px solid $secondary-color;
+    box-shadow: $card-shadow;
+    border: 1px solid transparent;
     border-radius: 30px;
-    background-color: $secondary-color;
-
+   background: linear-gradient(
+    0deg,
+    rgb(188, 4, 4) 0%,
+    rgb(247, 53, 53) 100%
+  );
+  
     transition: all $cubic;
+
+   
    
     &:hover{
-        color: $secondary-color;
-        background-color: $light-text-color;
+        color: $light-text-color;
+        border: 1px solid $light-text-color;
         transform: scale(1.01);
         text-shadow: 0px 0px 1px #ffffff;
     }

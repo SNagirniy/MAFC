@@ -1,0 +1,60 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+
+.main_title{
+    @include MainTitle()
+}
+
+.radio_group{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    @include for-size('tablet'){
+        grid-template-columns: repeat(var(--colNumber), 1fr);
+    }
+
+};
+
+.input{
+    @include visually_hiden()
+};
+
+.label{
+display: flex;
+justify-content: center;
+width: 100%;
+height: 100%;
+padding: 0.8rem;
+border: 1px solid $second-text-color;
+border-radius: 0.5rem;
+color: $second-text-color;
+
+text-transform: uppercase;
+font-size: 1rem;
+cursor: pointer;
+
+transition: transform $cubic;
+
+
+
+&:hover{
+border: 1px solid $dack-accent-color;
+color: $dack-accent-color;
+}
+};
+
+
+.active{
+    transform: scale(0.9);
+
+        border: 1px solid $primaryBG;
+        color: $primaryBG;
+        background-color: $dack-accent-color;
+
+        &:hover{
+            border: 1px solid $primaryBG;
+            color: $primaryBG;
+           }
+}
+

@@ -13,7 +13,7 @@ const DocumentsList = ({documents_list, variant='singe'}) => {
             return (
                 <li key={el?.id || v4()} className={s.item}>
                   <DocIcon className={s.icon}/>
-                  <a className={s.link} href={el?.webViewLink || el?.url} target="_blank">{el?.name || el?.title}</a>
+                  <a className={s.link} href={el?.webViewLink || el?.url || el?.link} target="_blank">{el?.name || el?.title}</a>
                 </li>)
         })}
     </ul>

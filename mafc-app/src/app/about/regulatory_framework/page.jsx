@@ -7,7 +7,7 @@ import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
 
-export const metadata = generateStaticPageMeta('/about/regulatory_documents')
+export const metadata = generateStaticPageMeta('/about/regulatory_framework');
 
 
 const RegulatoryFramework = async()=> {

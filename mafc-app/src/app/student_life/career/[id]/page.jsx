@@ -4,8 +4,6 @@ import BackButton from "@/components/elements/backButton/BackButton";
 
 export const revalidate = 3600;
 
-
-
   export async function generateStaticParams() {
     const res = await getCompaniesList();
 

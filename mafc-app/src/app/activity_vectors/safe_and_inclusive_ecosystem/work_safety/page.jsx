@@ -4,8 +4,10 @@ import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
 import EmptyState from "@/components/modules/EmptyState/EmptyState";
 import YourSafetyEduSection from "@/components/modules/YourSafetyEduSection/YourSafetyEduSection";
 import ModalImageGallery from "@/components/modules/ModalImageGallery/ModalImageGallery";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+export const metadata = generateStaticPageMeta('/activity_vectors/safe_and_inclusive_ecosystem/work_safety');
 
 const WorkSafety= async()=> {
 
@@ -20,11 +22,11 @@ const WorkSafety= async()=> {
 return <>
         <DepartmentSection link_item={link} page_title={page_title} markdown={markdown} docList={docxList}/>
 
-       {(pageData?.images && pageData?.images?.length > 0) ?? <ModalImageGallery
+       {(pageData?.images && pageData?.images?.length > 0) && <ModalImageGallery
             title={"маршрути евакуації"}
             imagesList={pageData?.images}/>}
 
-       {(pageData?.video_item && pageData?.video_item?.length > 0) ??
+       {(pageData?.video_item && pageData?.video_item?.length > 0) &&
        <YourSafetyEduSection
         title={'Медіатека з безпеки'} 
         videoList={pageData?.video_item}/>}

@@ -5,7 +5,7 @@ import EmptyState from "@/components/modules/EmptyState/EmptyState";
 
 export const revalidate = 3600;
 
-export const metadata = generateStaticPageMeta('/about/vacancy')
+export const metadata = generateStaticPageMeta('/about/transparency_and_information_openness/vacancies');
 
 
 const Vacancy= async()=> {

@@ -1,18 +1,8 @@
-import AdmissionResultsPage from "@/components/pages/AdmissionResultsPage";
-import { fetchAllDocxFromSubfolders } from "@/server/google/drive";
-import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
+import { redirect } from "next/navigation"
 
-export const revalidate = 3600;
-export const metadata = generateStaticPageMeta('/entrants/admission_results');
+const AdmissionResults=({})=>{
+    redirect('/entrants/admission_results/initial_test_results')
+}
 
-const AdmissionResults = async()=>{
+export default AdmissionResults;
 
-    const folderId = '1GeXqveybi1YDCJrI61ydo62aVfpzmu02'
-    const res = await fetchAllDocxFromSubfolders(folderId);
-    const docxList = await res.json();
-
-    return <AdmissionResultsPage resultsList={docxList}/>
-}; 
-
-
-export default AdmissionResults

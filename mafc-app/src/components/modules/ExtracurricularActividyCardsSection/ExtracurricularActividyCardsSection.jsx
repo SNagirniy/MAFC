@@ -5,14 +5,14 @@ import ResponsiveImage from '@/components/elements/responsiveImage/ResponsiveIma
 import extractImageSourcesFromHTML from '@/utils/extractImageSourcesFromHTML';
 
 
-const ActivityCard = ({el})=> {
+const ActivityCard = ({el, rootPath})=> {
     const {title, poster, description} = el?.activity;
 
     const imagesFromHTML = extractImageSourcesFromHTML(description);
     const posterUrl = [ ... imagesFromHTML];
     return(
 
-        <Link className={s.link} href={`/student_life/extracurricular_activities/${el?.documentId}`}>
+        <Link className={s.link} href={`${rootPath}${el?.documentId}`}>
             <div className={s.thumb}>
                 <ResponsiveImage 
                 className={s.image}
@@ -28,7 +28,7 @@ const ActivityCard = ({el})=> {
 }
 
 
-const ExtracurricularActividyCardsSection =({activities})=> {
+const ExtracurricularActividyCardsSection =({activities, rootPath})=> {
     if(!activities) return null;
 
 return(
@@ -38,7 +38,7 @@ return(
                 {activities?.map((el)=> {
                     return(
                     <li key={el?.id}>
-                        <ActivityCard el={el}/>
+                        <ActivityCard rootPath={rootPath} el={el}/>
                     </li>)
                 })}
             </ul>

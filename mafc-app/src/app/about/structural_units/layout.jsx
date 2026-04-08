@@ -5,7 +5,6 @@ import StructureDepartmentNavList from "@/utils/structureDepartmentNavlist";
 
 const StructuralUnits = ({children})=> {
 
-
     return <StructureDepartmentLayout
     const rootPath = {'/about/structural_units/'}
     page_title={'Структурні підрозділи'} 

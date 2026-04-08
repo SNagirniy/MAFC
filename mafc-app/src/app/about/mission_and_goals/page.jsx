@@ -2,8 +2,11 @@ import RteTextBox from "@/components/elements/rteTextBox/RteTextBox";
 import { getMisionAndGoalsPage } from "@/server/strapi/strapi";
 import EmptyState from "@/components/modules/EmptyState/EmptyState";
 import PageWrapper from "@/components/layouts/PageWrapper";
+import generateStaticPageMeta from "@/utils/generateStaticPageMeta";
 
 export const revalidate = 3600;
+
+export const metadata = generateStaticPageMeta('/about/mission_and_goals')
 
 const MissionAndGoals = async()=> {
 

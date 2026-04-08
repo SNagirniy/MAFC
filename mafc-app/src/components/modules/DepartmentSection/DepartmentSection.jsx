@@ -5,16 +5,14 @@ import Link from 'next/link';
 
 
 
-const DepartmentSection =({page_title, markdown, docList, link_item})=> {
-
-const sortedDocList = [...(docList || [])].sort((a,b)=> a?.description - b?.description);
+const DepartmentSection =({page_title, markdown, docList, link_item, accorion_title})=> {
 
     return(
         <>
              <section>
                 <SectionWrapper>
                      <div className={s.box}>
-                        {page_title && <h3 className={s.page_title}>{page_title}</h3>}
+                        {page_title && <h1 className={s.page_title}>{page_title}</h1>}
                      {markdown &&
                     <div className="ck-content" dangerouslySetInnerHTML={{ __html: markdown }}></div>}
 
@@ -25,7 +23,7 @@ const sortedDocList = [...(docList || [])].sort((a,b)=> a?.description - b?.desc
                     
                 </SectionWrapper>
             </section>
-            <AccordionComponent data={sortedDocList}/>
+            <AccordionComponent title={accorion_title} data={docList}/>
         </>
     )
 

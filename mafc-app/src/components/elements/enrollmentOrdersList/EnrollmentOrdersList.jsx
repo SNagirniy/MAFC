@@ -1,7 +1,5 @@
-'use client'
+
 import s from './enrollment_orders_list.module.scss';
-import { useState, useEffect} from 'react';
-import { useSearchParams } from 'next/navigation';
 import DocIcon from '../../../../public/doc_icon.svg';
 import { v4 } from 'uuid';
 
@@ -9,27 +7,12 @@ import { v4 } from 'uuid';
 
 
 
-const EnrollmentOrdersList =({data})=> {
-    const [orders, setOrders]=useState(data);
-    const [ordersToRender, setOrdersToRender]=useState([]);
-    const searchParams = useSearchParams();
-  
-    const getItemsToRender = ()=> {
-        const base = searchParams.get('basic_education');
-        const baseArray = orders?.filter(el=> el?.folderName === base);
-        setOrdersToRender(baseArray[0].subfolders)
-
-    }
-    
-            useEffect(()=>{getItemsToRender()}, [searchParams]);
-
-           
-
+const EnrollmentOrdersList =({orderList})=> {
     return(
         <div className={s.list_wrapper}>
         <ul className={s.list}>
             {
-               ordersToRender?.map((el)=> {
+               orderList?.map((el)=> {
                   
                 const docx = el?.documents;
 
@@ -37,7 +20,7 @@ const EnrollmentOrdersList =({data})=> {
 
                 return(
                 <li key={v4()} className={s.list_item}>
-                    <h4 className={s.year}>{el?.folderName} рік</h4>
+                    <h4 className={s.year}>{el?.topic} рік</h4>
 
                     {docx?.map((doc)=> <a key={doc?.id} className={s.link} href={doc?.webViewLink} target="_blank" >
                             <DocIcon className={s.icon}/>

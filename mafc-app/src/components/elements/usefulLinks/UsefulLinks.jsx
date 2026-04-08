@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 
 const links = [{
-    path: '/entrants/documents',
+    path: '/entrants/areas_of_educational_activity',
     title: 'Вступний гід'
 },
 {

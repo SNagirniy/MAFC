@@ -9,7 +9,7 @@
     counter-increment: index; 
     display: flex;
     align-items: center;
-    padding: 12px 0;
+    padding: 4px 0;
     box-sizing: border-box;
 
     &>p{
@@ -24,7 +24,7 @@
 
 .item::before {
     content: counters(index, ".", decimal-leading-zero);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: right;
     font-weight: bold;
     min-width: 50px;

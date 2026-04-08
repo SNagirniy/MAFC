@@ -1,0 +1,11 @@
+@use '../../../globalStyles/variables.scss' as *;
+
+.grid_container{
+  display: grid;
+  grid-template-columns: 1;
+  gap: 1rem;
+
+  @include for-size('tablet'){
+   grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+  }
+}

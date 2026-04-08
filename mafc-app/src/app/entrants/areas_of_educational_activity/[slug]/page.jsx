@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
   const {siteUrl, defaultOgImage}= seoConfig;
   const {title, code, educational_program, image} = data[0];
 
-  const desc = `Спеціальність ${code} "${title}", ОПП "${educational_program}"`;
+  const desc = `Спеціальність ${code} ${title}, ОПП "${educational_program}"`;
   const imageUrl = image?.url ? image?.url : defaultOgImage;
   
 

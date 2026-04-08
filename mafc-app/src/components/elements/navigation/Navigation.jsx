@@ -74,9 +74,9 @@ return(
                 <ul role="menu" className={clsx(s.dropdown, {
                 [s.open]: openDropdown === title
               })}>
-                {menu?.map((item)=> <li role="menuitem" key={item.item}>
-                <Link onClick={onClick} className={s.link} href={item.link}>{item.item}</Link>
-                    </li>)}
+                {menu?.map((item)=> { const href= item?.link? item?.link : item?.external_link; return(<li role="menuitem" key={v4()}>
+                <Link target={item?.link? '_self' : '_blank'} onClick={onClick} className={s.link} href={href}>{item.item}</Link>
+                    </li>)})}
                 </ul>
             </li>)})}
         </ul>

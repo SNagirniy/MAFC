@@ -1,4 +1,5 @@
 import s from './profesio_description.module.scss';
+import ResponsiveImage from '../responsiveImage/ResponsiveImage';
 
 
 const ProfesionDescription = ({profesion})=> {
@@ -7,10 +8,11 @@ const ProfesionDescription = ({profesion})=> {
     return(
         <div className={s.profesion_wrapper}> 
                 <div className={s.thumb}>
-                    <img 
-                    className={s.image}
-                    src={image?.url} alt={educational_program}
-                  />
+                    <ResponsiveImage
+                    formats={image?.formats}
+                    singleImgUrl={image?.url}
+                    alt={educational_program}
+                    className={s.image}/>
                 </div>
                 <div className={s.detail}>
                     <p> Галузь знань

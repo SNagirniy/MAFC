@@ -1,0 +1,59 @@
+@use "../../../globalStyles/variables.scss" as *;
+
+
+.card{
+    display: block;
+    position: relative;
+    background-color: $primaryBG;
+    border: 1px solid $primaryBG;
+    border-radius: 1rem;
+    box-shadow: $card-shadow;
+    overflow: hidden;
+    transition: transform $cubic,border $cubic ;
+
+    &:hover{
+        transform: scale(1.02);
+        border: 1px solid rgba(0,0,0,0.6);
+    }
+}
+
+
+.thumb{
+display: flex;
+justify-content: center;
+max-height: 30vh;
+width: 100%;
+overflow: hidden;
+}
+
+.image{
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.text_box{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+   width: 100%;
+   min-height: 20%;
+   padding: 0.5rem 1rem 1rem 1rem;
+    left: 0;
+    bottom: 0;
+
+    background: rgba(0,0,0,0.6);
+     text-align: center;
+     font-size: 1rem;
+     color: $light-text-color;
+
+    & h4{
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+

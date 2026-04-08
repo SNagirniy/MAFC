@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styles from "./teacher_modal_card.module.scss";
+import Close from '../../../../public/close.svg';
 
 
 const colors=['#f4c072','#51b282','#db6c62','#5d577d','#8a8a92', '#ff7f46','#00a0c1','#16697a','#c0eb34','#347aeb','#a243b5','#b54393','#bf2424']
@@ -12,10 +13,17 @@ export default function TecherModalCard({ person, onClose }) {
 
    const [gradientColor, setGradientColor] = useState("#000000");
   
- 
+
 
   const teacherPhoto = person?.image?.url? person?.image?.url : '/default_teacher.png';
-  const {name, position, birthday, specialty, experience, disciplines, qualification, professional_interests, credo, teacher_experience, education}= person.teacher_info;
+  const {name, position, birthday, specialty, experience, disciplines, qualification, professional_interests, credo, teacher_experience, education}= person?.teacher_info;
+
+  const date_options = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+  const BDay = new Date(birthday).toLocaleDateString(undefined,date_options);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -52,11 +60,12 @@ export default function TecherModalCard({ person, onClose }) {
         <div className={styles.modalContent} style={{ "--gradient-color": gradientColor }}>
           <div className={styles.title_box}>
             <motion.h2 layoutId={`name-${person.id}`}>{name}</motion.h2>
+            <p>{position}</p>
             <p>{credo}</p>
           </div>
 
           <div className={styles.main_info}>
-            <p>дата народження:</p> <p>{birthday}</p>
+            <p>дата народження:</p> <p>{BDay}</p>
             <p>Освіта:</p> <ul>
                             {education?.map(el=> <li key={el?.id}><p>{el?.institution}</p></li>)}
 
@@ -78,6 +87,7 @@ export default function TecherModalCard({ person, onClose }) {
           </div>
           
         </div>
+        <button aria-label="закрити" className={styles.close_btn} onClick={onClose}><Close className={styles.icon}/></button>
       </motion.div>
     </motion.div>
   );

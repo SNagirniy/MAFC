@@ -2,11 +2,13 @@
 import s from './graduates_section.module.scss';
 import SectionWrapper from '@/components/layouts/SectionWrapper';
 import { Swiper,SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay, EffectCube } from 'swiper/modules';
 import ResponsiveImage from '@/components/elements/responsiveImage/ResponsiveImage';
 import 'swiper/scss';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-cube';
+
 
 
 const GraduatesSection = ({title = "наші випускники", graduators_list})=> {
@@ -18,14 +20,18 @@ const GraduatesSection = ({title = "наші випускники", graduators_l
               
                <div className={s.gallery_box}>
             <Swiper
-            navigation={false}
-            pagination={true}
-            mousewheel={true}
-            keyboard={true}
-            modules={[Navigation, Pagination, Mousewheel, Keyboard, Autoplay]}
-             autoplay={{
-                  delay: 5500,
-                  disableOnInteraction: false, }}
+          effect={'cube'}
+           cubeEffect={{
+          shadow: false,
+        }}
+        pagination={true}
+        modules={[EffectCube, Pagination,Autoplay]}
+          autoplay={{
+          delay: 8000,
+          disableOnInteraction: false,
+        }}
+        speed={800}
+      
             className={s.swiper}
             >
                 {graduators_list?.map((el)=> {
